@@ -1,0 +1,39 @@
+<script type="text/template" id="slice-slide-controls">
+	<div class="slide-controls" role="toolbar" data-slice-slide-controls>
+		<nav>
+			<ul class="list-basic-controls pager" data-slice-slide-controls-prev-and-next>
+				<li class="slide-control-previous previous">
+				  <a href="#" aria-controls="{{id}}" data-slice-slide-controls-prev>
+				  <span class="glyphicon glyphicon-chevron-left"></span>
+				  <span class="text hidden-xs hidden-sm">{{text.controlsPrevious}}</span></a>
+				</li>
+				<li class="slide-control-next next">
+				  <a href="#" aria-controls="{{id}}" data-slice-slide-controls-next><span class="text hidden-xs hidden-sm">{{text.controlsNext}}</span>
+				  <span class="glyphicon glyphicon-chevron-right"></a>
+				</li>
+			</ul>
+			<ul class="number-list pagination">
+			[[ var sliceSlidePage = 1, sliceSlidePageIndex = 1; while (sliceSlidePage <= pagesNumber) { ]]
+				<li class="slide-control-element[[ if (sliceSlidePage === 1) { ]] active[[ } ]]" data-slice-slide-controls-fixed><a href="#" aria-controls="{{id}}" data-slice-slide-destination="#{{id}}-{{sliceSlidePageIndex}}">{{_.tmpl('#slice-slide-controls-abbr', {str: _.abbr($('.day-forecast-title').eq((sliceSlidePage - 1)).attr('data-abbr'))})}}</a></li>
+				[[ sliceSlidePage += 1; ]]
+				[[ sliceSlidePageIndex += numberSimultaneousSlides; ]]
+			[[ } ]]
+			</ul>
+		</nav>
+	</div>
+</script>
+
+<script type="text/template" id="slice-slide-controls-abbr">
+ {{str[0]}}[[ if (str.length > 1) { ]]<span class="hidden-in-small hidden-xs hidden-sm hidden-md">{{str[1]}}</span>{{str[2]}}[[ } ]]
+</script>
+
+<script type="text/template" id="slice-slide-controls-playing">
+	<span data-slice-slide-playing>{{text.controlsPause}}</span>
+</script>
+<script type="text/template" id="slice-slide-controls-paused">
+	<span data-slice-slide-paused>{{text.controlsResume}}</span>
+</script>
+
+<script type="text/template" id="slice-slide-translucent">
+	<div class="slice-slide-translucent"></div>
+</script>

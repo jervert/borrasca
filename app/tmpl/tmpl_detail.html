@@ -1,0 +1,102 @@
+<script type="text/template" id="tmpl-detail">
+  <section class="location-detail">
+    <header class="section-header location-detail-header">
+      <h2 class="section-header-title location-name">{{locationName}}</h2>
+      <p class="section-header-subtitle region-name">{{$Q.literals.detail.inRegion}} {{regionName}}</p>
+      <ul class="location-toolbar btn-toolbar">
+        <li class="btn-group bookmark" data-bookmark>[[ if ($Q.supported.html5.storage) { ]]{{_.tmpl('#tmpl-bookmarks-buttons', {isBookmarked: isBookmarked})}}[[ } ]]</li>
+      </ul>
+    </header>
+    
+    <section class="days-forecast">
+      <h3 class="hidden">{{$Q.literals.detail.forecastByDays}}</h3>
+      <div class="slice-slides" data-slice-slide-box>
+      [[ if (!_.isNull (now) && (_.isUndefined(now.message) || (now.message && now.message.indexOf("Error") !== -1))) { ]]
+        <div class="slide" data-slice-slide>{{_.tmpl('#tmpl-detail-now', {now: now})}}</div>
+      [[ } ]]
+      [[ _.each(days, function (day, index) { ]]
+      <section class="slide" data-slice-slide>
+        <h4 class="day-forecast-title" data-abbr="{{abbrDays[index]}}">{{day.formattedDate}}</h4>
+        <div class="day-forecast-content">
+          <ul class="temperatures">
+            <li class="temperature temperature-min"><abbr title="{{$Q.literals.detail.temperature.min}}">{{$Q.literals.detail.temperature.minAbbr}}</abbr>: <em class="temperature-quantity">{{day.forecast.temperatureMinMax.min}}º C</em></li>
+            <li class="temperature temperature-max"><abbr title="{{$Q.literals.detail.temperature.max}}">{{$Q.literals.detail.temperature.maxAbbr}}</abbr>: <em class="temperature-quantity">{{day.forecast.temperatureMinMax.max}}º C</em></li>
+          </ul>
+          <table class="table table-striped table-responsive day-table">
+            <thead>
+              <tr>
+                <th>{{$Q.literals.detail.table.hour}}</th>
+                <th>{{$Q.literals.detail.table.sky}}</th>
+                <th>{{$Q.literals.detail.table.rain}}</th>
+                <th abbr="{{$Q.literals.detail.table.temperature}}">{{$Q.literals.detail.table.temperatureAbbr}}. <span class="unit">(°C)</span></th>
+                <th>{{$Q.literals.detail.table.wind}} <span class="unit">(km/h)</span></th>
+              </tr>
+            </thead>
+            <tbody>
+            [[ _.each(day.forecast.hours, function (hour) { ]]
+              <tr>
+                <th>{{hour.hour}}</th>
+                <td><img src="img/weather_icons/BOR_IMG_icon_sky_{{hour.skyStatus.img}}.gif" alt="{{hour.skyStatus.text}}" title="{{hour.skyStatus.text}}" /></td>
+                <td>{{hour.rainfallProbability}}%</td>
+                <td>{{hour.temperature}}º</td>
+                <td><img src="img/weather_icons/BOR_IMG_icon_wind_{{hour.wind.direction}}.gif" alt="{{hour.wind.direction}}" title="{{hour.wind.direction}}" /> {{hour.wind.speed}}</td>
+              </tr>
+            [[ }); ]]
+            </tbody>
+          </table>
+        </div>
+      </section>
+      [[ }); ]]
+      </div>
+
+    </section>
+    <section id="detail-graphic"></section>
+    
+    <footer class="content-info well">
+      <h3 class="content-info-title">{{$Q.literals.detail.contentInfoTitle}}</h3>
+      <p class="created">{{$Q.literals.detail.forecastCreated}}: {{created}}. <a href="{{about.link}}" target="_blank">{{about.author}}</a></p>
+      <p class="created">{{$Q.literals.detail.currentWeather.titleAbout}} <a href="http://openweathermap.org/" target="_blank">Openweathermap</a></p>
+    </footer>
+  </section>
+</script>
+
+
+<script type="text/template" id="tmpl-bookmarks-buttons">
+  [[ if (!isBookmarked) { ]]
+    <button type="button" class="btn btn-default navbar-btn" data-add-bookmark><span class="glyphicon glyphicon-star-empty"></span><span class="text hidden-xs hidden-sm"> {{$Q.literals.detail.bookmarks.add}}</span></button>
+  [[ } else { ]]
+    <button type="button" class="btn btn-default navbar-btn" data-remove-bookmark><span class="glyphicon glyphicon-star"></span><span class="text hidden-xs hidden-sm"> {{$Q.literals.detail.bookmarks.remove}}</span></button>
+  [[ } ]]
+</script>
+
+<script type="text/template" id="tmpl-detail-graphic">
+  <header class="detail-graphic-header">
+  <h3 class="detail-graphic-title">{{external.title}}</h3>
+  <p class="detail-graphic-subtitle">{{external.subtitle}}</p>
+  </header>
+  <div class="legend">
+    <ul class="cf">
+      [[ _.each(series, function (serie, index) { ]]
+      <li class="legend-item" role="button"><span class="glyphicon glyphicon-stop color" style="color:{{serie.color}};"></span><span class="text"> {{serie.name}}</span></li>
+      [[ }); ]]
+    </ul>
+  </div>
+  <div class="graphic"></div>
+</script>
+
+
+
+<script type="text/template" id="tmpl-detail-now">
+  <section class="current-weather cf">
+    <h4 class="current-weather-title day-forecast-title" data-abbr="{{$Q.literals.detail.currentWeather.titleAbbr}}">{{$Q.literals.detail.currentWeather.title}}</h4>
+    <div class="current-weather-content">
+      <div class="col-xs-12 col-sm-6">
+        {{_.c_current_weather(now)}}
+      </div>
+      <div class="col-xs-12 col-sm-6" data-map-container>
+        {{_.c_map_layers()}}
+        <div id="location-map" data-map></div>
+      </div>
+    </div>
+  </section>
+</script>

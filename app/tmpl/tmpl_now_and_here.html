@@ -1,0 +1,21 @@
+<script type="text/template" id="tmpl-now-and-here">
+  <section class="now-and-here">
+		<header class="section-header now-and-here-header">
+      <h2 class="section-header-title now-and-here-title">{{$Q.literals.nowAndHere.title}}</h2>
+      <p class="section-header-subtitle now-and-here-location">en {{now.name}}, {{now.sys.country}}</p>
+    </header>
+		<div class="now-and-here-content">
+		  <div class="col-xs-12 col-sm-6">
+		    {{_.c_current_weather(now)}}
+			</div>
+			<div class="col-xs-12 col-sm-6" data-map-container>
+			  {{_.c_map_layers()}}
+        <div id="now-and-here-map" data-map></div>
+      </div>
+		</div>
+	</section>
+</script>
+
+<script type="text/template" id="tmpl-now-and-here-container">
+  <div id="now-and-here">{{_.c_loading({})}}</div>
+</script>

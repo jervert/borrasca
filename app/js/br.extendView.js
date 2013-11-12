@@ -1,0 +1,66 @@
+(function() {
+  $Q.ExtendViewModel = Backbone.Model.extend({
+    defaults: {}
+  });
+  $Q.extendView = Backbone.View.extend({
+    coreEvents: {
+
+    },
+    initialize: function () {
+      $Q.utils.mergeEvents(this);
+      if (_.isFunction(this.afterInitialize)) {
+        this.afterInitialize();
+      }
+    },
+    remove: function() {
+      this.$el.empty();
+      this.undelegateEvents();
+      return this;
+    },
+    navigate: function (ev) {
+      $Q.utils.navigate(ev);
+    },
+    loadPage: function () {
+      var self = this;
+      this.model.fetch({
+        success: function (model, resp) {
+          if (_.isFunction(self.onSuccess)) {
+            self.onSuccess();
+          } else {
+            self.pageLoaded();
+          }
+        },
+        error: function (model, resp) { // Anadir error
+          if (_.isFunction(self.onError)) {
+            self.onError();
+          } else {
+            self.$el.html(_.c_message_error());
+          }
+        }
+      });
+    },
+    pageLoaded: function () {
+      this.render();
+    },
+    render: function () {
+      if (_.isFunction(this.beforeRender)) {
+        this.beforeRender();
+      }
+
+      this.$el.html(_.tmpl(this.tmpl, this.model.toJSON()));
+      this.removeLoading();
+
+      if (_.isFunction(this.afterRender)) {
+        this.afterRender();
+      }
+      return this;
+    },
+    removeLoading: function () {
+      if ($('#initial-loading').length > 0) {
+        $('#initial-loading').remove();
+        $('#page-area').removeClass('hidden');
+      }
+      this.$el.find('.loading').remove();
+    }
+  });
+}());

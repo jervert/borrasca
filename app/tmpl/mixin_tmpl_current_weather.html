@@ -1,0 +1,40 @@
+<script type="text/javascript">
+_.mixin({
+  c_current_weather: function (data) {
+    var defaults = {},
+    options = $.extend(true, {}, defaults, data);
+    return _.tmpl('#mixin-tmpl-current-weather', options);
+  }
+});
+</script>
+
+<script type="text/template" id="mixin-tmpl-current-weather">
+  <ul class="list-group">
+    <li class="list-group-item" data-weather-id="{{weather[0].id}}">
+      <h4 class="list-group-item-heading">{{$Q.literals.nowWeather.sky}}:</h4>
+      <p class="list-group-item-text"><img src="img/weather_icons/openweather/{{weather[0].icon}}.png" alt="" /> {{weather[0].description}}</p>
+    </li>
+    <li class="list-group-item">
+      <h4 class="list-group-item-heading">{{$Q.literals.nowWeather.temperature}}:</h4>
+      <p class="list-group-item-text">{{main.temp}}º C</p>
+    </li>
+    [[ if (typeof rain !== 'undefined') { ]]
+    <li class="list-group-item">
+      <h4 class="list-group-item-heading">{{$Q.literals.nowWeather.rain3h}}:</h4>
+      <p class="list-group-item-text">{{rain['3h']}} mm</p>
+    </li>
+    [[ } ]]
+    <li class="list-group-item">
+      <h4 class="list-group-item-heading">{{$Q.literals.nowWeather.wind}}:</h4>
+      <p class="list-group-item-text">{{_.windMsToKms(wind.speed)}} Km/h, {{$Q.literals.nowWeather.direction}} <span class="glyphicon glyphicon-arrow-down rot-{{(360 - Math.round(wind.deg))}}"></span> <abbr title="{{_.windFrom(wind.deg).direction}}">{{_.windFrom(wind.deg).directionAbbr}}</abbr></p>
+    </li>
+    <li class="list-group-item">
+      <h4 class="list-group-item-heading">{{$Q.literals.nowWeather.humidity}}:</h4>
+      <p class="list-group-item-text">{{main.humidity}}%</p>
+    </li>
+    <li class="list-group-item">
+      <h4 class="list-group-item-heading">{{$Q.literals.nowWeather.sunrise}} / {{$Q.literals.nowWeather.sunset}}:</h4>
+      <p class="list-group-item-text">{{_.hour(sys.sunrise)}} / {{_.hour(sys.sunset)}}</p>
+    </li>
+  </ul>
+</script>

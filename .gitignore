@@ -1,0 +1,9 @@
+*.sass-cache*
+*.directory*
+*compass_app_log.txt*
+*.kate-swp
+*/node_modules/*
+*/node_modules/*
+*npm-debug.log*
+*borrasca_next_*.zip*
+*Backup_of_*.cdr

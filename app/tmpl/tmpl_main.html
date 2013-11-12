@@ -1,0 +1,31 @@
+<script type="text/template" id="tmpl-main">
+  <header id="header" class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="navbar-header">
+      <h1 class="navbar-brand">{{$Q.appName}}</h1>
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+      <div id="search-area" class="navbar-form navbar-left" role="search"></div>
+      <ul class="nav navbar-nav">
+        <li><a href="#" data-link="#aqui-y-ahora"><span class="glyphicon glyphicon-globe"></span> Ubicación actual</a></li>
+      </ul>
+      <div id="bookmark-list" data-bookmarks-list></div>
+    </div>
+  </header>
+
+  <div id="page">
+    <div id="page-core">
+      <div id="content-area" class="col-xs-12 col-sm-12 col-lg-12">{{_.c_loading({})}}</div>
+    </div>
+  </div>
+</script>
+
+<script type="text/template" id="tmpl-link-to-detail">
+<span role="link" tabindex="0" data-navigate-anchor="{{element}}"></span>
+</script>

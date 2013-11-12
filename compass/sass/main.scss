@@ -1,0 +1,194 @@
+@charset "utf-8";
+/* CSS Document */
+
+@import "font_awesome/_font-awesome";
+
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Ubuntu'), url(fonts/ubuntu.woff) format('woff');
+}
+
+/* 0. ADDITIONAL RESET AND STRUCTURE */
+.cf:before, div:before,
+.cf:after, div:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+h1, h2, h3, h4, h5, h6 {font-family: 'Ubuntu', arial, sans-serif;}
+
+.cf:after, div:after {
+    clear: both;
+}
+
+body {padding-top: 70px;}
+
+#initial-loading {margin:100px auto 0 auto;}
+
+
+/* 1. COMPONENTS */
+  /* 1.1. SEARCH */
+  .c-search {
+    .form-group, .buttons {float:left;}
+    .buttons {padding:27px 0 0 10px;}
+  }
+  
+  /* 1.2. LOADING */
+  .loading {
+    padding:10px; text-align:center;
+    img {display:inline;}
+  }
+  
+  /* 1.3. SECTION HEADER */
+  .section-header {
+    border-bottom:1px solid #ddd; margin-bottom:10px; padding-bottom:8px;
+    .section-header-title, .section-header-subtitle {margin:0; display:inline-block;}
+  }
+  
+  /* 1.4. ROTATIONS */
+  @mixin y-rotation-list {
+    $i: 0;
+    @while $i < 360 {
+      .rot-#{$i} {
+        -moz-transform: rotate(#{$i}deg);
+        -webkit-transform: rotate(#{$i}deg);
+        -o-transform: rotate(#{$i}deg);
+        transform: rotate(#{$i}deg);
+      }
+      $i: $i + 1;
+    }
+  }
+  @include y-rotation-list;
+
+
+/* 2. HEADER */
+
+#header {
+  .navbar-brand {font-weight:bold; margin-bottom:0; margin-top:0;}
+  .navbar-collapse {max-height:100%;}
+}
+#search-area {border:0; padding:10px 29px;
+  @media (min-width: 768px) {
+    position:relative; padding:0;
+    input[type="search"] {width:200px;}
+  }
+}
+#search-results {
+  @media (min-width: 768px) {
+     left:0; position:absolute; top:31px; width:200px;
+    .list-group-item:first-child {border-top-left-radius:0; border-top-right-radius:0;}
+  }
+}
+
+/* 3. DETAIL */
+.location-detail {
+  .location-detail-header {
+    .location-toolbar {
+      float:right; list-style:none; margin:0; padding:0;
+      .btn {
+        margin:0;
+        .glyphicon {color:#FFB200;}
+        .text {
+          @media (min-width: 640px) {display:inline !important;}
+        }
+      }
+    }
+  }
+}
+.content-info {
+  .content-info-title {font-size:16px; margin:0 0 6px 0;}
+  p {margin:0 0 6px 0;}
+}
+	/* 3.1. SLIDES */
+	.slice-slides {
+		width:auto; height:auto; padding:44px 0; position:relative;
+		.slide {
+			width:auto; outline:0;
+			.day-forecast-title {
+				font-size:16px; margin:-34px 0 10px 0; padding:0 48px; text-align:center;
+				@media (min-width: 480px) {font-size:20px;}
+				@media (min-width: 992px) {font-size:24px;}
+			}
+			.day-forecast-content {
+				.temperatures {
+					list-style:none; padding:0;
+					.temperature {
+						display:inline-block; font-size:16px;
+						.temperature-quantity {font-style:normal; font-weight:bold;}
+						&.temperature-min {
+							margin-right:10px;
+							.temperature-quantity {color:#1B77E0;}
+						}
+						&.temperature-max .temperature-quantity {color:#E30E35;}
+					}
+				}
+			}
+			
+		}
+		.slide-controls {
+			.list-basic-controls, .number-list {left:0; margin:0; position:absolute; width:auto;}
+			.list-basic-controls {
+				top:0; width:100%;
+				.text {
+					@media (min-width: 992px) {display:inline !important;}
+				}
+			}
+			.number-list {
+				bottom:0; margin:0 auto; text-align:center; width:100%;
+				.slide-control-element {
+					display:inline-block; font-size:11px;
+					a {padding: 3px 3px;}
+					@media (min-width: 480px) {font-size:12px;
+						a {padding: 4px 6px;}
+					}
+					@media (min-width: 640px) {font-size:14px;
+						a {padding: 6px 12px;}
+					}
+				}
+				
+				.hidden-in-small {
+					@media (min-width: 992px) {display:inline !important;}
+				}
+			}
+		}
+	}
+	
+	/* 3.2. GRAPHIC */
+	#detail-graphic {
+		border-top:1px solid #ddd; margin:20px 0; padding-top:16px;
+		.detail-graphic-header {
+			.detail-graphic-title, .detail-graphic-subtitle {display:inline-block;}
+		}
+		.legend {
+			margin-bottom:16px;
+			ul {margin:0; list-style:none; padding:0;}
+			.legend-item {
+				cursor:pointer; display:block;
+				@media (min-width: 480px) {display:inline-block; margin-left:10px;}
+				&:first-child {margin-left:0;}
+			}
+		}
+	}
+	
+	/* 3.3. CURRENT WEATHER */
+  .current-weather {padding-bottom:16px;}
+	
+/* 4. NOW AND HERE */
+.now-and-here {margin-bottom:40px;}
+
+/* X. FOOTER */
+
+
+
+/* AAAAAAAAAAA */
+/*body {background-color:#dae7c6;}*/
+/*body {background-color:#f4f9ed;}*/
+#page-area {
+  margin:0 auto; width:98%;
+  
+  @media (min-width: 768px) {width:94%;}
+  @media (min-width: 992px) {width:90%;}
+  @media (min-width: 1200px) {max-width:1340px;}
+}

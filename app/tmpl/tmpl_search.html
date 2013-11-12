@@ -1,0 +1,37 @@
+<script type="text/template" id="tmpl-search2">
+  <div id="search">
+    <form class="c-search cf" role="form">
+      <p class="form-group">
+        <label for="c_location_search">{{$Q.literals.search.location}}:</label>
+        <input type="search" class="form-control" id="c_location_search" name="location_search" />
+      </p>
+
+      <p class="buttons"><input type="button" value="{{$Q.literals.search.searchAction}}" class="btn btn-default" data-button-search /></p>
+    </form>
+    <div id="search-results"></div>
+  </div>
+</script>
+
+<script type="text/template" id="tmpl-search">
+  <form id="search">
+    <div class="form-group">
+      <input type="search" class="form-control" id="c_location_search" name="location_search" placeholder="{{$Q.literals.search.location}}" autocomplete="off">
+    </div>
+    [[ /*<button type="submit" class="btn btn-default" data-button-search>{{$Q.literals.search.searchAction}}</button>*/ ]]
+  </form>
+  <div id="search-results"></div>
+</script>
+
+
+
+<script type="text/template" id="tmpl-search-results">
+  <div class="list-group">
+  [[ if (_.isArray(locations) && locations.length > 0) { ]]
+    [[ _.each(locations, function (item) { ]]
+      <a class="list-group-item" data-result href="#" data-href="#localidad/{{item.link}}/{{item.name}}">{{item.name}}</a>
+    [[ });]]
+  [[ } else { ]]
+    <p class="list-group-item">{{$Q.literals.search.noResults}}</p>
+  [[ } ]]
+  </div>
+</script>
