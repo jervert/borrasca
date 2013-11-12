@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+    <widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.phonegap.borrasca_v2" versionCode="16" version="2.1.0.2">
+
+    <!-- versionCode is optional and Android only -->
+
+    <name>Borrasca-Next</name>
+
+    <description>
+      Predicción meteorológica a 7 días en municipios de España 
+    </description>
+
+    <author href="http://outbook.es" email="borrasca@outbook.es">
+      Antonio Rodríguez Ruiz
+    </author>
+    
+    <gap:platform name="android" />
+    <gap:platform name="winphone" />
+    
+    <icon src="BR_IMG_app_icon.png" />
+    
+    
+    <gap:splash src="splash.png" />
+    
+    <gap:splash src="BR_IMG_app_startup_320.png" width="320" height="480" />
+    <gap:splash src="BR_IMG_app_startup.png" width="640" height="960" />
+
+    <gap:splash src="BR_IMG_app_startup_360.png" gap:platform="android" gap:density="ldpi" />
+    <gap:splash src="BR_IMG_app_startup_360.png" gap:platform="android" gap:density="mdpi" />
+    <gap:splash src="BR_IMG_app_startup.png" gap:platform="android" gap:density="hdpi" />
+    <gap:splash src="BR_IMG_app_startup.png" gap:platform="android" gap:density="xhdpi" />
+
+
+    <gap:splash src="BR_IMG_app_startup.png" gap:platform="winphone" />
+
+    
+    
+    <preference name="permissions" value="none"/>
+    <preference name="orientation" value="default" />
+    <preference name="splash-screen-duration" value="2000" />
+    <preference name="phonegap-version" value="2.9.0" />
+    
+    
+    <feature name="http://api.phonegap.com/1.0/geolocation"/>
+    <feature name="http://api.phonegap.com/1.0/file"/>
+    
+    <access origin="http://digitalpapyrus.no-ip.biz" />
+    <access origin="http://digitalpapyrus.es" subdomains="true" />
+    <access origin="http://outbook.es" subdomains="true" />
+		<access origin="http://openstreetmap.org" subdomains="true" />
+    <access origin="http://stamen.com" subdomains="true" />
+    <access origin="http://openlayers.org" subdomains="true" />
+    <access origin="openweathermap.org" subdomains="true" />
+
+</widget>
