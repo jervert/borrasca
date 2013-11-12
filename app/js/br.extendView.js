@@ -4,13 +4,17 @@
   });
   $Q.extendView = Backbone.View.extend({
     coreEvents: {
-
+      'click [data-refresh]': 'refreshPage'
     },
     initialize: function () {
       $Q.utils.mergeEvents(this);
       if (_.isFunction(this.afterInitialize)) {
         this.afterInitialize();
       }
+    },
+    refreshPage: function () {
+      this.$el.html(_.c_loading());
+      this.loadPage();
     },
     remove: function() {
       this.$el.empty();

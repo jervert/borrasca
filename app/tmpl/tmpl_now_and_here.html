@@ -3,6 +3,9 @@
 		<header class="section-header now-and-here-header">
       <h2 class="section-header-title now-and-here-title">{{$Q.literals.nowAndHere.title}}</h2>
       <p class="section-header-subtitle now-and-here-location">en {{now.name}}, {{now.sys.country}}</p>
+      <ul class="now-and-here-toolbar btn-toolbar">
+        <li class="btn-group refresh"><button type="button" class="btn btn-default navbar-btn" data-refresh><span class="fa fa-refresh"></span><span class="text hidden-xs hidden-sm"> {{$Q.literals.detail.refresh}}</span></button></li>
+      </ul>
     </header>
 		<div class="now-and-here-content">
 		  <div class="col-xs-12 col-sm-6">

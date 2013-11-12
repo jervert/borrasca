@@ -11,7 +11,7 @@
       this.model.url = $Q.services.main + 'null';
       if (!_.isNull($Q.geolocation)) {
         this.model.url = $Q.services.main + $Q.geolocation.latitude + ',' + $Q.geolocation.longitude + _.avoidCacheParam();
-        this.loadPage();
+        this.refreshPage();
       }
     },
     afterRender: function () {
