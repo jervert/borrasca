@@ -89,11 +89,11 @@ body {padding-top: 70px;}
       float:right; list-style:none; margin:0; padding:0;
       .btn {
         margin:0;
-        .glyphicon {color:#FFB200;}
         .text {
           @media (min-width: 640px) {display:inline !important;}
         }
       }
+      .bookmark .btn .glyphicon {color:#FFB200;}
     }
   }
 }

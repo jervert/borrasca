@@ -7,14 +7,22 @@
     elGraphic: '.graphic',
     events: {
       'click [data-add-bookmark]': 'addBookmark',
-      'click [data-remove-bookmark]': 'removeBookmark'
+      'click [data-remove-bookmark]': 'removeBookmark',
+      'click [data-refresh]': 'refreshPage'
     },
     locationName: null,
+    refreshPage: function () {
+      this.$el.empty();
+      this.beforeLoadPage();
+    },
+    beforeLoadPage: function () {
+      this.$el.html(_.c_loading());
+      this.loadPage();
+    },
     afterInitialize: function () {
       this.model = new $Q.ExtendViewModel();
       this.model.url = $Q.services.detail + this.options.locationUrl;
-      this.$el.html(_.c_loading());
-      this.loadPage();
+      this.beforeLoadPage();
     },
     evolutionGraphic: function (parsedXml) {
       var self = this,
