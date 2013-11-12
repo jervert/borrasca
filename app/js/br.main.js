@@ -78,10 +78,10 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L;
       'br_routes': 'br.routes',
       'br_extend_view': 'br.extendView',
       'mvc_main': 'mvc/main.mvc',
-      'mvc_main_search': 'mvc/main.search.mvc',
-      'mvc_main_bookmarks': 'mvc/main.bookmarks.mvc',
-      'mvc_main_nowAndHere': 'mvc/main.nowAndHere.mvc',
-      'mvc_detail': 'mvc/main.detail.mvc'
+      'mvc_search': 'mvc/search.mvc',
+      'mvc_bookmarks': 'mvc/bookmarks.mvc',
+      'mvc_nowAndHere': 'mvc/nowAndHere.mvc',
+      'mvc_detail': 'mvc/detail.mvc'
     },
     shim: {
       'underscore': {
@@ -130,13 +130,13 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L;
       'mvc_main': {
         deps: ['br_extend_view']
       },
-      'mvc_main_search': {
+      'mvc_search': {
         deps: ['mvc_main']
       },
-      'mvc_main_bookmarks': {
+      'mvc_bookmarks': {
         deps: ['mvc_main']
       },
-      'mvc_main_nowAndHere': {
+      'mvc_nowAndHere': {
         deps: ['mvc_main']
       },
       'mvc_detail': {
@@ -163,9 +163,9 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L;
     'br_routes',
     'br_extend_view',
     'mvc_main',
-    'mvc_main_search',
-    'mvc_main_bookmarks',
-    'mvc_main_nowAndHere',
+    'mvc_search',
+    'mvc_bookmarks',
+    'mvc_nowAndHere',
     'mvc_detail',
     'br.app.aemet'
   ];
