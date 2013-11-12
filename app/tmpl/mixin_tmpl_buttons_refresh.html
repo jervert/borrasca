@@ -1,0 +1,11 @@
+<script type="text/javascript">
+_.mixin({
+  c_buttons_refresh: function () {
+    return _.tmpl('#mixin-tmpl-buttons-refresh', {});
+  }
+});
+</script>
+
+<script type="text/template" id="mixin-tmpl-buttons-refresh">
+  <li class="btn-group refresh"><button type="button" class="btn btn-default navbar-btn" data-refresh><span class="fa fa-refresh"></span><span class="text hidden-xs hidden-sm"> {{$Q.literals.buttons.refresh}}</span></button></li>
+</script>

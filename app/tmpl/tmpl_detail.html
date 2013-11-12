@@ -4,7 +4,7 @@
       <h2 class="section-header-title location-name">{{locationName}}</h2>
       <p class="section-header-subtitle region-name">{{$Q.literals.detail.inRegion}} {{regionName}}</p>
       <ul class="location-toolbar btn-toolbar">
-        <li class="btn-group refresh"><button type="button" class="btn btn-default navbar-btn" data-refresh><span class="fa fa-refresh"></span><span class="text hidden-xs hidden-sm"> {{$Q.literals.detail.refresh}}</span></button></li>
+        {{_.c_buttons_refresh()}}
         <li class="btn-group bookmark" data-bookmark>[[ if ($Q.supported.html5.storage) { ]]{{_.tmpl('#tmpl-bookmarks-buttons', {isBookmarked: isBookmarked})}}[[ } ]]</li>
       </ul>
     </header>
