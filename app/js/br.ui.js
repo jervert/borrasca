@@ -186,14 +186,14 @@ $Q.ui.locationMap = function (options) {
 
       map = L.map(options.mapElement.attr('id')).setView(options.coordinates, options.initialZoom),
       icon = L.icon({
-        iconUrl: 'css/leaflet/images/marker-icon.png',
+        iconUrl: 'css/images/marker-icon.png',
         iconSize: [25, 41],
         iconAnchor: [12.5, 41],
-        iconRetinaUrl: 'css/leaflet/images/marker-icon.png',
-        shadowUrl: 'css/leaflet/images/marker-shadow.png',
+        iconRetinaUrl: 'css/images/marker-icon.png',
+        shadowUrl: 'css/images/marker-shadow.png',
         shadowSize: [41, 41],
         shadowAnchor: [10.5, 41],
-        shadowRetinaUrl: 'css/leaflet/images/marker-shadow.png',
+        shadowRetinaUrl: 'css/images/marker-shadow.png',
       }),
       marker = L.marker(options.coordinates, {icon: icon}).addTo(map),
       tiles = options.mapTiles[options.selectedMapTiles];
