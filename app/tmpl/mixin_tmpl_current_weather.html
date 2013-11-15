@@ -9,10 +9,10 @@ _.mixin({
 </script>
 
 <script type="text/template" id="mixin-tmpl-current-weather">
-  <ul class="list-group">
+  <ul class="list-group current-weather">
     <li class="list-group-item" data-weather-id="{{weather[0].id}}">
       <h4 class="list-group-item-heading">{{$Q.literals.nowWeather.sky}}:</h4>
-      <p class="list-group-item-text"><img src="img/weather_icons/openweather/{{weather[0].icon}}.png" alt="" /> {{weather[0].description}}</p>
+      <p class="list-group-item-text"><i class="weather-icon {{$Q.ui.weatherFontIcon(weather[0].id, weather[0].icon)}}"></i>[[/*<img src="img/weather_icons/openweather/{{weather[0].icon}}.png" alt="" />*/]] {{weather[0].description}}</p>
     </li>
     <li class="list-group-item">
       <h4 class="list-group-item-heading">{{$Q.literals.nowWeather.temperature}}:</h4>
@@ -33,8 +33,12 @@ _.mixin({
       <p class="list-group-item-text">{{main.humidity}}%</p>
     </li>
     <li class="list-group-item">
-      <h4 class="list-group-item-heading">{{$Q.literals.nowWeather.sunrise}} / {{$Q.literals.nowWeather.sunset}}:</h4>
-      <p class="list-group-item-text">{{_.hour(sys.sunrise)}} / {{_.hour(sys.sunset)}}</p>
+      <h4 class="list-group-item-heading">{{$Q.literals.nowWeather.sunrise}}:</h4>
+      <p class="list-group-item-text"><i class="wi-sunrise"></i> {{_.hour(sys.sunrise)}}</p>
+    </li>
+    <li class="list-group-item">
+      <h4 class="list-group-item-heading">{{$Q.literals.nowWeather.sunset}}:</h4>
+      <p class="list-group-item-text"><i class="wi-sunset"></i> {{_.hour(sys.sunset)}}</p>
     </li>
   </ul>
 </script>

@@ -42,8 +42,8 @@
       
       return [firstStr, secondStr, lastStr];
     },
-    hour: function (time) {
-      return Globalize.format(new Date(time * 1000), 't');
+    hour: function (time, format) {
+      return Globalize.format(new Date(time * 1000), format || 't');
     },
     windFrom: function (deg) {
       var directionFrom;

@@ -74,6 +74,11 @@ body {padding-top: 70px;}
     }
   }
   @include y-rotation-list;
+  
+  /* 1.5. CURRENT WEATHER */
+  .current-weather {
+    .weather-icon {font-size:24px;}
+  }
 
 
 /* 2. HEADER */
@@ -198,3 +203,5 @@ body {padding-top: 70px;}
   @media (min-width: 992px) {width:90%;}
   @media (min-width: 1200px) {max-width:1340px;}
 }
+
+
