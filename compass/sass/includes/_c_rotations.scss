@@ -1,0 +1,13 @@
+@mixin y-rotation-list {
+  $i: 0;
+  @while $i < 360 {
+    .rot-#{$i} {
+      -moz-transform: rotate(#{$i}deg);
+      -webkit-transform: rotate(#{$i}deg);
+      -o-transform: rotate(#{$i}deg);
+      transform: rotate(#{$i}deg);
+    }
+    $i: $i + 1;
+  }
+}
+@include y-rotation-list;

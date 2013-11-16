@@ -61,24 +61,14 @@ body {padding-top: 70px;}
   }
   
   /* 1.4. ROTATIONS */
-  @mixin y-rotation-list {
-    $i: 0;
-    @while $i < 360 {
-      .rot-#{$i} {
-        -moz-transform: rotate(#{$i}deg);
-        -webkit-transform: rotate(#{$i}deg);
-        -o-transform: rotate(#{$i}deg);
-        transform: rotate(#{$i}deg);
-      }
-      $i: $i + 1;
-    }
-  }
-  @include y-rotation-list;
+  @import "includes/_c_rotations";
   
   /* 1.5. CURRENT WEATHER */
   .current-weather {
     .weather-icon {font-size:24px;}
   }
+
+  /* 1.6. MESSAGES */
 
 
 /* 2. HEADER */
