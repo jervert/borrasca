@@ -34,7 +34,7 @@
             self.pageLoaded();
           }
         },
-        error: function (model, resp) { // Anadir error
+        error: function (model, resp) {
           if (_.isFunction(self.onError)) {
             self.onError();
           } else {
