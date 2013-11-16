@@ -3,7 +3,8 @@ _.mixin({
   c_message_error: function (data) {
     var defaults = {
       text: $Q.literals.messages.error.text,
-      title: $Q.literals.messages.error.title
+      title: $Q.literals.messages.error.title,
+      headingLevel: '2'
     },
     options = $.extend(true, {}, defaults, data);
     return _.tmpl('#mixin-tmpl-message-error', options);
@@ -12,7 +13,9 @@ _.mixin({
 </script>
 
 <script type="text/template" id="mixin-tmpl-message-error">
-  <div class="messages error">
-    <p>{{title}}: {{text}}</p>
+  <div class="message alert alert-danger">
+    <div class="fa fa-warning"></div>
+    <h{{headingLevel}} class="message-title">{{title}}</h{{headingLevel}}>
+    <p>{{text}}</p>
   </div>
 </script>
