@@ -2,9 +2,6 @@
   $Q.NowAndHereView = $Q.extendView.extend({
     el: '#now-and-here',
     tmpl: '#tmpl-now-and-here',
-    events: {
-      'click [data-bookmark]': 'navigate'
-    },
     afterInitialize: function () {
       var self = this;
       this.model = new $Q.ExtendViewModel();
