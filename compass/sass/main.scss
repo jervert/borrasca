@@ -140,21 +140,7 @@ body {padding-top: 70px;}
 	}
 	
 	/* 3.2. GRAPHIC */
-	#detail-graphic {
-		border-top:1px solid #ddd; margin:20px 0; padding-top:16px;
-		.detail-graphic-header {
-			.detail-graphic-title, .detail-graphic-subtitle {display:inline-block;}
-		}
-		.legend {
-			margin-bottom:16px;
-			ul {margin:0; list-style:none; padding:0;}
-			.legend-item {
-				cursor:pointer; display:block;
-				@media (min-width: 480px) {display:inline-block; margin-left:10px;}
-				&:first-child {margin-left:0;}
-			}
-		}
-	}
+	@import "includes/_c_graphic";
 	
 	/* 3.3. CURRENT WEATHER */
   .current-weather {padding-bottom:16px;}

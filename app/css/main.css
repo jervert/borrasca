@@ -15182,51 +15182,14 @@ body {
 }
 
 /* 3.2. GRAPHIC */
-/* line 143, ../../compass/sass/main.scss */
-#detail-graphic {
-  border-top: 1px solid #ddd;
-  margin: 20px 0;
-  padding-top: 16px;
-}
-/* line 146, ../../compass/sass/main.scss */
-#detail-graphic .detail-graphic-header .detail-graphic-title, #detail-graphic .detail-graphic-header .detail-graphic-subtitle {
-  display: inline-block;
-}
-/* line 148, ../../compass/sass/main.scss */
-#detail-graphic .legend {
-  margin-bottom: 16px;
-}
-/* line 150, ../../compass/sass/main.scss */
-#detail-graphic .legend ul {
-  margin: 0;
-  list-style: none;
-  padding: 0;
-}
-/* line 151, ../../compass/sass/main.scss */
-#detail-graphic .legend .legend-item {
-  cursor: pointer;
-  display: block;
-}
-@media (min-width: 480px) {
-  /* line 151, ../../compass/sass/main.scss */
-  #detail-graphic .legend .legend-item {
-    display: inline-block;
-    margin-left: 10px;
-  }
-}
-/* line 154, ../../compass/sass/main.scss */
-#detail-graphic .legend .legend-item:first-child {
-  margin-left: 0;
-}
-
 /* 3.3. CURRENT WEATHER */
-/* line 160, ../../compass/sass/main.scss */
+/* line 146, ../../compass/sass/main.scss */
 .current-weather {
   padding-bottom: 16px;
 }
 
 /* 4. NOW AND HERE */
-/* line 163, ../../compass/sass/main.scss */
+/* line 149, ../../compass/sass/main.scss */
 .now-and-here {
   margin-bottom: 40px;
 }
@@ -15235,25 +15198,25 @@ body {
 /* AAAAAAAAAAA */
 /*body {background-color:#dae7c6;}*/
 /*body {background-color:#f4f9ed;}*/
-/* line 172, ../../compass/sass/main.scss */
+/* line 158, ../../compass/sass/main.scss */
 #page-area {
   margin: 0 auto;
   width: 98%;
 }
 @media (min-width: 768px) {
-  /* line 172, ../../compass/sass/main.scss */
+  /* line 158, ../../compass/sass/main.scss */
   #page-area {
     width: 94%;
   }
 }
 @media (min-width: 992px) {
-  /* line 172, ../../compass/sass/main.scss */
+  /* line 158, ../../compass/sass/main.scss */
   #page-area {
     width: 90%;
   }
 }
 @media (min-width: 1200px) {
-  /* line 172, ../../compass/sass/main.scss */
+  /* line 158, ../../compass/sass/main.scss */
   #page-area {
     max-width: 1340px;
   }
