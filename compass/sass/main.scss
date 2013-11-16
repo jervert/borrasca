@@ -7,18 +7,13 @@
 @import "libs/_weather-icons";
 @import "libs/_leaflet";
 
-@font-face {
-  font-family: 'Ubuntu';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Ubuntu'), url(fonts/ubuntu.woff) format('woff');
-}
+@import "includes/_a_fonts";
 
 /* 0. ADDITIONAL RESET AND STRUCTURE */
 .cf:before, div:before,
 .cf:after, div:after {
-    content: " "; /* 1 */
-    display: table; /* 2 */
+    content: " ";
+    display: table;
 }
 
 h1, h2, h3, h4, h5, h6 {font-family: 'Ubuntu', arial, sans-serif;}
