@@ -293,28 +293,28 @@
           n: 'wi-night-rain'
         },
         503: { // very heavy rain
-          d: '',
-          n: ''
+          d: 'wi-rain',
+          n: 'wi-rain'
         },
         504: { // extreme rain
-          d: '',
-          n: ''
+          d: 'wi-rain',
+          n: 'wi-rain'
         },
         511: { // freezing rain
-          d: '',
-          n: ''
+          d: 'wi-hail',
+          n: 'wi-hail'
         },
         520: { // light intensity shower rain
-          d: '',
-          n: ''
+          d: 'wi-day-sprinkle',
+          n: 'wi-night-sprinkle'
         },
         521: { // shower rain
-          d: '',
-          n: ''
+          d: 'wi-sprinkle',
+          n: 'wi-sprinkle'
         },
         522: { // heavy intensity shower rain
-          d: '',
-          n: ''
+          d: 'wi-sprinkle',
+          n: 'wi-sprinkle'
         },
         
         // Snow
