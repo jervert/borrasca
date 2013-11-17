@@ -12034,53 +12034,162 @@ td.visible-print {
 }
 
 /* 0. ADDITIONAL RESET AND STRUCTURE */
-/* line 14, ../../compass/sass/main.scss */
+/* line 16, ../../compass/sass/main.scss */
 .cf:before, div:before,
 .cf:after, div:after {
   content: " ";
   display: table;
 }
 
-/* line 19, ../../compass/sass/main.scss */
+/* line 21, ../../compass/sass/main.scss */
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Ubuntu', arial, sans-serif;
 }
 
-/* line 21, ../../compass/sass/main.scss */
+/* line 23, ../../compass/sass/main.scss */
 .cf:after, div:after {
   clear: both;
 }
 
-/* line 25, ../../compass/sass/main.scss */
+/* line 27, ../../compass/sass/main.scss */
 body {
   padding-top: 70px;
 }
 
-/* line 27, ../../compass/sass/main.scss */
+/* line 30, ../../compass/sass/main.scss */
 #initial-loading {
   margin: 100px auto 0 auto;
 }
 
 /* 1. COMPONENTS */
 /* 1.1. SEARCH */
-/* line 33, ../../compass/sass/main.scss */
+/* line 35, ../../compass/sass/main.scss */
 .c-search .form-group, .c-search .buttons {
   float: left;
 }
-/* line 34, ../../compass/sass/main.scss */
+/* line 36, ../../compass/sass/main.scss */
 .c-search .buttons {
   padding: 27px 0 0 10px;
 }
 
 /* 1.2. LOADING */
-/* line 38, ../../compass/sass/main.scss */
-.loading {
+/* line 1, ../../compass/sass/includes/_c_loading.scss */
+.loading-simple {
   padding: 10px;
   text-align: center;
 }
-/* line 40, ../../compass/sass/main.scss */
-.loading img {
+/* line 3, ../../compass/sass/includes/_c_loading.scss */
+.loading-simple img {
   display: inline;
+}
+
+/* line 7, ../../compass/sass/includes/_c_loading.scss */
+.loading {
+  background-color: #9CC3E5;
+  border: 1px solid #5496CF;
+  border-radius: 2px;
+  height: 24px;
+  margin: 20px auto;
+  overflow: hidden;
+  width: 192px;
+}
+/* line 9, ../../compass/sass/includes/_c_loading.scss */
+.loading .loading-animation-content {
+  width: 283px;
+  -moz-animation-name: noTrespassingAnimationG;
+  -moz-animation-duration: 1s;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-timing-function: linear;
+  -webkit-animation-name: noTrespassingAnimationG;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  -ms-animation-name: noTrespassingAnimationG;
+  -ms-animation-duration: 1s;
+  -ms-animation-iteration-count: infinite;
+  -ms-animation-timing-function: linear;
+  -o-animation-name: noTrespassingAnimationG;
+  -o-animation-duration: 1s;
+  -o-animation-iteration-count: infinite;
+  -o-animation-timing-function: linear;
+  animation-name: noTrespassingAnimationG;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+/* line 32, ../../compass/sass/includes/_c_loading.scss */
+.loading .loading-animation-content .bar-line {
+  background-color: #7FB0DC;
+  float: left;
+  height: 144px;
+  margin-right: 29px;
+  margin-top: -34px;
+  width: 17px;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+@-moz-keyframes noTrespassingAnimationG {
+  /* line 41, ../../compass/sass/includes/_c_loading.scss */
+  0% {
+    margin-left: -46px;
+  }
+
+  /* line 42, ../../compass/sass/includes/_c_loading.scss */
+  100% {
+    margin-left: 0px;
+  }
+}
+
+@-webkit-keyframes noTrespassingAnimationG {
+  /* line 46, ../../compass/sass/includes/_c_loading.scss */
+  0% {
+    margin-left: -46px;
+  }
+
+  /* line 47, ../../compass/sass/includes/_c_loading.scss */
+  100% {
+    margin-left: 0px;
+  }
+}
+
+@-ms-keyframes noTrespassingAnimationG {
+  /* line 51, ../../compass/sass/includes/_c_loading.scss */
+  0% {
+    margin-left: -46px;
+  }
+
+  /* line 52, ../../compass/sass/includes/_c_loading.scss */
+  100% {
+    margin-left: 0px;
+  }
+}
+
+@-o-keyframes noTrespassingAnimationG {
+  /* line 56, ../../compass/sass/includes/_c_loading.scss */
+  0% {
+    margin-left: -46px;
+  }
+
+  /* line 57, ../../compass/sass/includes/_c_loading.scss */
+  100% {
+    margin-left: 0px;
+  }
+}
+
+@keyframes noTrespassingAnimationG {
+  /* line 61, ../../compass/sass/includes/_c_loading.scss */
+  0% {
+    margin-left: -46px;
+  }
+
+  /* line 62, ../../compass/sass/includes/_c_loading.scss */
+  100% {
+    margin-left: 0px;
+  }
 }
 
 /* 1.3. SECTION HEADER */
@@ -14995,50 +15104,67 @@ body {
 }
 
 /* 1.5. CURRENT WEATHER */
-/* line 51, ../../compass/sass/main.scss */
+/* line 50, ../../compass/sass/main.scss */
 .current-weather .weather-icon {
   font-size: 24px;
 }
 
 /* 1.6. MESSAGES */
+/* line 1, ../../compass/sass/includes/_c_messages.scss */
+.message {
+  padding-left: 90px;
+  position: relative;
+}
+/* line 3, ../../compass/sass/includes/_c_messages.scss */
+.message .fa-warning {
+  font-size: 40px;
+  left: 20px;
+  position: absolute;
+  top: 20px;
+}
+/* line 4, ../../compass/sass/includes/_c_messages.scss */
+.message .message-title {
+  margin-top: 0;
+}
+
 /* 2. HEADER */
-/* line 61, ../../compass/sass/main.scss */
+/* line 60, ../../compass/sass/main.scss */
 #header .navbar-brand {
   font-weight: bold;
   margin-bottom: 0;
   margin-top: 0;
 }
-/* line 62, ../../compass/sass/main.scss */
+/* line 61, ../../compass/sass/main.scss */
 #header .navbar-collapse {
   max-height: 100%;
 }
 
-/* line 64, ../../compass/sass/main.scss */
+/* line 63, ../../compass/sass/main.scss */
 #search-area {
   border: 0;
   padding: 10px 29px;
 }
 @media (min-width: 768px) {
-  /* line 64, ../../compass/sass/main.scss */
+  /* line 63, ../../compass/sass/main.scss */
   #search-area {
     position: relative;
     padding: 0;
   }
-  /* line 67, ../../compass/sass/main.scss */
+  /* line 66, ../../compass/sass/main.scss */
   #search-area input[type="search"] {
     width: 200px;
   }
 }
 
 @media (min-width: 768px) {
-  /* line 70, ../../compass/sass/main.scss */
+  /* line 69, ../../compass/sass/main.scss */
   #search-results {
     left: 0;
     position: absolute;
     top: 31px;
     width: 200px;
   }
-  /* line 73, ../../compass/sass/main.scss */
+  /* line 72, ../../compass/sass/main.scss */
   #search-results .list-group-item:first-child {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
@@ -15046,35 +15172,35 @@ body {
 }
 
 /* 3. DETAIL */
-/* line 81, ../../compass/sass/main.scss */
+/* line 80, ../../compass/sass/main.scss */
 .location-detail .location-detail-header .location-toolbar .bookmark .btn .glyphicon {
   color: #FFB200;
 }
 
-/* line 86, ../../compass/sass/main.scss */
+/* line 85, ../../compass/sass/main.scss */
 .content-info .content-info-title {
   font-size: 16px;
   margin: 0 0 6px 0;
 }
-/* line 87, ../../compass/sass/main.scss */
+/* line 86, ../../compass/sass/main.scss */
 .content-info p {
   margin: 0 0 6px 0;
 }
 
 /* 3.1. SLIDES */
-/* line 90, ../../compass/sass/main.scss */
+/* line 89, ../../compass/sass/main.scss */
 .slice-slides {
   width: auto;
   height: auto;
   padding: 44px 0;
   position: relative;
 }
-/* line 92, ../../compass/sass/main.scss */
+/* line 91, ../../compass/sass/main.scss */
 .slice-slides .slide {
   width: auto;
   outline: 0;
 }
-/* line 94, ../../compass/sass/main.scss */
+/* line 93, ../../compass/sass/main.scss */
 .slice-slides .slide .day-forecast-title {
   font-size: 16px;
   margin: -34px 0 10px 0;
@@ -15082,100 +15208,100 @@ body {
   text-align: center;
 }
 @media (min-width: 480px) {
-  /* line 94, ../../compass/sass/main.scss */
+  /* line 93, ../../compass/sass/main.scss */
   .slice-slides .slide .day-forecast-title {
     font-size: 20px;
   }
 }
 @media (min-width: 992px) {
-  /* line 94, ../../compass/sass/main.scss */
+  /* line 93, ../../compass/sass/main.scss */
   .slice-slides .slide .day-forecast-title {
     font-size: 24px;
   }
 }
-/* line 100, ../../compass/sass/main.scss */
+/* line 99, ../../compass/sass/main.scss */
 .slice-slides .slide .day-forecast-content .temperatures {
   list-style: none;
   padding: 0;
 }
-/* line 102, ../../compass/sass/main.scss */
+/* line 101, ../../compass/sass/main.scss */
 .slice-slides .slide .day-forecast-content .temperatures .temperature {
   display: inline-block;
   font-size: 16px;
 }
-/* line 104, ../../compass/sass/main.scss */
+/* line 103, ../../compass/sass/main.scss */
 .slice-slides .slide .day-forecast-content .temperatures .temperature .temperature-quantity {
   font-style: normal;
   font-weight: bold;
 }
-/* line 105, ../../compass/sass/main.scss */
+/* line 104, ../../compass/sass/main.scss */
 .slice-slides .slide .day-forecast-content .temperatures .temperature.temperature-min {
   margin-right: 10px;
 }
-/* line 107, ../../compass/sass/main.scss */
+/* line 106, ../../compass/sass/main.scss */
 .slice-slides .slide .day-forecast-content .temperatures .temperature.temperature-min .temperature-quantity {
   color: #1B77E0;
 }
-/* line 109, ../../compass/sass/main.scss */
+/* line 108, ../../compass/sass/main.scss */
 .slice-slides .slide .day-forecast-content .temperatures .temperature.temperature-max .temperature-quantity {
   color: #E30E35;
 }
-/* line 116, ../../compass/sass/main.scss */
+/* line 115, ../../compass/sass/main.scss */
 .slice-slides .slide-controls .list-basic-controls, .slice-slides .slide-controls .number-list {
   left: 0;
   margin: 0;
   position: absolute;
   width: auto;
 }
-/* line 117, ../../compass/sass/main.scss */
+/* line 116, ../../compass/sass/main.scss */
 .slice-slides .slide-controls .list-basic-controls {
   top: 0;
   width: 100%;
 }
 @media (min-width: 992px) {
-  /* line 119, ../../compass/sass/main.scss */
+  /* line 118, ../../compass/sass/main.scss */
   .slice-slides .slide-controls .list-basic-controls .text {
     display: inline !important;
   }
 }
-/* line 123, ../../compass/sass/main.scss */
+/* line 122, ../../compass/sass/main.scss */
 .slice-slides .slide-controls .number-list {
   bottom: 0;
   margin: 0 auto;
   text-align: center;
   width: 100%;
 }
-/* line 125, ../../compass/sass/main.scss */
+/* line 124, ../../compass/sass/main.scss */
 .slice-slides .slide-controls .number-list .slide-control-element {
   display: inline-block;
   font-size: 11px;
 }
-/* line 127, ../../compass/sass/main.scss */
+/* line 126, ../../compass/sass/main.scss */
 .slice-slides .slide-controls .number-list .slide-control-element a {
   padding: 3px 3px;
 }
 @media (min-width: 480px) {
-  /* line 125, ../../compass/sass/main.scss */
+  /* line 124, ../../compass/sass/main.scss */
   .slice-slides .slide-controls .number-list .slide-control-element {
     font-size: 12px;
   }
-  /* line 129, ../../compass/sass/main.scss */
+  /* line 128, ../../compass/sass/main.scss */
   .slice-slides .slide-controls .number-list .slide-control-element a {
     padding: 4px 6px;
   }
 }
 @media (min-width: 640px) {
-  /* line 125, ../../compass/sass/main.scss */
+  /* line 124, ../../compass/sass/main.scss */
   .slice-slides .slide-controls .number-list .slide-control-element {
     font-size: 14px;
   }
-  /* line 132, ../../compass/sass/main.scss */
+  /* line 131, ../../compass/sass/main.scss */
   .slice-slides .slide-controls .number-list .slide-control-element a {
     padding: 6px 12px;
   }
 }
 @media (min-width: 992px) {
-  /* line 136, ../../compass/sass/main.scss */
+  /* line 135, ../../compass/sass/main.scss */
   .slice-slides .slide-controls .number-list .hidden-in-small {
     display: inline !important;
   }
@@ -15220,13 +15346,13 @@ body {
 }
 
 /* 3.3. CURRENT WEATHER */
-/* line 147, ../../compass/sass/main.scss */
+/* line 146, ../../compass/sass/main.scss */
 .current-weather {
   padding-bottom: 16px;
 }
 
 /* 4. NOW AND HERE */
-/* line 150, ../../compass/sass/main.scss */
+/* line 149, ../../compass/sass/main.scss */
 .now-and-here {
   margin-bottom: 40px;
 }
@@ -15235,25 +15361,25 @@ body {
 /* AAAAAAAAAAA */
 /*body {background-color:#dae7c6;}*/
 /*body {background-color:#f4f9ed;}*/
-/* line 159, ../../compass/sass/main.scss */
+/* line 158, ../../compass/sass/main.scss */
 #page-area {
   margin: 0 auto;
   width: 98%;
 }
 @media (min-width: 768px) {
-  /* line 159, ../../compass/sass/main.scss */
+  /* line 158, ../../compass/sass/main.scss */
   #page-area {
     width: 94%;
   }
 }
 @media (min-width: 992px) {
-  /* line 159, ../../compass/sass/main.scss */
+  /* line 158, ../../compass/sass/main.scss */
   #page-area {
     width: 90%;
   }
 }
 @media (min-width: 1200px) {
-  /* line 159, ../../compass/sass/main.scss */
+  /* line 158, ../../compass/sass/main.scss */
   #page-area {
     max-width: 1340px;
   }

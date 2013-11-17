@@ -1,6 +1,8 @@
 @charset "utf-8";
 /* CSS Document */
 
+@import "../stylesheets/_compass";
+@import "../stylesheets/_lemonade";
 @import "libs/bootstrap/_bootstrap";
 @import "libs/bootstrap/_bootstrap-theme";
 @import "libs/font_awesome/_font-awesome";
@@ -24,8 +26,8 @@ h1, h2, h3, h4, h5, h6 {font-family: 'Ubuntu', arial, sans-serif;}
 
 body {padding-top: 70px;}
 
-#initial-loading {margin:100px auto 0 auto;}
 
+#initial-loading {margin:100px auto 0 auto;}
 
 /* 1. COMPONENTS */
   /* 1.1. SEARCH */
@@ -35,10 +37,7 @@ body {padding-top: 70px;}
   }
   
   /* 1.2. LOADING */
-  .loading {
-    padding:10px; text-align:center;
-    img {display:inline;}
-  }
+  @import "includes/_c_loading";
   
   /* 1.3. SECTION HEADER */
   @import "includes/_c_section_header";
