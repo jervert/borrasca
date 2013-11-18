@@ -1,0 +1,43 @@
+{
+  "now": {
+    "coord": {
+      "lon": -3.67,
+      "lat": 40.51
+    },
+    "sys": {
+      "message": 0.0113,
+      "country": "ES",
+      "sunrise": 1384758315,
+      "sunset": 1384793684
+    },
+    "weather": [
+      {
+        "id": 804,
+        "main": "Clouds",
+        "description": "nubes",
+        "icon": "04d"
+      }
+    ],
+    "base":"gdps stations",
+    "main": {
+      "temp": 10.55,
+      "humidity": 66,
+      "pressure": 1007,
+      "temp_min": 10,
+      "temp_max": 11
+    },
+    "wind": {
+      "speed": 8.74,
+      "gust": 14.39,
+      "deg": 350
+    },
+    "clouds": {
+      "all": 92
+    },
+    "dt": 1384787520,
+    "id": 3113943,
+    "name":
+    "Peña Grande",
+    "cod": 200
+  }
+}
