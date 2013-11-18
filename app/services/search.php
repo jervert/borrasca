@@ -1,5 +1,7 @@
 <?php
-include('config.php');
+$path = '../../php/';
+include($path.'config.php');
+include($path.'class.dataBorrasca.php');
 
 $searched = $_REQUEST['location_name'];
 if (isset($_REQUEST['limit'])) {
@@ -11,7 +13,7 @@ if (isset($_REQUEST['limit'])) {
 // SQLITE CONNECT
 $data = array();
 try  {
-  $db = new PDO("sqlite:locations.sqlite");
+  $db = new PDO("sqlite:../../data/locations.sqlite");
 
   $result = $db->query("SELECT id_region, id_location, name_location FROM locations WHERE name_location LIKE '%".$searched."%' LIMIT ".$limit);
 
