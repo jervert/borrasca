@@ -1,13 +1,13 @@
-var $Q, $, Globalize, _, Backbone, Highcharts, L;
+var $Q, $, Globalize, _, Backbone, Highcharts, L, _paq;
 (function() {
   var environment = 'dev', // 'dev' (development) or 'pr' (production)
   getCulture = function () {
-  	var defaultLanguage = 'en',
-  	  availableLanguages = ['es', 'en'],
-  		clientLanguage = (window.navigator) ? window.navigator.language.split('-')[0] : defaultLanguage,
-  		selectedLanguage = (availableLanguages.indexOf(clientLanguage) !== -1) ? clientLanguage : defaultLanguage;
-  	document.getElementsByTagName('html')[0].lang = selectedLanguage;
-  	return selectedLanguage;
+    var defaultLanguage = 'en',
+      availableLanguages = ['es', 'en'],
+      clientLanguage = (window.navigator) ? window.navigator.language.split('-')[0] : defaultLanguage,
+      selectedLanguage = (availableLanguages.indexOf(clientLanguage) !== -1) ? clientLanguage : defaultLanguage;
+    document.getElementsByTagName('html')[0].lang = selectedLanguage;
+    return selectedLanguage;
   };
 
   $Q = {
@@ -30,6 +30,7 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L;
         lodash: '2.1.0',
         backbone: '1.0.0',
         requireText: '2.0.7',
+        requireAsync: '0.1.1',
         highcharts: '3.0.2',
         bootstrap: '3.0.0',
         jquery_sliceSlide: '4.0',
@@ -41,13 +42,19 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L;
     },
     templates: {
       route: '../tmpl/',
-  		routeCultures: '../cultures/'
+      routeCultures: '../cultures/'
     },
     images: {
       route: 'img'
     },
+    piwik: {
+      enabled: false,
+      ready: false,
+      url: '',
+      id: '2'
+    },
     views: {},
-  	removableViews: ['detail', 'nowAndHere']
+    removableViews: ['detail', 'nowAndHere']
   };
 
   $Q.alternateCulture = ($Q.culture === 'es') ? 'sp' : $Q.culture;
@@ -62,7 +69,8 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L;
 
   require.config({
     paths: {
-      text:  'libs/require.text-' + $Q.jsLibs.versions.requireText,
+      text: 'libs/require.text-' + $Q.jsLibs.versions.requireText,
+      async: 'libs/require.async-' + $Q.jsLibs.versions.requireAsync,
       'jquery': $Q.jsLibs.route + 'jquery-' + $Q.jsLibs.versions.jquery,
       'globalize': 'libs/globalize',
       'globalize_culture': $Q.templates.routeCultures + 'globalize/globalize.culture.' + $Q.culture,
@@ -225,7 +233,21 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L;
 
     $.when($('#templates-area').append(templates)).then(function () {
       $Q.templatesReady = true;
-      $Q.initialize();
+      if ($Q.piwik.enabled) {
+        require(['async!' + $Q.utils.piwikStats.getScriptUrl() +'!callback']);
+        var piwikIntervalCount = 0,
+          piwikInterval = setInterval(function () {
+            $Q.piwik.ready = _.isObject(Piwik);
+            if (piwikIntervalCount > 80 || $Q.piwik.ready) {
+              $Q.utils.piwikStats.start();
+              $Q.initialize();
+              clearInterval(piwikInterval);
+            }
+            piwikIntervalCount += 1;
+          }, 500);
+      } else {
+        $Q.initialize();
+      }
     });
   });
 

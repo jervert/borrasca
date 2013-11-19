@@ -1,4 +1,4 @@
-(function(){
+(function() {
   $Q.utils = {};
   // Geolocation
   $Q.utils.getGeolocation = function () {
@@ -26,7 +26,7 @@
       $(document).trigger('geolocated');
     }
   };
-  
+
   // Navigate
   $Q.utils.navigate = function (ev) {
     var url = $(ev.currentTarget).attr('data-link');
@@ -40,18 +40,43 @@
     });
     $Q.loading();
     $Q.ui.menuCollapse();
+    if ($Q.piwik.ready) {
+      _paq.push(['trackPageView', url]);
+    }
     $Q.app_router.navigate(url, {trigger: true});
   };
-  
+
   $Q.utils.mergeEvents = function (self) {
     $Q.utils.mergeObject(self, 'events');
   };
-  
+
   $Q.utils.mergeObject = function (view, type) {
     view[type] = view[type] || {};
     if (type === 'events') {
       view[type] = _.extend(view[type], view.coreEvents);
     }
   };
+
+  $Q.utils.piwikStats = (function () {
+    var fn = {
+      getUrl: function () {
+        return (("https:" == document.location.protocol) ? 'https://' + $Q.piwik.url + '/' : 'http://' + $Q.piwik.url + '/');
+      },
+      getScriptUrl: function () {
+        return this.getUrl() + 'piwik.js';
+      }
+    };
+    return {
+      start: function () {
+        var url = fn.getUrl();
+        _paq = [];
+        _paq.push(['setSiteId', $Q.piwik.id]);
+        _paq.push(['setTrackerUrl', url +'piwik.php']); 
+      },
+      getScriptUrl: function () {
+        return fn.getUrl() + 'piwik.js';
+      }
+    }
+  }());
 
 })();
