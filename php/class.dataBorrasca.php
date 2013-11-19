@@ -8,9 +8,12 @@ class DataBorrasca {
 	public $geolocation = null;
 	public $timezone = 'Europe/Madrid';
 	public $location = 'en';
+  public $resultLimit = 10;
+  private $openweathermapUrl = 'http://api.openweathermap.org/data/2.5/weather';
+  private $aemetXmlUrl = 'http://www.aemet.es/xml/municipios/localidad_';
 	
 	public function pageNowAndHere () {
-		$text = file_get_contents('http://api.openweathermap.org/data/2.5/weather?lat='.$this->geolocation[0].'&lon='.$this->geolocation[1].'&units=metric&mode=json&lang='.$this->language.'&APPID='.$this->openweathermapsApiKey);
+		$text = file_get_contents($this->openweathermapUrl.'?lat='.$this->geolocation[0].'&lon='.$this->geolocation[1].'&units=metric&mode=json&lang='.$this->language.'&APPID='.$this->openweathermapsApiKey);
 		return '{"now": '.$text.'}';
 	}
 	
@@ -19,11 +22,49 @@ class DataBorrasca {
 		$data['hour'] = $this->dateAfterTimezoneOffset('G', $this->timezone);
 		$data['day'] = $this->dateAfterTimezoneOffset('j', $this->timezone);
 
-		$data['now'] = json_decode(file_get_contents('http://api.openweathermap.org/data/2.5/weather?q='.$this->location.',es&units=metric&mode=json&lang='.$this->language.'&APPID='.$this->openweathermapsApiKey));
+		$data['now'] = json_decode(file_get_contents($this->openweathermapUrl.'?q='.$this->location.',es&units=metric&mode=json&lang='.$this->language.'&APPID='.$this->openweathermapsApiKey));
 		
 		return json_encode($data);
 	}
-	public function pageSearch () {}
+	public function pageSearch () {
+    $searched = $this->location;
+
+    // SQLITE CONNECT
+    $data = array();
+    try  {
+      $db = new PDO("sqlite:../../data/locations.sqlite");
+
+      $result = $db->query("SELECT id_region, id_location, name_location FROM locations WHERE name_location LIKE '%".$searched."%' LIMIT ".$this->resultLimit);
+
+      $data['result'] = 'OK';
+      $data['searched'] = $searched;
+      if (count($result) > 0 and strlen($searched) > 0) {
+        $data['result_message'] = 'Results fetched';
+        $data['locations'] = array();
+        $i = 0;
+        foreach ($result as $row) {
+          $data['locations'][$i] = Array();
+          $data['locations'][$i]['name'] = $row['name_location'];
+          $data['locations'][$i]['link'] = $row['id_region'].$row['id_location'];
+          $i++;
+        }
+      } else {
+        $data['result_message'] = 'No results';
+        $data['locations'] = null;
+      }
+    } catch(PDOException $e) {
+      echo $e->getMessage();
+      $data['result'] = 'ERROR';
+      $data['result_message'] = 'Database not loaded successfully';
+    }
+
+    return json_encode($data);
+  }
+  
+  public function xmlAemet () {
+    $text = file_get_contents($this->aemetXmlUrl.$this->location.'.xml');
+    return $text;
+  }
 	
 	
 	private function getTimezoneOffset($remote_tz, $origin_tz = null) {
