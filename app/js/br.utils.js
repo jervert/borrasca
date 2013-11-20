@@ -41,7 +41,7 @@
     $Q.loading();
     $Q.ui.menuCollapse();
     if ($Q.piwik.ready) {
-      _paq.push(['trackPageView', url]);
+      $Q.utils.piwikStats.trackPageView(url);
     }
     $Q.app_router.navigate(url, {trigger: true});
   };
@@ -57,6 +57,7 @@
     }
   };
 
+  // Piwik tracking
   $Q.utils.piwikStats = (function () {
     var fn = {
       getUrl: function () {
@@ -68,13 +69,15 @@
     };
     return {
       start: function () {
-        var url = fn.getUrl();
-        _paq = [];
-        _paq.push(['setSiteId', $Q.piwik.id]);
-        _paq.push(['setTrackerUrl', url +'piwik.php']); 
+        $Q.piwikTracker = Piwik.getTracker();
+        $Q.piwikTracker.setSiteId($Q.piwik.id);
+        $Q.piwikTracker.setTrackerUrl(fn.getUrl() +'piwik.php');
       },
       getScriptUrl: function () {
         return fn.getUrl() + 'piwik.js';
+      },
+      trackPageView: function (url) {
+        $Q.piwikTracker.trackPageView(url);
       }
     }
   }());
