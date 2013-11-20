@@ -1,4 +1,4 @@
-var $Q, $, Globalize, _, Backbone, Highcharts, L, _paq;
+var $Q, $, Globalize, _, Backbone, Highcharts, L;
 (function() {
   var environment = 'dev', // 'dev' (development) or 'pr' (production)
   getCulture = function () {
@@ -50,7 +50,7 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L, _paq;
     piwik: {
       enabled: false,
       ready: false,
-      url: '',
+      url: null,
       id: '2'
     },
     views: {},
@@ -240,6 +240,7 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L, _paq;
             $Q.piwik.ready = _.isObject(Piwik);
             if (piwikIntervalCount > 80 || $Q.piwik.ready) {
               $Q.utils.piwikStats.start();
+              $Q.utils.piwikStats.trackPageView(window.location.hash);
               $Q.initialize();
               clearInterval(piwikInterval);
             }
