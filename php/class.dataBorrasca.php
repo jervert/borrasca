@@ -1,34 +1,34 @@
 <?php
 
 class DataBorrasca {
-	
-	public $openweathermapsApiKey = null;
-	public $language = 'en';
-	public $dataOrigin = 'real';
-	public $geolocation = null;
-	public $timezone = 'Europe/Madrid';
-	public $location = 'en';
+  
+  public $openweathermapsApiKey = null;
+  public $language = 'en';
+  public $dataOrigin = 'real';
+  public $geolocation = null;
+  public $timezone = 'Europe/Madrid';
+  public $location = 'en';
   public $resultLimit = 10;
   private $openweathermapUrl = 'http://api.openweathermap.org/data/2.5/weather';
   private $aemetXmlUrl = 'http://www.aemet.es/xml/municipios/localidad_';
   private $weirdCharacters = array('á', 'é', 'í', 'ó', 'ú', 'ü', 'à', 'è', 'ì', 'ò', 'ù', 'Á', 'É', 'Í', 'Ó', 'Ú', 'Ü', 'À', 'È', 'Ì', 'Ò', 'Ù');
   private $safeCharacters =  array('a', 'e', 'i', 'o', 'u', 'u', 'a', 'e', 'i', 'o', 'u', 'a', 'e', 'i', 'o', 'u', 'u', 'a', 'e', 'i', 'o', 'u');
-	
-	public function pageNowAndHere () {
-		$text = file_get_contents($this->openweathermapUrl.'?lat='.$this->geolocation[0].'&lon='.$this->geolocation[1].'&units=metric&mode=json&lang='.$this->language.'&APPID='.$this->openweathermapsApiKey);
-		return '{"now": '.$text.'}';
-	}
-	
-	public function pageDetail () {
-		$data = array();
-		$data['hour'] = $this->dateAfterTimezoneOffset('G', $this->timezone);
-		$data['day'] = $this->dateAfterTimezoneOffset('j', $this->timezone);
+  
+  public function pageNowAndHere () {
+    $text = $this->fget_contents($this->openweathermapUrl.'?lat='.$this->geolocation[0].'&lon='.$this->geolocation[1].'&units=metric&mode=json&lang='.$this->language.'&APPID='.$this->openweathermapsApiKey);
+    return '{"now": '.$text.'}';
+  }
+  
+  public function pageDetail () {
+    $data = array();
+    $data['hour'] = $this->dateAfterTimezoneOffset('G', $this->timezone);
+    $data['day'] = $this->dateAfterTimezoneOffset('j', $this->timezone);
 
-		$data['now'] = json_decode(file_get_contents($this->openweathermapUrl.'?q='.$this->location.',es&units=metric&mode=json&lang='.$this->language.'&APPID='.$this->openweathermapsApiKey));
-		
-		return json_encode($data);
-	}
-	public function pageSearch () {
+    $data['now'] = json_decode($this->fget_contents($this->openweathermapUrl.'?q='.$this->location.',es&units=metric&mode=json&lang='.$this->language.'&APPID='.$this->openweathermapsApiKey));
+    
+    return json_encode($data);
+  }
+  public function pageSearch () {
     $searched = $this->location;
 
     // SQLITE CONNECT
@@ -81,7 +81,7 @@ class DataBorrasca {
           $searchable_location = $fragments[1].' '.$fragments[0];
         }
         $searchable_location = str_replace($this->weirdCharacters, $this->safeCharacters, $searchable_location);
-        $db->query("UPDATE locations SET name_searchable='".$searchable_location."' WHERE id_region='".$row['id_region']."' AND	id_location='".$row['id_location']."'");
+        $db->query("UPDATE locations SET name_searchable='".$searchable_location."' WHERE id_region='".$row['id_region']."' AND  id_location='".$row['id_location']."'");
         echo '<p>'.$row['name_location'].' ----> '.$searchable_location.'</p>';
       }
     }
@@ -91,32 +91,44 @@ class DataBorrasca {
   }
   
   public function xmlAemet () {
-    $text = file_get_contents($this->aemetXmlUrl.$this->location.'.xml');
+    $text = $this->fget_contents($this->aemetXmlUrl.$this->location.'.xml');
     return $text;
   }
-	
-	
-	private function getTimezoneOffset($remote_tz, $origin_tz = null) {
-		if($origin_tz === null) {
-			 if(!is_string($origin_tz = date_default_timezone_get())) {
-					 return false; // A UTC timestamp was returned -- bail out!
-			 }
-		}
-		$origin_dtz = new DateTimeZone($origin_tz);
-		$remote_dtz = new DateTimeZone($remote_tz);
-		$origin_dt = new DateTime("now", $origin_dtz);
-		$remote_dt = new DateTime("now", $remote_dtz);
-		$offset = $origin_dtz->getOffset($origin_dt) - $remote_dtz->getOffset($remote_dt);
-		return $offset;
-	}
+  
+  
+  private function getTimezoneOffset($remote_tz, $origin_tz = null) {
+    if($origin_tz === null) {
+       if(!is_string($origin_tz = date_default_timezone_get())) {
+           return false; // A UTC timestamp was returned -- bail out!
+       }
+    }
+    $origin_dtz = new DateTimeZone($origin_tz);
+    $remote_dtz = new DateTimeZone($remote_tz);
+    $origin_dt = new DateTime("now", $origin_dtz);
+    $remote_dt = new DateTime("now", $remote_dtz);
+    $offset = $origin_dtz->getOffset($origin_dt) - $remote_dtz->getOffset($remote_dt);
+    return $offset;
+  }
 
-	private function dateAfterTimezoneOffset($dateString, $location) {
-		$offset = $this->getTimezoneOffset($location);
-		$offset_time = time() - $offset;
-		$dateList = getDate($offset_time);
-		$mkDate = mktime($dateList['hours'], $dateList['minutes'], $dateList['seconds'], $dateList['mon'], $dateList['mday'], $dateList['year']);
-		return date($dateString, $mkDate);
-	}
+  private function dateAfterTimezoneOffset($dateString, $location) {
+    $offset = $this->getTimezoneOffset($location);
+    $offset_time = time() - $offset;
+    $dateList = getDate($offset_time);
+    $mkDate = mktime($dateList['hours'], $dateList['minutes'], $dateList['seconds'], $dateList['mon'], $dateList['mday'], $dateList['year']);
+    return date($dateString, $mkDate);
+  }
+  
+  private function fget_contents() {
+    $args = func_get_args();
+    // the @ can be removed if you lower error_reporting level
+    $contents = @call_user_func_array('file_get_contents', $args);
+    if ($contents === false) {
+      //throw new Exception('Failed to open ' . $file);
+      return '{"result": "error", "message": "ERROR_GET_CONTENTS"}';
+    } else {
+      return $contents;
+    }
+}
 }
 
 ?>

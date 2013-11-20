@@ -12,10 +12,12 @@
       }
     },
     afterRender: function () {
-      $Q.ui.locationMap({
-        mapElement: $('#now-and-here-map'),
-        heightElement: $('.now-and-here-content')
-      });
+      if ($('#now-and-here-map').length) {
+        $Q.ui.locationMap({
+          mapElement: $('#now-and-here-map'),
+          heightElement: $('.now-and-here-content')
+        });
+      }
     }
   });
 }());
