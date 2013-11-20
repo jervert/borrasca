@@ -72,7 +72,7 @@ class DataBorrasca {
     $pattern = "/, (las|los|el|la|a|o|l'|els|les)$/";
     try  {
     $db = new PDO("sqlite:../data/locations.sqlite");
-    $result = $db->query("SELECT * FROM locations WHERE name_searchable IS NULL LIMIT 100");
+    $result = $db->query("SELECT * FROM locations WHERE name_searchable IS NULL LIMIT 1000");
     if (count($result) > 0) {
       foreach ($result as $row) {
         $searchable_location = strtolower($row['name_location']);
