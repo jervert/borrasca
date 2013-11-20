@@ -11,6 +11,8 @@ class DataBorrasca {
   public $resultLimit = 10;
   private $openweathermapUrl = 'http://api.openweathermap.org/data/2.5/weather';
   private $aemetXmlUrl = 'http://www.aemet.es/xml/municipios/localidad_';
+  private $weirdCharacters = array('á', 'é', 'í', 'ó', 'ú', 'ü', 'à', 'è', 'ì', 'ò', 'ù', 'Á', 'É', 'Í', 'Ó', 'Ú', 'Ü', 'À', 'È', 'Ì', 'Ò', 'Ù');
+  private $safeCharacters =  array('a', 'e', 'i', 'o', 'u', 'u', 'a', 'e', 'i', 'o', 'u', 'a', 'e', 'i', 'o', 'u', 'u', 'a', 'e', 'i', 'o', 'u');
 	
 	public function pageNowAndHere () {
 		$text = file_get_contents($this->openweathermapUrl.'?lat='.$this->geolocation[0].'&lon='.$this->geolocation[1].'&units=metric&mode=json&lang='.$this->language.'&APPID='.$this->openweathermapsApiKey);
@@ -59,6 +61,33 @@ class DataBorrasca {
     }
 
     return json_encode($data);
+  }
+  
+  public function locationsGeolocate () {
+    //http://es.scribd.com/doc/2569355/Geo-Distance-Search-with-MySQL
+    $url = 'http://nominatim.openstreetmap.org/search?city=@CITY@&country=Spain&format=jsonv2';
+  }
+  
+  public function makeLocationsSearchable () {
+    $pattern = "/, (las|los|el|la|a|o|l'|els|les)$/";
+    try  {
+    $db = new PDO("sqlite:../data/locations.sqlite");
+    $result = $db->query("SELECT * FROM locations WHERE name_searchable IS NULL LIMIT 100");
+    if (count($result) > 0) {
+      foreach ($result as $row) {
+        $searchable_location = strtolower($row['name_location']);
+        if (preg_match($pattern, strtolower($row['name_location']), $matches)) {
+          $fragments = explode(', ', $searchable_location);
+          $searchable_location = $fragments[1].' '.$fragments[0];
+        }
+        $searchable_location = str_replace($this->weirdCharacters, $this->safeCharacters, $searchable_location);
+        $db->query("UPDATE locations SET name_searchable='".$searchable_location."' WHERE id_region='".$row['id_region']."' AND	id_location='".$row['id_location']."'");
+        echo '<p>'.$row['name_location'].' ----> '.$searchable_location.'</p>';
+      }
+    }
+    } catch(PDOException $e) {
+      echo $e->getMessage();
+    }
   }
   
   public function xmlAemet () {
