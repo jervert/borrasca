@@ -11,8 +11,10 @@
         $Q.views.detail.undelegateEvents();
       }
       $Q.views.detail = new $Q.DetailView({
-        id: id,
-        locationUrl: locationUrl
+        options: {
+          id: id,
+          locationUrl: locationUrl
+        }
       });
     },
     defaultRoute: function (actions) {

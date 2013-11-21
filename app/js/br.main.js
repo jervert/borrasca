@@ -35,7 +35,7 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L;
         jquery: (this.legacy) ? '1.10.2' : '2.0.3',
         underscore: '1.5.1',
         lodash: '2.1.0',
-        backbone: '1.0.0',
+        backbone: '1.1.0',
         requireText: '2.0.7',
         requireAsync: '0.1.1',
         highcharts: '3.0.2',
