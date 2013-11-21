@@ -1,14 +1,21 @@
 var $Q, $, Globalize, _, Backbone, Highcharts, L;
 (function() {
   var environment = 'dev', // 'dev' (development) or 'pr' (production)
-  getCulture = function () {
-    var defaultLanguage = 'en',
-      availableLanguages = ['es', 'en'],
-      clientLanguage = (window.navigator) ? window.navigator.language.split('-')[0] : defaultLanguage,
-      selectedLanguage = (availableLanguages.indexOf(clientLanguage) !== -1) ? clientLanguage : defaultLanguage;
-    document.getElementsByTagName('html')[0].lang = selectedLanguage;
-    return selectedLanguage;
-  };
+    defaultLanguage = 'en',
+    getNavigatorLanguage = function () {
+      var language = defaultLanguage;
+      if (window.navigator) {
+        language = (window.navigator.language || window.navigator.userLanguage).split('-')[0]
+      }
+      return language;
+    },
+    getCulture = function () {
+      var availableLanguages = ['es', 'en'],
+        clientLanguage = getNavigatorLanguage(),
+        selectedLanguage = (availableLanguages.indexOf(clientLanguage) !== -1) ? clientLanguage : defaultLanguage;
+      document.getElementsByTagName('html')[0].lang = selectedLanguage;
+      return selectedLanguage;
+    };
 
   $Q = {
     appName: 'Borrasca',
