@@ -10,9 +10,8 @@
       'click [data-remove-bookmark]': 'removeBookmark'
     },
     locationName: null,
-    options: null,
     afterInitialize: function () {
-      this.model = new $Q.ExtendViewModel();debugger
+      this.model = new $Q.ExtendViewModel();
       this.model.url = $Q.services.detail + this.options.locationUrl;
       this.refreshPage();
     },

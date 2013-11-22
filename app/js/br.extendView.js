@@ -6,7 +6,8 @@
     coreEvents: {
       'click [data-refresh]': 'refreshPage'
     },
-    initialize: function () {
+    initialize: function (options) {
+      this.options = options || {};
       $Q.utils.mergeEvents(this);
       if (_.isFunction(this.afterInitialize)) {
         this.afterInitialize();
