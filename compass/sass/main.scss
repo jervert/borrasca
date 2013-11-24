@@ -24,7 +24,7 @@ h1, h2, h3, h4, h5, h6 {font-family: 'Ubuntu', arial, sans-serif;}
     clear: both;
 }
 
-[role="link"] {cursor:pointer;}
+[role="link"], [role="button"] {cursor:pointer;}
 
 body {padding-top: 70px;}
 
