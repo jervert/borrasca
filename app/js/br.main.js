@@ -191,6 +191,7 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L;
     'text!' + $Q.templates.route + 'mixin_tmpl_map_layers.html',
     'text!' + $Q.templates.route + 'mixin_tmpl_current_weather.html',
     'text!' + $Q.templates.route + 'mixin_tmpl_buttons_refresh.html',
+    'text!' + $Q.templates.route + 'mixin_tmpl_map_container.html',
     'text!' + $Q.templates.route + 'tmpl_main.html',
     'text!' + $Q.templates.route + 'tmpl_search.html',
     'text!' + $Q.templates.route + 'tmpl_bookmarks.html',

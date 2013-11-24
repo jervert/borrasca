@@ -40,7 +40,6 @@
                 <td><img src="img/weather_icons/BOR_IMG_icon_sky_{{hour.skyStatus.img}}.gif" alt="{{hour.skyStatus.text}}" title="{{hour.skyStatus.text}}" /></td>
                 <td>{{hour.rainfallProbability}}%</td>
                 <td>{{hour.temperature}}º</td>
-                [[/*<td><img src="img/weather_icons/BOR_IMG_icon_wind_{{hour.wind.direction}}.gif" alt="{{hour.wind.direction}}" title="{{hour.wind.direction}}" /> {{hour.wind.speed}}</td>*/]]
                 <td><i class="{{$Q.ui.weatherFontIcon(hour.wind.direction)}}" title="{{hour.wind.direction}}"></i> {{hour.wind.speed}}</td>
               </tr>
             [[ }); ]]
@@ -97,7 +96,7 @@
       </div>
       <div class="col-xs-12 col-sm-6" data-map-container>
         {{_.c_map_layers()}}
-        <div id="location-map" data-map></div>
+        {{_.c_map_container({mapId: 'location-map'})}}
       </div>
     </div>
   </section>

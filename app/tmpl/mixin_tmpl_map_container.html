@@ -1,0 +1,16 @@
+<script type="text/javascript">
+_.mixin({
+  c_map_container: function (data) {
+    var defaults = {
+      text: $Q.literals.maps.buttons.viewMap,
+      mapId: 'br-map'
+    },
+    options = $.extend(true, {}, defaults, data);
+    return _.tmpl('#mixin-tmpl-map-container', options);
+  }
+});
+</script>
+
+<script type="text/template" id="mixin-tmpl-map-container">
+  <div id="{{mapId}}" data-map><p role="link" data-map-view-link>{{text}}</p></div>
+</script>
