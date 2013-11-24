@@ -7,7 +7,7 @@
 		margin-bottom:16px;
 		ul {margin:0; list-style:none; padding:0;}
 		.legend-item {
-			cursor:pointer; display:block;
+			display:block;
 			@media (min-width: 480px) {display:inline-block; margin-left:10px;}
 			&:first-child {margin-left:0;}
 		}
