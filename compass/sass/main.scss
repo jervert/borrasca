@@ -55,6 +55,11 @@ body {padding-top: 70px;}
   /* 1.6. MESSAGES */
   @import "includes/_c_messages";
 
+  /* 1.7. MAP CONTAINER */
+  .c-map-container {
+  	.view-map-link {text-align:center;}
+  }
+
 
 /* 2. HEADER */
 

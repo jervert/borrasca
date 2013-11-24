@@ -152,8 +152,9 @@
         $Q.ui.locationMap({
           mapElement: $('#location-map'),
           heightElement: $('.current-weather-content'),
-          coordinates: [now.coord.lat, now.coord.lon]
-        });
+          coordinates: [now.coord.lat, now.coord.lon],
+          autoStart: $Q.maps.autoStart
+        }, this.$el);
       }
       this.initSlides();
       this.evolutionGraphic(this.model.toJSON());

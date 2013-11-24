@@ -54,6 +54,9 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L;
     images: {
       route: 'img'
     },
+    maps: {
+      autoStart: false
+    },
     piwik: {
       enabled: false,
       ready: false,

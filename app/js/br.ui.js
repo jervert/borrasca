@@ -99,10 +99,14 @@
 
 
   // Location map
-  $Q.ui.locationMap = function (options) {
+  $Q.ui.locationMap = function (options, $viewEl) {
     if (!_.isNull($Q.geolocation)) {
       var tilesOpacity = 0.7,
         defaults = {
+          autoStart: true,
+          mapLink: '[data-map-view-button]',
+          mapLinkAttr: 'data-map-view-button',
+          mapLinkContainer: '[data-map-view-button-container]',
           coordinates: [$Q.geolocation.latitude, $Q.geolocation.longitude],
           mapElement: null,
           mapContainerSelector: '[data-map-container]',
@@ -177,31 +181,65 @@
             $mapContainer.attr(options.selectedLayerAttr, newLayer);
             activeLayer = L.tileLayer(options.mapTiles[newLayer][0], options.mapTiles[newLayer][1]).addTo(map);
           }
+        },
+        map,
+        icon,
+        marker,
+        tiles,
+        isMapRendered = false;
+        renderMap = function (ev) {
+          ev.preventDefault();
+          if (!isMapRendered) {
+            isMapRendered = true;
+            var $target = $(ev.currentTarget),
+              mapLayer = false;
+            $target.off('click.map').removeAttr('mapLinkAttr');
+            if (!$target.is(options.mapLayerControlSelector)) {
+              $target.hide();
+            } else if ($target.is(options.mapLayerControlSelector)) {
+              mapLayer = true;
+            }
+
+            map = L.map(options.mapElement.attr('id')).setView(options.coordinates, options.initialZoom);
+            icon = L.icon({
+              iconUrl: 'css/images/marker-icon.png',
+              iconSize: [25, 41],
+              iconAnchor: [12.5, 41],
+              iconRetinaUrl: 'css/images/marker-icon.png',
+              shadowUrl: 'css/images/marker-shadow.png',
+              shadowSize: [41, 41],
+              shadowAnchor: [10.5, 41],
+              shadowRetinaUrl: 'css/images/marker-shadow.png',
+            });
+            marker = L.marker(options.coordinates, {icon: icon}).addTo(map);
+            tiles = options.mapTiles[options.selectedMapTiles];
+            
+            $mapControlsLayers.off('click.mapLayers').on('click.mapLayers', addLayer);
+            L.tileLayer(tiles[0], tiles[1]).addTo(map);
+            if (mapLayer) {
+              addLayer(ev);
+            }
+          }
         };
 
       if (!_.isNull(options.heightElement)) {
+        var sumHeight = (options.heightElement.height() - $mapContainer.outerHeight()),
+          mapLinkHeight = $viewEl.find(options.mapLinkContainer).outerHeight(),
+          topSpacing = Math.floor((sumHeight - mapLinkHeight) / 2);
+
         options.mapElement.css({
-          height: (options.heightElement.height() - $mapContainer.outerHeight())
+          height: sumHeight
+        });
+        $(options.mapLinkContainer).css({
+          paddingTop: topSpacing
         });
       }
 
-        map = L.map(options.mapElement.attr('id')).setView(options.coordinates, options.initialZoom),
-        icon = L.icon({
-          iconUrl: 'css/images/marker-icon.png',
-          iconSize: [25, 41],
-          iconAnchor: [12.5, 41],
-          iconRetinaUrl: 'css/images/marker-icon.png',
-          shadowUrl: 'css/images/marker-shadow.png',
-          shadowSize: [41, 41],
-          shadowAnchor: [10.5, 41],
-          shadowRetinaUrl: 'css/images/marker-shadow.png',
-        }),
-        marker = L.marker(options.coordinates, {icon: icon}).addTo(map),
-        tiles = options.mapTiles[options.selectedMapTiles];
-      
-      $mapControlsLayers.off('click.mapLayers').on('click.mapLayers', addLayer)
-       L.tileLayer(tiles[0], tiles[1]).addTo(map);
-      
+      if (options.autoStart) {
+        renderMap();
+      } else {
+        $viewEl.find(options.mapLink).off('click.map').on('click.map', renderMap);
+      } 
     }
   };
   $Q.ui.weatherFontIcon = function (code, icon) {

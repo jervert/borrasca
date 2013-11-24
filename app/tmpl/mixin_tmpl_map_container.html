@@ -12,5 +12,9 @@ _.mixin({
 </script>
 
 <script type="text/template" id="mixin-tmpl-map-container">
-  <div id="{{mapId}}" data-map><p role="link" data-map-view-link>{{text}}</p></div>
+  <div id="{{mapId}}" class="c-map-container" data-map>
+    <p data-map-view-button-container class="view-map-link">
+      <button type="button" class="btn btn-default" data-map-view-button>{{text}}</button>
+    </p>
+  </div>
 </script>

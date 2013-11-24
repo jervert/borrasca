@@ -15,8 +15,9 @@
       if ($('#now-and-here-map').length) {
         $Q.ui.locationMap({
           mapElement: $('#now-and-here-map'),
-          heightElement: $('.now-and-here-content')
-        });
+          heightElement: $('.now-and-here-content'),
+          autoStart: $Q.maps.autoStart
+        }, this.$el);
       }
     }
   });
