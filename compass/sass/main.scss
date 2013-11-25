@@ -155,9 +155,8 @@ body {padding-top: 70px;}
 /* AAAAAAAAAAA */
 /*body {background-color:#dae7c6;}*/
 /*body {background-color:#f4f9ed;}*/
-#page-area {
+#page-area, .inside-header {
   margin:0 auto; width:98%;
-  
   @media (min-width: 768px) {width:94%;}
   @media (min-width: 992px) {width:90%;}
   @media (min-width: 1200px) {max-width:1340px;}
