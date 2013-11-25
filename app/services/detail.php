@@ -10,7 +10,7 @@ $borrasca = new DataBorrasca();
 $borrasca->location = $_GET['location_name'];
 $borrasca->language = $_GET['lang'];
 $borrasca->dataOrigin = $config['data_origin'];
-$borrasca->timezone = 'Europe/Madrid';
+$borrasca->timezone = $config['timezone'];
 $borrasca->openweathermapsApiKey = $config['openweathermaps_apikey'];
 echo $borrasca->pageDetail();
 
