@@ -29,17 +29,17 @@ class DataBorrasca {
     return json_encode($data);
   }
   public function pageSearch () {
-    $searched = $this->location;
+    $searched = $this->fixUserInput();
 
     // SQLITE CONNECT
     $data = array();
     try  {
       $db = new PDO("sqlite:../../data/locations.sqlite");
 
-      $result = $db->query("SELECT id_region, id_location, name_location FROM locations WHERE name_location LIKE '%".$searched."%' LIMIT ".$this->resultLimit);
+      $result = $db->query("SELECT id_region, id_location, name_location FROM locations WHERE name_searchable LIKE '%".$searched."%' LIMIT ".$this->resultLimit);
 
       $data['result'] = 'OK';
-      $data['searched'] = $searched;
+      $data['searched'] = $this->location;
       if (count($result) > 0 and strlen($searched) > 0) {
         $data['result_message'] = 'Results fetched';
         $data['locations'] = array();
@@ -80,7 +80,7 @@ class DataBorrasca {
           $fragments = explode(', ', $searchable_location);
           $searchable_location = $fragments[1].' '.$fragments[0];
         }
-        $searchable_location = str_replace($this->weirdCharacters, $this->safeCharacters, $searchable_location);
+        $searchable_location = $this->replaceWeirdCharacters($searchable_location);
         $db->query("UPDATE locations SET name_searchable='".$searchable_location."' WHERE id_region='".$row['id_region']."' AND  id_location='".$row['id_location']."'");
         echo '<p>'.$row['name_location'].' ----> '.$searchable_location.'</p>';
       }
@@ -88,6 +88,14 @@ class DataBorrasca {
     } catch(PDOException $e) {
       echo $e->getMessage();
     }
+  }
+  
+  private function replaceWeirdCharacters ($string) {
+    return str_replace($this->weirdCharacters, $this->safeCharacters, $string);
+  }
+  
+  private function fixUserInput () {
+    return $this->replaceWeirdCharacters(trim($this->location));
   }
   
   public function xmlAemet () {
