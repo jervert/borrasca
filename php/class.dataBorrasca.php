@@ -100,7 +100,7 @@ class DataBorrasca {
   }
   
   private function fixUserInput () {
-    return $this->replaceWeirdCharacters(trim($this->location));
+    return $this->replaceWeirdCharacters(trim(strtolower($this->location)));
   }
   
   public function xmlAemet () {
