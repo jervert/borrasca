@@ -1,0 +1,21 @@
+{
+  "version": "2.3.0.0",
+  "name": "Borrasca-Next",
+  "description": "7 days forecast for Spain locations. Data from AEMET and Openweathermaps",
+  "launch_path": "/index.html",
+  "icons": {
+    "16": "/firefox_os/app-icons/icon-16.png",
+    "48": "/firefox_os/app-icons/icon-48.png",
+    "128": "/firefox_os/app-icons/icon-128.png"
+  },
+  "developer": {
+    "name": "Antonio Rodríguez Ruiz",
+    "url": "http://digitalpapyrus.no-up.biz/borrasca-next"
+  },
+  "locales": {
+    "es": {
+      "description": "Predicción meteorológica a 7 días de municipios de España. Datos proporcionados por AEMET y Openweathermaps",
+    }
+  },
+  "default_locale": "en"
+}
