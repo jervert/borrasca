@@ -3,6 +3,7 @@
     routes: {
       "localidad/:id/:locationUrl": "locationDetail",
       "aqui-y-ahora": "defaultRoute",
+      "instalar/:platform": "install",
       "*actions": "defaultRoute"
     },
 
@@ -13,6 +14,17 @@
       $Q.views.detail = new $Q.DetailView({
         id: id,
         locationUrl: locationUrl
+      });
+    },
+    install: function (platform) {
+      require(['mvc_install', 'text!' + $Q.templates.route + 'tmpl_install.html'], function (jsView, template) {
+        if (_.isUndefined($Q.installViewDepsLoaded)) {
+          $Q.installViewDepsLoaded = true;
+          $('#templates-area').append(template);
+        }
+        $Q.views.install = new $Q.InstallView({
+          platform: platform
+        });
       });
     },
     defaultRoute: function (actions) {

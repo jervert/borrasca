@@ -1,0 +1,20 @@
+<script type="text/template" id="tmpl-install">
+  <section class="install-section">
+    <header class="section-header install-section-header">
+      <h2 class="section-header-title install-section-title">{{$Q.literals.install.install}} {{$Q.appName}}</h2>
+    </header>
+    {{_.tmpl('#tmpl-install-' + platform, {})}}
+  </section>
+</script>
+
+<script type="text/template" id="tmpl-install-firefoxOS">
+  <p><button type="button" class="btn btn-primary btn-lg" data-install-firefox-os>{{$Q.literals.install.installIn}} Firefox OS</button></p>
+</script>
+
+<script type="text/template" id="tmpl-install-android">
+  <p><a href="{{$Q.links.googlePlay}}" target="_blank" class="btn btn-primary btn-lg">{{$Q.literals.install.installIn}} Android</a></p>
+</script>
+
+<script type="text/template" id="tmpl-install-notAvailable">
+  <p>{{$Q.literals.install.cannotInstall}}.</p>
+</script>

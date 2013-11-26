@@ -15,10 +15,34 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L;
         selectedLanguage = (availableLanguages.indexOf(clientLanguage) !== -1) ? clientLanguage : defaultLanguage;
       document.getElementsByTagName('html')[0].lang = selectedLanguage;
       return selectedLanguage;
+    },
+    getFirefoxOS = function () {
+      var manifestUrl = location.href + '/platforms/firefoxOS/manifest.webapp',
+        installCheck,
+        isInstalled = false,
+        config = {
+          enabled: false,
+          installed: false,
+          url: manifestUrl
+        };
+      if (navigator.mozApps !== undefined) {
+        installCheck = navigator.mozApps.checkInstalled(manifestUrl);
+        installCheck.onsuccess = function() {
+          if(installCheck.result) {
+            isInstalled = true;
+          }
+        };
+        config = {
+          enabled: true,
+          installed: isInstalled,
+          url: manifestUrl
+        };
+      }
+      return config;
     };
 
   $Q = {
-    appName: 'Borrasca',
+    appName: 'Borrasca-Next',
     appTitle: 'Borrasca-Next - ',
     version: (environment === 'pr') ? '2.3.0.0' : Date.now(),
     servicePath: (document.URL.indexOf( 'http://' ) === -1 && document.URL.indexOf( 'https://' ) === -1) ? 'http://borrasca-next.digitalpapyrus.es/' : '',
@@ -56,6 +80,13 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L;
     },
     maps: {
       autoStart: false
+    },
+    platforms: {
+      firefoxOS: getFirefoxOS()
+    },
+    links: {
+      github: 'https://github.com/jervert/borrasca-next',
+      googlePlay: 'https://play.google.com/store/apps/details?id=com.phonegap.borrasca_v2'
     },
     piwik: {
       enabled: false,
@@ -99,7 +130,8 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L;
       'mvc_search': 'mvc/search.mvc',
       'mvc_bookmarks': 'mvc/bookmarks.mvc',
       'mvc_nowAndHere': 'mvc/nowAndHere.mvc',
-      'mvc_detail': 'mvc/detail.mvc'
+      'mvc_detail': 'mvc/detail.mvc',
+      'mvc_install': 'mvc/install.mvc'
     },
     shim: {
       'underscore': {
@@ -159,6 +191,9 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L;
       },
       'mvc_detail': {
         deps: ['mvc_main', 'leaflet']
+      },
+      'mvc_install': {
+        deps: ['mvc_main']
       }
     },
     waitSeconds: 40,
