@@ -45,6 +45,7 @@
       error: {
         title: 'Error',
         text: 'An error has happened',
+        button: 'Close',
         ERROR_GET_CONTENTS: 'Data is not available'
       },
       loading: 'Loading'
@@ -107,7 +108,19 @@
     install: {
       installIn: 'Install in ',
       install: 'Install',
-      cannotInstall: "Application can't be installed"
+      cannotInstall: "Application can't be installed",
+      errorCode: 'Error code',
+      firefoxOS: {
+        error: {
+          DENIED: 'The user cancelled the installation',
+          INVALID_MANIFEST: 'The manifest, while well-formed JSON, does not have some required field or is somehow invalid',
+          MANIFEST_URL_ERROR: 'Something other than an HTTP 200 status code was received, or some connection errors.',
+          MANIFEST_PARSE_ERROR: 'Bad JSON in the manifest',
+          NETWORK_ERROR: 'Connection error',
+          REINSTALL_FORBIDDEN: 'Reinstalls of apps are forbidden',
+          MULTIPLE_APPS_PER_ORIGIN_FORBIDDEN: 'Installable apps have a "single app per origin" security policy; basically, you can´t host more than one installable app per origin'
+        }
+      }
     }
   }
 </script>

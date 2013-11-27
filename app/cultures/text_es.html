@@ -45,6 +45,7 @@
       error: {
         title: 'Error',
         text: 'Ha ocurrido un error',
+        button: 'Cerrar',
         ERROR_GET_CONTENTS: 'Los datos no están disponibles'
       },
       loading: 'Cargando'
@@ -107,7 +108,19 @@
     install: {
       installIn: 'Instalar en ',
       install: 'Instalar',
-      cannotInstall: 'La aplicación no puede ser instalada'
+      cannotInstall: 'La aplicación no puede ser instalada',
+      errorCode: 'Código de error',
+      firefoxOS: {
+        error: {
+          DENIED: 'El usuario ha cancelado la instalación',
+          INVALID_MANIFEST: 'El fichero manifest, a pesar de estar bien formado, carece de información requerida, o ésta es errónea',
+          MANIFEST_URL_ERROR: 'Error de conexión o estado HTTP distinto de 200',
+          MANIFEST_PARSE_ERROR: 'Error de JSON en manifest',
+          NETWORK_ERROR: 'Error de conexión',
+          REINSTALL_FORBIDDEN: 'No se permite la reinstalación',
+          MULTIPLE_APPS_PER_ORIGIN_FORBIDDEN: 'Por seguridad, no se permite un mismo origen para más de una aplicación'
+        }
+      }
     }
   }
 </script>
