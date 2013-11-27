@@ -17,7 +17,7 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L;
       return selectedLanguage;
     },
     getFirefoxOS = function () {
-      var manifestUrl = location.href + '/platforms/firefoxOS/manifest.webapp',
+      var manifestUrl = window.location.origin + window.location.pathname + 'platforms/firefoxOS/manifest.webapp',
         installCheck,
         isInstalled = false,
         config = {
