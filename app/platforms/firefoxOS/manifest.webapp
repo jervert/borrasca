@@ -14,7 +14,10 @@
   },
   "locales": {
     "es": {
-      "description": "Predicción meteorológica a 7 días de municipios de España. Datos proporcionados por AEMET y Openweathermaps",
+      "description": "Predicción meteorológica a 7 días de municipios de España. Datos proporcionados por AEMET y Openweathermaps"
+    },
+    "en": {
+      "description": "7 days forecast for Spain locations. Data from AEMET and Openweathermaps"
     }
   },
   "default_locale": "en"
