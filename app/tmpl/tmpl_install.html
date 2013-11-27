@@ -3,7 +3,9 @@
     <header class="section-header install-section-header">
       <h2 class="section-header-title install-section-title">{{$Q.literals.install.install}} {{$Q.appName}}</h2>
     </header>
-    {{_.tmpl('#tmpl-install-' + platform, {})}}
+    <div class="install-section-content" data-content>
+      {{_.tmpl('#tmpl-install-' + platform, {})}}
+    </div>
   </section>
 </script>
 
