@@ -15,7 +15,11 @@
     },
     refreshPage: function () {
       this.$el.html(_.c_loading());
-      this.loadPage();
+      if (_.isFunction(this.onRefreshPage)) {
+        this.onRefreshPage();
+      } else {
+        this.loadPage();
+      }
     },
     remove: function() {
       this.$el.empty();
@@ -39,7 +43,9 @@
           if (_.isFunction(self.onError)) {
             self.onError();
           } else {
-            self.$el.html(_.c_message_error());
+            self.$el.html(_.c_message_error({
+              reloadButton: true
+            }));
           }
         }
       });
