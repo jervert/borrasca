@@ -44,7 +44,7 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L;
   $Q = {
     appName: 'Borrasca-Next',
     appTitle: 'Borrasca-Next - ',
-    version: (environment === 'pr') ? '2.3.0.0' : Date.now(),
+    version: (environment === 'pr') ? '2.3.0.1' : Date.now(),
     servicePath: (document.URL.indexOf( 'http://' ) === -1 && document.URL.indexOf( 'https://' ) === -1) ? 'http://borrasca-next.digitalpapyrus.es/' : '',
     server: (window.location.port === '9000') ? 'node' : 'php', // 'node' or 'php'
     waitOnInitialize: 40,
