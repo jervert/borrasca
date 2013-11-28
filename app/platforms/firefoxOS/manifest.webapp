@@ -2,7 +2,7 @@
   "version": "2.3.0.0",
   "name": "Borrasca-Next",
   "description": "7 days forecast for Spain locations. Data from AEMET and Openweathermaps",
-  "launch_path": "/index.html",
+  "launch_path": "/borrasca-next/index.html",
   "icons": {
     "16": "/firefox_os/app-icons/icon-16.png",
     "48": "/firefox_os/app-icons/icon-48.png",
@@ -10,7 +10,7 @@
   },
   "developer": {
     "name": "Antonio Rodríguez Ruiz",
-    "url": "http://digitalpapyrus.no-up.biz/borrasca-next"
+    "url": "http://outbook.es"
   },
   "locales": {
     "es": {
