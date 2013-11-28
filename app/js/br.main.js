@@ -1,6 +1,6 @@
-var $Q, $, Globalize, _, Backbone, Highcharts, L;
+var $Q, $, Globalize, _, Backbone, Highcharts, L, Piwik;
 (function() {
-  var environment = 'dev', // 'dev' (development) or 'pr' (production)
+  var environment = 'pr', // 'dev' (development) or 'pr' (production)
     defaultLanguage = 'en',
     getNavigatorLanguage = function () {
       var language = defaultLanguage;
@@ -220,6 +220,7 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L;
     'mvc_bookmarks',
     'mvc_nowAndHere',
     'mvc_detail',
+    'mvc_install',
     'br.app.aemet'
   ];
   $Q.resourcesText = [
@@ -234,7 +235,8 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L;
     'text!' + $Q.templates.route + 'tmpl_search.html',
     'text!' + $Q.templates.route + 'tmpl_bookmarks.html',
     'text!' + $Q.templates.route + 'tmpl_now_and_here.html',
-    'text!' + $Q.templates.route + 'tmpl_detail.html'
+    'text!' + $Q.templates.route + 'tmpl_detail.html',
+    'text!' + $Q.templates.route + 'tmpl_install.html'
   ];
 
 

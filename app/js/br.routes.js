@@ -17,14 +17,8 @@
       });
     },
     install: function (platform) {
-      require(['mvc_install', 'text!' + $Q.templates.route + 'tmpl_install.html'], function (jsView, template) {
-        if (_.isUndefined($Q.installViewDepsLoaded)) {
-          $Q.installViewDepsLoaded = true;
-          $('#templates-area').append(template);
-        }
-        $Q.views.install = new $Q.InstallView({
-          platform: platform
-        });
+      $Q.views.install = new $Q.InstallView({
+        platform: platform
       });
     },
     defaultRoute: function (actions) {
