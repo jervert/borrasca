@@ -1,6 +1,6 @@
 var $Q, $, Globalize, _, Backbone, Highcharts, L, Piwik;
 (function() {
-  var environment = 'pr', // 'dev' (development) or 'pr' (production)
+  var environment = 'dev', // 'dev' (development) or 'pr' (production)
     defaultLanguage = 'en',
     getNavigatorLanguage = function () {
       var language = defaultLanguage;
@@ -22,13 +22,13 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L, Piwik;
         isInstalled = false,
         config = {
           enabled: false,
-          installed: false,
+          installed: isInstalled,
           url: manifestUrl
         };
       if (navigator.mozApps !== undefined) {
         installCheck = navigator.mozApps.checkInstalled(manifestUrl);
         installCheck.onsuccess = function() {
-          if(installCheck.result) {
+          if(installCheck.result.installState === 'installed') {
             isInstalled = true;
           }
         };
