@@ -6,7 +6,7 @@
 
   _.mixin({
     tmpl: function (id, context) {
-      var html = $.trim($(id).html());
+      var html = $.trim($(id).html()).replace(/(\r\n|\n|\r)/gm, '');
       return _.template(html, context);
     },
     support_html5_storage: function () {
