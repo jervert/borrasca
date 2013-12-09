@@ -94,6 +94,9 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L, Piwik;
       url: null,
       id: '2'
     },
+    adsense: {
+      enabled: true
+    },
     views: {},
     removableViews: ['detail', 'nowAndHere']
   };
@@ -105,8 +108,7 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L, Piwik;
     search: ($Q.server === 'php') ? $Q.servicePath + 'services/search.php?location_name=' : $Q.servicePath + '?location_name=',
     detail: ($Q.server === 'php') ? $Q.servicePath + 'services/detail.php?lang=' + $Q.alternateCulture + '&location_name=' : $Q.servicePath + '?detail=true&lang=' + $Q.alternateCulture + '&version=' + Date.now() + '&location_name=',
     xml: ($Q.server === 'php') ? $Q.servicePath + 'services/xml.php?location_id=' : $Q.servicePath + '?xml='
-  }
-
+  }  
 
   require.config({
     paths: {
@@ -121,6 +123,8 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L, Piwik;
       'bootstrap': $Q.jsLibs.route + 'bootstrap-' + $Q.jsLibs.versions.bootstrap,
       'jquery_sliceSlide': $Q.jsLibs.route + 'slice-slide/jquery.sliceslide-' + $Q.jsLibs.versions.jquery_sliceSlide,
       'leaflet': $Q.jsLibs.route + 'leaflet-' + $Q.jsLibs.versions.leaflet,
+      'adsense': window.location.protocol + '//pagead2.googlesyndication.com/pagead/js/adsbygoogle',
+      'piwik': window.location.protocol + '//' + $Q.piwik.url + '/piwik',
       'mixins': 'br.mixins',
       'br_ui': 'br.ui',
       'br_utils': 'br.utils',
@@ -200,7 +204,6 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L, Piwik;
     urlArgs: $Q.version
   });
 
-
   $Q.resourcesJs = [
     'jquery',
     'globalize',
@@ -223,6 +226,13 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L, Piwik;
     'mvc_install',
     'br.app.aemet'
   ];
+  if ($Q.adsense.enabled) {
+    $Q.resourcesJs.push('adsense');
+  }
+  if ($Q.piwik.enabled) {
+    $Q.resourcesJs.push('piwik');
+  }
+
   $Q.resourcesText = [
     'text!' + $Q.templates.routeCultures + 'text_' + $Q.culture + '.html',
     'text!' + $Q.templates.route + 'mixin_tmpl_loading.html',
@@ -238,6 +248,7 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L, Piwik;
     'text!' + $Q.templates.route + 'tmpl_detail.html',
     'text!' + $Q.templates.route + 'tmpl_install.html'
   ];
+
 
 
   $Q.initialize = function () {
@@ -282,21 +293,10 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L, Piwik;
     $.when($('#templates-area').append(templates)).then(function () {
       $Q.templatesReady = true;
       if ($Q.piwik.enabled) {
-        require(['async!' + $Q.utils.piwikStats.getScriptUrl() +'!callback']);
-        var piwikIntervalCount = 0,
-          piwikInterval = setInterval(function () {
-            $Q.piwik.ready = _.isObject(Piwik);
-            if (piwikIntervalCount > 80 || $Q.piwik.ready) {
-              $Q.utils.piwikStats.start();
-              $Q.utils.piwikStats.trackPageView(window.location.hash);
-              $Q.initialize();
-              clearInterval(piwikInterval);
-            }
-            piwikIntervalCount += 1;
-          }, 500);
-      } else {
-        $Q.initialize();
+        $Q.utils.piwikStats.start();
+        $Q.utils.piwikStats.trackPageView(window.location.hash);
       }
+      $Q.initialize();
     });
   });
 

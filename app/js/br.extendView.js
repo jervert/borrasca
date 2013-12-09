@@ -59,6 +59,9 @@
       }
 
       this.$el.html(_.tmpl(this.tmpl, this.model.toJSON()));
+      if (this.$el.find('.adsbygoogle.borrasca-next').length > 0 && $Q.adsense.enabled) {
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      }
       this.removeLoading();
 
       if (_.isFunction(this.afterRender)) {

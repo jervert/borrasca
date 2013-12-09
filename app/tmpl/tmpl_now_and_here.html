@@ -3,6 +3,7 @@
   {{_.c_message_error({text: $Q.literals.messages.error[now.message]})}}
   [[ } else { ]]
   <section class="now-and-here">
+  {{_.tmpl('#tmpl-adsense', {})}}
     <header class="section-header now-and-here-header">
       <h2 class="section-header-title now-and-here-title">{{$Q.literals.nowAndHere.title}}</h2>
       <p class="section-header-subtitle now-and-here-location">en {{now.name}}, {{now.sys.country}}</p>
@@ -25,4 +26,17 @@
 
 <script type="text/template" id="tmpl-now-and-here-container">
   <div id="now-and-here">{{_.c_loading({})}}</div>
+</script>
+
+<script type="text/template" id="tmpl-adsense">
+<style>
+.borrasca-next { width: 320px; height: 50px; }
+@media(min-width: 500px) { .borrasca-next { width: 468px; height: 60px; } }
+@media(min-width: 800px) { .borrasca-next { width: 728px; height: 90px; } }
+</style>
+<!-- Borrasca-Next -->
+<ins class="adsbygoogle borrasca-next"
+     style="display:inline-block"
+     data-ad-client="ca-pub-2665541669872766"
+     data-ad-slot="3909768323"></ins>
 </script>
