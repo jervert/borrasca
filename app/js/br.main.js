@@ -110,14 +110,7 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L, Piwik;
     $Q.adsense.enabled = false;
   }
 
-  $Q.alternateCulture = ($Q.culture === 'es') ? 'sp' : $Q.culture;
-
-  $Q.services = {
-    main: ($Q.server === 'php') ? $Q.servicePath + 'services/main.php?lang=' + $Q.alternateCulture + '&geolocation=' : $Q.servicePath + '?lang=' + $Q.alternateCulture + '&geolocation=',
-    search: ($Q.server === 'php') ? $Q.servicePath + 'services/search.php?location_name=' : $Q.servicePath + '?location_name=',
-    detail: ($Q.server === 'php') ? $Q.servicePath + 'services/detail.php?lang=' + $Q.alternateCulture + '&location_name=' : $Q.servicePath + '?detail=true&lang=' + $Q.alternateCulture + '&version=' + Date.now() + '&location_name=',
-    xml: ($Q.server === 'php') ? $Q.servicePath + 'services/xml.php?location_id=' : $Q.servicePath + '?xml='
-  }  
+  $Q.alternateCulture = ($Q.culture === 'es') ? 'sp' : $Q.culture; 
 
   require.config({
     paths: {
@@ -305,6 +298,7 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L, Piwik;
         $Q.utils.piwikStats.start();
         $Q.utils.piwikStats.trackPageView(window.location.hash);
       }
+      $Q.utils.services();
       $Q.initialize();
     });
   });
