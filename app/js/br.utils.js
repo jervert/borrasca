@@ -59,12 +59,16 @@
   
   // Services urls
   $Q.utils.services = (function () {
-    $Q.services = {
-      main: ($Q.server === 'php') ? $Q.servicePath + 'services/main.php?lang=' + $Q.alternateCulture + '&geolocation=' : $Q.servicePath + '?lang=' + $Q.alternateCulture + '&geolocation=',
-      search: ($Q.server === 'php') ? $Q.servicePath + 'services/search.php?location_name=' : $Q.servicePath + '?location_name=',
-      detail: ($Q.server === 'php') ? $Q.servicePath + 'services/detail.php?lang=' + $Q.alternateCulture + '&location_name=' : $Q.servicePath + '?detail=true&lang=' + $Q.alternateCulture + '&version=' + Date.now() + '&location_name=',
-      xml: ($Q.server === 'php') ? $Q.servicePath + 'services/xml.php?location_id=' : $Q.servicePath + '?xml='
-    }
+    return {
+      set: function () {
+        $Q.services = {
+          main: ($Q.server === 'php') ? $Q.servicePath + 'services/main.php?lang=' + $Q.alternateCulture + '&geolocation=' : $Q.servicePath + '?lang=' + $Q.alternateCulture + '&geolocation=',
+          search: ($Q.server === 'php') ? $Q.servicePath + 'services/search.php?location_name=' : $Q.servicePath + '?location_name=',
+          detail: ($Q.server === 'php') ? $Q.servicePath + 'services/detail.php?lang=' + $Q.alternateCulture + '&location_name=' : $Q.servicePath + '?detail=true&lang=' + $Q.alternateCulture + '&version=' + Date.now() + '&location_name=',
+          xml: ($Q.server === 'php') ? $Q.servicePath + 'services/xml.php?location_id=' : $Q.servicePath + '?xml='
+        }
+      }
+    };
   }());
 
   // Piwik tracking

@@ -298,7 +298,7 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L, Piwik;
         $Q.utils.piwikStats.start();
         $Q.utils.piwikStats.trackPageView(window.location.hash);
       }
-      $Q.utils.services();
+      $Q.utils.services.set();
       $Q.initialize();
     });
   });
