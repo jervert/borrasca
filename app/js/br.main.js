@@ -66,7 +66,7 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L, Piwik;
         backbone: '1.1.0',
         requireText: '2.0.7',
         requireAsync: '0.1.1',
-        highcharts: '3.0.2',
+        highcharts: '3.0.7',
         bootstrap: '3.0.0',
         jquery_sliceSlide: '4.0',
         leaflet: '0.6.4'
