@@ -2,6 +2,10 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L, Piwik;
 (function() {
   var environment = 'dev', // 'dev' (development) or 'pr' (production)
     defaultLanguage = 'en',
+    guessIfIsPhonegapApp = function () {
+      return (document.URL.indexOf( 'http://' ) === -1 && document.URL.indexOf( 'https://' ) === -1)
+    },
+    isPhonegapApp = guessIfIsPhonegapApp(),
     getNavigatorLanguage = function () {
       var language = defaultLanguage;
       if (window.navigator) {
@@ -44,8 +48,8 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L, Piwik;
   $Q = {
     appName: 'Borrasca-Next',
     appTitle: 'Borrasca-Next - ',
-    version: (environment === 'pr') ? '2.3.1.0' : Date.now(),
-    servicePath: (document.URL.indexOf( 'http://' ) === -1 && document.URL.indexOf( 'https://' ) === -1) ? 'http://borrasca-next.digitalpapyrus.es/' : '',
+    version: (environment === 'pr' || isPhonegapApp) ? '2.3.1.0' : Date.now(),
+    servicePath: (isPhonegapApp) ? 'http://borrasca-next.digitalpapyrus.es/' : '',
     server: (window.location.port === '9000') ? 'node' : 'php', // 'node' or 'php'
     waitOnInitialize: 40,
     culture: getCulture(),
@@ -100,6 +104,11 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L, Piwik;
     views: {},
     removableViews: ['detail', 'nowAndHere']
   };
+
+  if (isPhonegapApp) {
+    $Q.piwik.enabled = false;
+    $Q.adsense.enabled = false;
+  }
 
   $Q.alternateCulture = ($Q.culture === 'es') ? 'sp' : $Q.culture;
 
