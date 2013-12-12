@@ -22,7 +22,10 @@ var http = require('http'),
   config;
   
 config = {
-  listen: 9000
+  listen: 9000,
+  paths: {
+    ddbb: '../data/locations.sqlite'
+  }
 }
 
 colors.setTheme({
@@ -45,7 +48,7 @@ colors.setTheme({
 
 initializeDb = function () {
   console.log('sqlite3...'.data);
-  db = new sqlite3.Database('services/locations.sqlite', 'OPEN_READONLY', function (err) {
+  db = new sqlite3.Database(config.paths.ddbb, 'OPEN_READONLY', function (err) {
     if (err !== null) {
       console.log('Database error!!!'.error.bold);
     } else {
@@ -89,41 +92,21 @@ getLocation = function (req, res, params) {
 
 getFileType = function (pathname) {
   var extension = _.last(pathname.split('.')).split('?')[0],
-    mimeType;
-  
-  switch (extension) {
-    case 'css':
-      mimeType = 'text/css';
-      break;
-    case 'js':
-      mimeType = 'text/javascript';
-      break;
-    case 'jpg':
-      mimeType = 'image/jpeg';
-      break;
-    case 'png':
-      mimeType = 'image/png';
-      break;
-    case 'gif':
-      mimeType = 'image/gif';
-      break;
-    case 'ico':
-      mimeType = 'image/x-icon';
-      break;
-    case 'json':
-      mimeType = 'text/json';
-      break;
-    case 'txt':
-      mimeType = 'text/plain';
-      break;
-    case 'xml':
-      mimeType = 'text/xml';
-      break;
-    default:
-      mimeType = 'text/html';
-      break;
-  }
-  return mimeType;
+    extensions = {
+      css: 'text/css',
+      js: 'text/javascript',
+      jpg: 'image/jpeg',
+      png: 'image/png',
+      gif: 'image/gif',
+      ico: 'image/x-icon',
+      json: 'text/json',
+      txt: 'text/plain',
+      xml: 'text/xml',
+      html: 'text/html',
+      defaultExtension: 'text/html'
+    };
+ 
+  return (extensions[extension] !== undefined) ? extensions[extension] : extensions.defaultExtension;
 }
 
 serveFile = function (req, res, pathname) {
