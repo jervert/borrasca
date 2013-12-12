@@ -71,7 +71,10 @@
       };
     },
     windMsToKms: function (speed) {
-      return Globalize.format((parseFloat(speed) * 3.6), "n1" );
+      return Globalize.format((parseFloat(speed) * 3.6), 'n1');
+    },
+    decimalNumber: function (number) {
+      return Globalize.format(parseFloat(number), 'n2');
     },
     avoidCacheParam: function () {
       return '&version=' + Date.now();

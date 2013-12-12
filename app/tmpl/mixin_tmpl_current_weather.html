@@ -16,7 +16,7 @@ _.mixin({
     </li>
     <li class="list-group-item">
       <h4 class="list-group-item-heading">{{$Q.literals.nowWeather.temperature}}:</h4>
-      <p class="list-group-item-text">{{main.temp}}º C</p>
+      <p class="list-group-item-text">{{_.decimalNumber(main.temp)}}º C</p>
     </li>
     [[ if (typeof rain !== 'undefined') { ]]
     <li class="list-group-item">
