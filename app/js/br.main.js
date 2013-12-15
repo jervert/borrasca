@@ -48,7 +48,7 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L, Piwik;
   $Q = {
     appName: 'Borrasca-Next',
     appTitle: 'Borrasca-Next - ',
-    version: (environment === 'pr' || isPhonegapApp) ? '2.3.1.0' : Date.now(),
+    version: (environment === 'pr' || isPhonegapApp) ? '2.3.1.1' : Date.now(),
     servicePath: (isPhonegapApp) ? 'http://borrasca-next.digitalpapyrus.es/' : '',
     server: (window.location.port === '9000') ? 'node' : 'php', // 'node' or 'php'
     waitOnInitialize: 40,
@@ -69,7 +69,8 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L, Piwik;
         highcharts: '3.0.7',
         bootstrap: '3.0.0',
         jquery_sliceSlide: '4.0',
-        leaflet: '0.6.4'
+        leaflet: '0.6.4',
+        jqueryMobileEvents: 'noversion'
       },
       equivalent: {
         underscore: 'lodash' // 'lodash' or 'underscore'
@@ -117,6 +118,7 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L, Piwik;
       text: 'libs/require.text-' + $Q.jsLibs.versions.requireText,
       async: 'libs/require.async-' + $Q.jsLibs.versions.requireAsync,
       'jquery': $Q.jsLibs.route + 'jquery-' + $Q.jsLibs.versions.jquery,
+      'jqueryMobileEvents': $Q.jsLibs.route + 'jquery.mobile-events-' + $Q.jsLibs.versions.jqueryMobileEvents,
       'globalize': 'libs/globalize',
       'globalize_culture': $Q.templates.routeCultures + 'globalize/globalize.culture.' + $Q.culture,
       'underscore': ($Q.jsLibs.equivalent.underscore === 'lodash') ? $Q.jsLibs.route + 'lodash.underscore-' + $Q.jsLibs.versions.lodash : $Q.jsLibs.route + 'underscore-' + $Q.jsLibs.versions.underscore,
@@ -156,6 +158,9 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L, Piwik;
         deps: ['jquery'],
         exports: 'Globalize'
       },
+      'jqueryMobileEvents': {
+        deps: ['jquery']
+      },
       'globalize_culture': {
         deps: ['globalize']
       },
@@ -163,7 +168,7 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L, Piwik;
         deps: ['jquery']
       },
       'jquery_sliceSlide': {
-        deps: ['jquery', 'underscore']
+        deps: ['jqueryMobileEvents', 'underscore']
       },
       'leaflet': {
         exports: 'L'
