@@ -2,14 +2,12 @@
 
 set APPNAME=Borrasca-Next
 set APPID=com.phonegap.borrasca_v2
-set LETTERDRIVE=d:
-set ADT_WORKSPACE=D:\Users\antonio\Desktop\WEB\WORKSPACE
+set ADT_WORKSPACE=C:\WEB\WORKSPACE
 set WORKSPACE=%ADT_WORKSPACE%/borrasca-next
 
 
 call phonegap create %WORKSPACE% -n %APPNAME% -i %APPID%
 echo Created app
-call %LETTERDRIVE%
 cd %WORKSPACE%
 echo Moved to %WORKSPACE%
 call cordova platform add android
