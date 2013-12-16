@@ -48,12 +48,12 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L, Piwik;
   $Q = {
     appName: 'Borrasca-Next',
     appTitle: 'Borrasca-Next - ',
-    version: (environment === 'pr' || isPhonegapApp) ? '2.3.1.1' : Date.now(),
+    version: (environment === 'pr' || isPhonegapApp) ? '2.3.1.2' : Date.now(),
     servicePath: (isPhonegapApp) ? 'http://borrasca-next.digitalpapyrus.es/' : '',
     server: (window.location.port === '9000') ? 'node' : 'php', // 'node' or 'php'
     waitOnInitialize: 40,
     culture: getCulture(),
-    compressed: false,
+    compressed: (environment === 'pr' || isPhonegapApp) ? true : false,
     legacy: true,
     geolocation: null,
     templatesReady: false,
@@ -100,7 +100,7 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L, Piwik;
       id: '2'
     },
     adsense: {
-      enabled: true
+      enabled: false
     },
     views: {},
     removableViews: ['detail', 'nowAndHere']
