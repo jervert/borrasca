@@ -7,7 +7,7 @@ var http = require('http'),
   request = require('request'),
   Buffer = require('buffer').Buffer,
   //Iconv  = require('iconv').Iconv,
-  Iconv  = require('iconv-lite'),
+  iconv  = require('iconv-lite'),
   moment = require('moment'),
   _ = require('underscore'),
   path = require('path'),
@@ -124,13 +124,14 @@ serveFile = function (req, res, pathname) {
 serveXml = function (req, res, params) {
   //var url = 'http://localhost/borrasca_v2/localidad_49050.xml';
   var url = 'http://www.aemet.es/xml/municipios/localidad_' + params.xml + '.xml';
-  console.log('XML url: ' + url + ''.info);
+  //console.log('XML url: ' + url + ''.info);
 
   request({uri: url, encoding: 'binary'}, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       var buffer = new Buffer(body, 'binary'),
-        iconv = new Iconv('iso-8859-15', 'utf-8'),
-	xml = iconv.convert(buffer).toString('UTF-8').replace('ISO-8859-15','UTF-8');
+        //iconv = new Iconv('iso-8859-15', 'utf-8'),
+	//xml = iconv.convert(buffer).toString('UTF-8').replace('ISO-8859-15','UTF-8');
+      xml = iconv.decode(buffer, 'utf8');
       res.writeHead(200, {'Content-Type': 'application/xml'});
       res.end(xml);
     }
@@ -148,7 +149,8 @@ getDetail = function (req, res, params) {
   }
   detailJson = JSON.stringify({
     hour: hour,
-    day: moment().date()
+    day: moment().date(),
+    now: null
   });
   res.writeHead(200, {'Content-Type': 'text/json; charset=ISO-8859-15'});
   res.end(detailJson);
@@ -163,7 +165,7 @@ http.createServer(function (req, res) {
     params = url.parse(req.url, true).query;
     //console.log(urlParsed);
     
-  if (typeof params === 'object' && params.location_name !== undefined) {
+  if (typeof params === 'object' && params.location_name !== undefined && params.detail === undefined) {
     getLocation(req, res, params);
   } else if (typeof params === 'object' && params.detail !== undefined) {
     getDetail(req, res, params);
