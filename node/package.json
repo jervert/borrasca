@@ -2,7 +2,7 @@
   "dependencies": {
     "colors": "0.6.x",
     "sqlite3": "2.1.x",
-    "iconv": "2.0.x",
+    "iconv-lite": "0.2.x",
     "moment": "2.2.x",
     "request": "2.27.x",
     "underscore": "1.5.x"

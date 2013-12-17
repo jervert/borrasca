@@ -6,9 +6,11 @@ var http = require('http'),
   url = require('url'),
   request = require('request'),
   Buffer = require('buffer').Buffer,
-  Iconv  = require('iconv').Iconv,
+  //Iconv  = require('iconv').Iconv,
+  Iconv  = require('iconv-lite'),
   moment = require('moment'),
   _ = require('underscore'),
+  path = require('path'),
   eventEmitter = new events.EventEmitter(),
   initializeDb,
   queryDb,
@@ -110,7 +112,8 @@ getFileType = function (pathname) {
 }
 
 serveFile = function (req, res, pathname) {
-  pathname = pathname.substr(1);
+  pathname = path.join(path.dirname(require.main.filename).replace('node', 'app'), pathname.substr(1));
+  console.log(pathname)
   fs.readFile(pathname, function (err, data) {
     if (err) throw err;
     res.writeHead(200, {'Content-Type': getFileType(pathname)});
