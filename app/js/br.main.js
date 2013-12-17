@@ -54,7 +54,7 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L, Piwik;
     waitOnInitialize: 40,
     culture: getCulture(),
     compressed: (environment === 'pr' || isPhonegapApp) ? true : false,
-    legacy: true,
+    legacy: false,
     geolocation: null,
     templatesReady: false,
     jsLibs: {
