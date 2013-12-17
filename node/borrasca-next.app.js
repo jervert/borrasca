@@ -6,7 +6,6 @@ var http = require('http'),
   url = require('url'),
   request = require('request'),
   Buffer = require('buffer').Buffer,
-  //Iconv  = require('iconv').Iconv,
   iconv  = require('iconv-lite'),
   moment = require('moment'),
   _ = require('underscore'),
@@ -129,8 +128,6 @@ serveXml = function (req, res, params) {
   request({uri: url, encoding: 'binary'}, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       var buffer = new Buffer(body, 'binary'),
-        //iconv = new Iconv('iso-8859-15', 'utf-8'),
-	//xml = iconv.convert(buffer).toString('UTF-8').replace('ISO-8859-15','UTF-8');
       xml = iconv.decode(buffer, 'utf8');
       res.writeHead(200, {'Content-Type': 'application/xml'});
       res.end(xml);
@@ -140,6 +137,64 @@ serveXml = function (req, res, params) {
 }
 
 
+
+nowData = function (type, location, language, geolocationParam, baseObject, req, res, params) {
+  var openweathermapsApiKey = null,
+    geolocation = geolocationParam.split(','),
+    baseUrl = 'http://api.openweathermap.org/data/2.5/weather/',
+    url,
+    urlParams;
+    
+    if (type === 'detail') {
+      urlParams = '?q=' + location + ',es&units=metric&mode=json&lang=' + language + '&APPID=' + openweathermapsApiKey;
+    } else {
+      urlParams = '?lat=' + geolocation[0] + '&lon=' + geolocation[1] + '&units=metric&mode=json&lang=' + language + '&APPID=' + openweathermapsApiKey;
+    }
+    url = baseUrl + urlParams;
+    console.log(url.yellow)
+    
+    /*http.get(url, function(res){
+      var data = '';
+      res.on('data', function (chunk){
+          data += chunk;
+      });
+      res.on('end',function(){
+          var obj = JSON.parse(data);
+          return obj
+      });
+    }).on('error', function(e) {
+      console.log("Got error: ", e);
+      return null;
+    });*/
+    
+    request({uri: url}, function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      body = JSON.stringify(_.extend(true, {}, baseObject, {now: JSON.parse(body)}));
+      res.writeHead(200, {'Content-Type': 'text/json; charset=ISO-8859-15'});
+      res.end(body);
+    }
+  })
+    
+    
+  /*http.get(url, function(res) {
+      var body = '';
+      res.on('data', function(chunk) {
+        body += chunk;
+      });
+      res.on('end', function() {
+        var response = JSON.parse(body);
+        return response;
+      });
+  }).on('error', function(e) {
+      console.log("Got error: ", e);
+      return null;
+  });*/
+};
+
+getNowAndHere = function (req, res, params) {
+  nowData('index', null, 'en', params.geolocation, {}, req, res, params);
+};
+
 getDetail = function (req, res, params) {
   var hour = moment().utc().hour() - (moment().zone() / 60),
     detailJson;
@@ -147,11 +202,15 @@ getDetail = function (req, res, params) {
   if (hour === 24) {
     hour = 0;
   }
-  detailJson = JSON.stringify({
+  
+  detailJson = {
     hour: hour,
     day: moment().date(),
-    now: null
-  });
+    now: nowData('detail', params.location_name, 'en', '0,0')
+  };
+  console.log(detailJson)
+  
+  detailJson = JSON.stringify(detailJson);
   res.writeHead(200, {'Content-Type': 'text/json; charset=ISO-8859-15'});
   res.end(detailJson);
 };
@@ -171,6 +230,8 @@ http.createServer(function (req, res) {
     getDetail(req, res, params);
   } else if (typeof params === 'object' && params.xml !== undefined) {
     serveXml(req, res, params);
+  } else if (typeof params === 'object' && params.geolocation !== undefined) {
+    getNowAndHere(req, res, params);
   } else if (urlParsed.pathname === '/index.html' || urlParsed.pathname === '/') {
     console.log('Load index.html...'.info)
     serveFile(req, res, '/index.html');
