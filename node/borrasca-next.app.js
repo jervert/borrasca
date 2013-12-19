@@ -1,3 +1,4 @@
+(function() {
 var http = require('http'),
   fs = require('fs'),
   colors = require('colors'),
@@ -136,8 +137,6 @@ serveXml = function (req, res, params) {
  
 }
 
-
-
 nowData = function (type, location, language, geolocationParam, baseObject, req, res, params) {
   var openweathermapsApiKey = null,
     geolocation = geolocationParam.split(','),
@@ -153,42 +152,14 @@ nowData = function (type, location, language, geolocationParam, baseObject, req,
     url = baseUrl + urlParams;
     console.log(url.yellow)
     
-    /*http.get(url, function(res){
-      var data = '';
-      res.on('data', function (chunk){
-          data += chunk;
-      });
-      res.on('end',function(){
-          var obj = JSON.parse(data);
-          return obj
-      });
-    }).on('error', function(e) {
-      console.log("Got error: ", e);
-      return null;
-    });*/
     
     request({uri: url}, function (error, response, body) {
     if (!error && response.statusCode == 200) {
-      body = JSON.stringify(_.extend(true, {}, baseObject, {now: JSON.parse(body)}));
+      nowJson = JSON.stringify(_.extend({}, baseObject, {now: JSON.parse(body)}));
       res.writeHead(200, {'Content-Type': 'text/json; charset=ISO-8859-15'});
-      res.end(body);
+      res.end(nowJson);
     }
-  })
-    
-    
-  /*http.get(url, function(res) {
-      var body = '';
-      res.on('data', function(chunk) {
-        body += chunk;
-      });
-      res.on('end', function() {
-        var response = JSON.parse(body);
-        return response;
-      });
-  }).on('error', function(e) {
-      console.log("Got error: ", e);
-      return null;
-  });*/
+  });
 };
 
 getNowAndHere = function (req, res, params) {
@@ -205,14 +176,10 @@ getDetail = function (req, res, params) {
   
   detailJson = {
     hour: hour,
-    day: moment().date(),
-    now: nowData('detail', params.location_name, 'en', '0,0')
+    day: moment().date()
   };
-  console.log(detailJson)
   
-  detailJson = JSON.stringify(detailJson);
-  res.writeHead(200, {'Content-Type': 'text/json; charset=ISO-8859-15'});
-  res.end(detailJson);
+  nowData('detail', params.location_name, 'en', '0,0', detailJson, req, res, params);
 };
 
 
@@ -242,3 +209,4 @@ http.createServer(function (req, res) {
 }).listen(config.listen);
 server = 'Server running at http://127.0.0.1:' + config.listen + '/';
 console.log(server.success.bold);
+})();
