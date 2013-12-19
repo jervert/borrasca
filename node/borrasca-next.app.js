@@ -1,4 +1,11 @@
 var appServer = (function() {
+  String.prototype.replaceArray = function(find, replace) {
+    var replaceString = this;
+    for (var i = 0; i < find.length; i++) {
+      replaceString = replaceString.replace(find[i], replace[i]);
+    }
+    return replaceString;
+  };
   var http = require('http'),
     fs = require('fs'),
     colors = require('colors'),
@@ -12,13 +19,19 @@ var appServer = (function() {
     _ = require('underscore'),
     path = require('path'),
     eventEmitter = new events.EventEmitter(),
-    config;
+    config,
+    replaceable;
     
   config = {
     listen: 9000,
     paths: {
       ddbb: '../data/locations.sqlite'
     }
+  };
+  
+  replaceable = {
+    weirdCharacters: ['á', 'é', 'í', 'ó', 'ú', 'ü', 'à', 'è', 'ì', 'ò', 'ù', 'Á', 'É', 'Í', 'Ó', 'Ú', 'Ü', 'À', 'È', 'Ì', 'Ò', 'Ù'],
+    safeCharacters:  ['a', 'e', 'i', 'o', 'u', 'u', 'a', 'e', 'i', 'o', 'u', 'a', 'e', 'i', 'o', 'u', 'u', 'a', 'e', 'i', 'o', 'u']
   }
 
   colors.setTheme({
@@ -130,11 +143,17 @@ var appServer = (function() {
         res.end(data);
       });
     },
-    queryDb: function (query) {
+    fixUserInput: function (query) {
+      console.log('SEARCHED: ' + query.toLowerCase().replaceArray(replaceable.weirdCharacters, replaceable.safeCharacters))
+      return query.toLowerCase().replaceArray(replaceable.weirdCharacters, replaceable.safeCharacters);
+    },
+    queryDb: function (userQuery) {
       var queryResult = [],
         comma,
+        query = server.fixUserInput(userQuery),
         limit = 10;
-      server.db.each("SELECT id_region, id_location, name_location FROM locations WHERE name_location LIKE '%" + query +"%' LIMIT " + limit, function(err, row) {
+
+      server.db.each("SELECT id_region, id_location, name_location FROM locations WHERE name_searchable LIKE '%" + query +"%' LIMIT " + limit, function(err, row) {
         if (err !== null) {
           console.log('Query database error!!!'.error.bold);
         } else {
