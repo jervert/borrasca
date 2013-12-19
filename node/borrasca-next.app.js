@@ -65,6 +65,7 @@ var appServer = (function() {
           txt: 'text/plain',
           xml: 'text/xml',
           html: 'text/html',
+          woff: 'application/x-font-woff',
           defaultExtension: 'text/html'
         };
      
