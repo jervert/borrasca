@@ -25,7 +25,7 @@ var appServer = (function() {
   config = {
     listen: 9000,
     paths: {
-      ddbb: '../data/locations.sqlite'
+      ddbb: __dirname + '/../data/locations.sqlite'
     }
   };
   
