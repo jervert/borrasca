@@ -51,14 +51,15 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L, Piwik;
     version: (environment === 'pr' || isPhonegapApp) ? '2.3.1.2' : Date.now(),
     servicePath: (isPhonegapApp) ? 'http://borrasca-next.digitalpapyrus.es/' : '',
     server: (window.location.port === '9000') ? 'node' : 'php', // 'node' or 'php'
-    waitOnInitialize: 40,
+    waitOnInitialize: 60,
     culture: getCulture(),
     compressed: (environment === 'pr' || isPhonegapApp) ? true : false,
     legacy: false,
     geolocation: null,
     templatesReady: false,
     jsLibs: {
-      route: (!this.compressed) ? 'libs/': 'libs/min/',
+      route: (this.compressed) ? 'libs/': 'libs/min/',
+      routeNoCompressed: 'libs/',
       versions: {
         jquery: (this.legacy) ? '1.10.2' : '2.0.3',
         underscore: '1.5.1',
@@ -125,7 +126,7 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L, Piwik;
       'backbone': $Q.jsLibs.route + 'backbone-' + $Q.jsLibs.versions.backbone,
       'highcharts': $Q.jsLibs.route + 'highcharts-' + $Q.jsLibs.versions.highcharts,
       'bootstrap': $Q.jsLibs.route + 'bootstrap-' + $Q.jsLibs.versions.bootstrap,
-      'jquery_sliceSlide': $Q.jsLibs.route + 'slice-slide/jquery.sliceslide-' + $Q.jsLibs.versions.jquery_sliceSlide,
+      'jquery_sliceSlide': $Q.jsLibs.routeNoCompressed + 'slice-slide/jquery.sliceslide-' + $Q.jsLibs.versions.jquery_sliceSlide,
       'leaflet': $Q.jsLibs.route + 'leaflet-' + $Q.jsLibs.versions.leaflet,
       'adsense': window.location.protocol + '//pagead2.googlesyndication.com/pagead/js/adsbygoogle',
       'piwik': window.location.protocol + '//' + $Q.piwik.url + '/piwik',
