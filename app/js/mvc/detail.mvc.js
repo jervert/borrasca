@@ -20,7 +20,7 @@
         $graphicFigure = $(self.$el).find(this.elGraphicBox),
         graphicParam = this.getGraphicParam(parsedXml);
 
-        $.when($graphicFigure.html(_.tmpl(this.tmplGraphic, {
+        Q($graphicFigure.html(_.tmpl(this.tmplGraphic, {
         external: graphicParam.external,
         series: graphicParam.hightcharts.series
       }))).then($graphicFigure.children(this.elGraphic).first().highcharts(graphicParam.hightcharts));

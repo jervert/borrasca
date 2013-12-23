@@ -1,4 +1,4 @@
-var $Q, $, Globalize, _, Backbone, Highcharts, L, Piwik;
+var $Q, $, Globalize, _, Backbone, Highcharts, L, Piwik, Q;
 (function() {
   var environment = 'dev', // 'dev' (development) or 'pr' (production)
     defaultLanguage = 'en',
@@ -71,6 +71,7 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L, Piwik;
         bootstrap: '3.0.0',
         jquery_sliceSlide: '4.0',
         leaflet: '0.6.4',
+        q: '0.9',
         jqueryMobileEvents: 'noversion'
       },
       equivalent: {
@@ -128,6 +129,7 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L, Piwik;
       'bootstrap': $Q.jsLibs.route + 'bootstrap-' + $Q.jsLibs.versions.bootstrap,
       'jquery_sliceSlide': $Q.jsLibs.routeNoCompressed + 'slice-slide/jquery.sliceslide-' + $Q.jsLibs.versions.jquery_sliceSlide,
       'leaflet': $Q.jsLibs.route + 'leaflet-' + $Q.jsLibs.versions.leaflet,
+      'q': $Q.jsLibs.route + 'q-' + $Q.jsLibs.versions.q,
       'adsense': window.location.protocol + '//pagead2.googlesyndication.com/pagead/js/adsbygoogle',
       'piwik': window.location.protocol + '//' + $Q.piwik.url + '/piwik',
       'mixins': 'br.mixins',
@@ -184,7 +186,7 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L, Piwik;
         deps: ['jquery', 'underscore']
       },
       'br_routes': {
-        deps: ['backbone']
+        deps: ['backbone', 'q']
       },
       'br_extend_view': {
         deps: ['br_utils', 'br_routes', 'globalize', 'mixins', 'br_ui', 'bootstrap']
@@ -219,6 +221,7 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L, Piwik;
     'backbone',
     'highcharts',
     'leaflet',
+    'q',
     'jquery_sliceSlide',
     'globalize_culture',
     'mixins',
@@ -278,7 +281,8 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L, Piwik;
     Backbone = arguments[3];
     Highcharts = arguments[4];
     L = arguments[5];
-    for (i = 5; i < l; i += 1) {
+    Q = arguments[6];
+    for (i = 6; i < l; i += 1) {
       if (typeof arguments[i] === 'string') {
         templates += arguments[i];
       }
@@ -298,7 +302,7 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L, Piwik;
       }
     }
 
-    $.when($('#templates-area').append(templates)).then(function () {
+    Q($('#templates-area').append(templates)).then(function () {
       $Q.templatesReady = true;
       if ($Q.piwik.enabled) {
         $Q.utils.piwikStats.start();
