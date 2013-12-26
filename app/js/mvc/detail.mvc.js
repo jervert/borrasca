@@ -45,7 +45,8 @@
           xAxis: [{
             categories: self.getParsedXmlDays(parsedXml),
             labels: {
-              rotation: 0
+              rotation: ($(window).width() < 500) ? 90 : 0,
+              y: 20
             }
           }],
           yAxis: [
@@ -96,7 +97,8 @@
     getParsedXmlDays: function (parsedXml) {
       var days = [];
       _.each(parsedXml.days, function (day) {
-        days.push(day.formattedDay);
+        var abbrDaySlices = day.formattedDay.split(' ');
+        days.push(abbrDaySlices[0].substr(0,3) + ' ' + abbrDaySlices[1]);
       });
       return days;
     },
