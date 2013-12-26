@@ -16,7 +16,7 @@
         <ul class="nav navbar-nav">
           <li><a href="#" data-link="#aqui-y-ahora"><span class="glyphicon glyphicon-globe"></span> {{$Q.literals.header.currentLocation}}</a></li>
           [[ if ($Q.platforms.firefoxOS.enabled && !$Q.platforms.firefoxOS.installed) { ]]<li><a href="#" data-link="instalar/firefoxOS"><i class="fa fa-plus-square"></i> {{$Q.literals.header.installFirefoxOS}}</a></li>[[ } ]]
-          <li><a href="{{$Q.links.github}}" target="_blank"><i class="fa fa-github"></i> {{$Q.literals.header.forkMeInGithub}}</a></li>
+          [[ if (!$Q.isPhonegapApp) ]]<li><a href="{{$Q.links.github}}" target="_blank"><i class="fa fa-github"></i> {{$Q.literals.header.forkMeInGithub}}</a></li>[[ } ]]
         </ul>
         <div id="bookmark-list" data-bookmarks-list></div>
       </div>

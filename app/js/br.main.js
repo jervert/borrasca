@@ -1,6 +1,6 @@
 var $Q, $, Globalize, _, Backbone, Highcharts, L, Piwik, Q;
 (function() {
-  var environment = 'dev', // 'dev' (development) or 'pr' (production)
+  var environment = 'pr', // 'dev' (development) or 'pr' (production)
     defaultLanguage = 'en',
     guessIfIsPhonegapApp = function () {
       return (document.URL.indexOf( 'http://' ) === -1 && document.URL.indexOf( 'https://' ) === -1)
@@ -48,7 +48,8 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L, Piwik, Q;
   $Q = {
     appName: 'Borrasca-Next',
     appTitle: 'Borrasca-Next - ',
-    version: (environment === 'pr' || isPhonegapApp) ? '2.3.1.2' : Date.now(),
+    isPhonegapApp: isPhonegapApp,
+    version: (environment === 'pr' || isPhonegapApp) ? '2.3.1.3' : Date.now(),
     servicePath: (isPhonegapApp) ? 'http://borrasca-next.digitalpapyrus.es/' : '',
     server: (window.location.port === '9000') ? 'node' : 'php', // 'node' or 'php'
     waitOnInitialize: 60,
