@@ -22,6 +22,9 @@
           <ul class="temperatures">
             <li class="temperature temperature-min"><abbr title="{{$Q.literals.detail.temperature.min}}">{{$Q.literals.detail.temperature.minAbbr}}</abbr>: <em class="temperature-quantity">{{day.forecast.temperatureMinMax.min}}º C</em></li>
             <li class="temperature temperature-max"><abbr title="{{$Q.literals.detail.temperature.max}}">{{$Q.literals.detail.temperature.maxAbbr}}</abbr>: <em class="temperature-quantity">{{day.forecast.temperatureMinMax.max}}º C</em></li>
+            [[ if (!_.isNull(day.forecast.snowLevel)) { ]]
+            <li class="snow-level alert">{{$Q.literals.detail.snowLevel}}: <em class="temperature-quantity">{{day.forecast.snowLevel}} m.</em></li>
+            [[ } ]]
           </ul>
           <table class="table table-striped table-responsive day-table">
             <thead>

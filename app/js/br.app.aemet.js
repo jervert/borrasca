@@ -37,6 +37,10 @@ $Q.aemet = (function () {
         });
         return hours;
       },
+      dayForecastSnowLevel: function ($dia) {
+        var snowLevelProv = $dia.find('cota_nieve_prov[periodo="00-24"], cota_nieve_prov:not([periodo])').text();
+        return (!_.isEmpty(snowLevelProv)) ? snowLevelProv : null;
+      },
       dayForecastMaxUv: function ($dia) {
         return $dia.find('uv_max').text();
       },
@@ -51,7 +55,8 @@ $Q.aemet = (function () {
         return {
           temperatureMinMax: fn.dayForecastMinAndMax($dia),
           maxUv: fn.dayForecastMaxUv($dia),
-          hours: fn.dayForecastByHours($dia, currentHour, dayIndex)
+          hours: fn.dayForecastByHours($dia, currentHour, dayIndex),
+          snowLevel: fn.dayForecastSnowLevel($dia)
         };
       },
       days: function (currentDate) {
