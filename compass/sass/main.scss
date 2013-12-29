@@ -103,16 +103,20 @@ body {padding-top: 70px;}
 				@media (min-width: 992px) {font-size:24px;}
 			}
 			.day-forecast-content {
-				.temperatures {
+				.highlights {
 					list-style:none; padding:0;
-					.temperature {
-						display:inline-block; font-size:16px;
+					.item {
+						display:inline-block; font-size:16px; margin:0; padding:0;
 						.temperature-quantity {font-style:normal; font-weight:bold;}
 						&.temperature-min {
 							margin-right:10px;
 							.temperature-quantity {color:#1B77E0;}
 						}
 						&.temperature-max .temperature-quantity {color:#E30E35;}
+            &.snow-level {
+            float:right;
+              .fa-exclamation-triangle {color:#FFB200;}
+            }
 					}
 				}
 			}
