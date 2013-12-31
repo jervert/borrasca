@@ -1,0 +1,47 @@
+@charset "utf-8";
+/* CSS Document */
+/*@import "includes/_fonts";*/
+
+#quick-search .ui-btn[data-icon="delete"] {
+  display: inline-block;
+}
+#quick-search .ui-btn[data-icon="search"] {
+  display:none;
+  @media (min-width: 28em) {display:inline-block;}
+}
+
+
+.ui-table {
+  width: 100%;
+  td {font-weight:normal; font-size:14px;}
+  th {font-weight:bold; font-size:12px;}
+  tbody {
+    td, th {vertical-align:center;}
+  }
+}
+
+.location-detail {
+  header {
+    .location-name, .region-name {display:inline-block; margin-right:6px;}
+    .bookmark {display:inline-block;}
+  }
+  .temperatures {
+    list-style:none; margin:10px 0; padding:0;
+    .temperature {
+      display:inline-block; margin-right:10px;
+      em {
+        font-style:normal; font-weight:bold;
+      }
+      &.temperature-min .temperature-quantity {color:#345A8E;}
+      &.temperature-max .temperature-quantity {color:#f00;}
+    }
+  }
+  .day-forecast-content {
+    .unit {font-size:10px;}
+  }
+}
+
+.loading {
+  padding:50px 0;
+  p {margin:0 auto; width:56px;}
+}

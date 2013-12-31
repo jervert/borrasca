@@ -1,0 +1,85 @@
+@charset "utf-8";
+/* CSS Document */
+/*@import "includes/_fonts";*/
+/* line 5, compass/sass/BR_CSS_main.scss */
+#quick-search .ui-btn[data-icon="delete"] {
+  display: inline-block;
+}
+
+/* line 8, compass/sass/BR_CSS_main.scss */
+#quick-search .ui-btn[data-icon="search"] {
+  display: none;
+}
+@media (min-width: 28em) {
+  /* line 8, compass/sass/BR_CSS_main.scss */
+  #quick-search .ui-btn[data-icon="search"] {
+    display: inline-block;
+  }
+}
+
+/* line 14, compass/sass/BR_CSS_main.scss */
+.ui-table {
+  width: 100%;
+}
+/* line 16, compass/sass/BR_CSS_main.scss */
+.ui-table td {
+  font-weight: normal;
+  font-size: 14px;
+}
+/* line 17, compass/sass/BR_CSS_main.scss */
+.ui-table th {
+  font-weight: bold;
+  font-size: 12px;
+}
+/* line 19, compass/sass/BR_CSS_main.scss */
+.ui-table tbody td, .ui-table tbody th {
+  vertical-align: center;
+}
+
+/* line 25, compass/sass/BR_CSS_main.scss */
+.location-detail header .location-name, .location-detail header .region-name {
+  display: inline-block;
+  margin-right: 6px;
+}
+/* line 26, compass/sass/BR_CSS_main.scss */
+.location-detail header .bookmark {
+  display: inline-block;
+}
+/* line 28, compass/sass/BR_CSS_main.scss */
+.location-detail .temperatures {
+  list-style: none;
+  margin: 10px 0;
+  padding: 0;
+}
+/* line 30, compass/sass/BR_CSS_main.scss */
+.location-detail .temperatures .temperature {
+  display: inline-block;
+  margin-right: 10px;
+}
+/* line 32, compass/sass/BR_CSS_main.scss */
+.location-detail .temperatures .temperature em {
+  font-style: normal;
+  font-weight: bold;
+}
+/* line 35, compass/sass/BR_CSS_main.scss */
+.location-detail .temperatures .temperature.temperature-min .temperature-quantity {
+  color: #345A8E;
+}
+/* line 36, compass/sass/BR_CSS_main.scss */
+.location-detail .temperatures .temperature.temperature-max .temperature-quantity {
+  color: #f00;
+}
+/* line 40, compass/sass/BR_CSS_main.scss */
+.location-detail .day-forecast-content .unit {
+  font-size: 10px;
+}
+
+/* line 44, compass/sass/BR_CSS_main.scss */
+.loading {
+  padding: 50px 0;
+}
+/* line 46, compass/sass/BR_CSS_main.scss */
+.loading p {
+  margin: 0 auto;
+  width: 56px;
+}

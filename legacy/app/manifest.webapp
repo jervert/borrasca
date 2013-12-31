@@ -1,0 +1,29 @@
+{
+    "version": "1.0",
+    "name": "Borrasca",
+    "description": "Predicción meteorológica AEMET",
+    "launch_path": "/borrasca/index.html",
+    "icons": {
+        "16": "/assets/BR_IMG_app_icon.png",
+        "48": "/assets/BR_IMG_app_icon.png",
+        "128": "/assets/BR_IMG_app_icon.png"
+    },
+    "developer": {
+        "name": "Antonio Rodríguez Ruiz",
+        "url": "http://outbook.es"
+    },
+    "installs_allowed_from": ["*"],
+    "locales": {
+        "en": {
+            "description": "Forecast with AEMET data",
+            "developer": {
+                "name": "Antonio Rodríguez Ruiz",
+                "url": "http://outbook.es"
+            }
+        }
+    },
+    "default_locale": "es",
+    "permissions": {     
+    },
+    "fullscreen": "true"
+}

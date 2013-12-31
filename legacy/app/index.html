@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title>Borrasca</title>
+
+    <link rel="apple-touch-icon" href="assets/BR_IMG_app_icon.png" />
+    <link rel="apple-touch-startup-image" href="assets/BR_IMG_app_startup_360.png" media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 1)" />
+    <link rel="apple-touch-startup-image" href="assets/BR_IMG_app_startup.png" media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 2)" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+
+    <link rel="stylesheet" href="assets/libs/jquery-mobile-1.3.1/jquery.mobile-1.3.1.min.css" />
+    <link rel="stylesheet" href="assets/libs/jquery-mobile-1.3.1/themes/borrasca.min.css" />
+    <link rel="stylesheet" href="assets/BR_CSS_main.css" />
+    <script src="assets/libs/jquery-2.0.2.min.js"></script>
+    <script src="assets/libs/jquery-mobile-1.3.1/jquery.mobile-1.3.1.min.js"></script>
+    <script src="assets/libs/globalize/globalize.js"></script>
+    <script src="assets/libs/globalize/cultures/globalize.culture.es-ES.js"></script>
+    <script src="assets/libs/underscore-min.js"></script>
+    <script src="assets/libs/backbone-min.js"></script>
+
+<script type="text/template" id="tmpl-loading">
+  <div class="loading">
+    <p><img src="assets/BR_IMG_HTML_loading.gif" alt="Cargando" /></p>
+  </div>
+</script>
+
+
+<script type="text/template" id="tmpl-bookmarks-list">
+  [[ if (_.isArray(locations) && locations.length > 0) { ]]
+  <div data-bookmarks-list>
+  <ul data-role="listview" data-divider-theme="a" data-inset="true">
+    <li data-role="list-divider" role="heading">Favoritos</li>
+    [[ _.each(locations, function (item, index) { ]]
+    <li><a data-bookmark href="#" data-href="#localidad/{{item}}">{{locationsName[index]}}</a></li>
+    [[ });]]
+  </ul>
+  </div>
+  [[ } ]]
+</script>
+
+
+<script type="text/template" id="tmpl-quick-search">
+  [[ /*if (window.navigator.mozApps) { ]]
+  <ul data-role="content" data-install-ff-os-area>
+    <li data-role="button" data-inline="true" data-icon="check" data-mini="true" tabindex="0" data-install-ff-os>Instalar app</li>
+    <li data-role="button" data-inline="true" data-icon="delete" data-mini="true" tabindex="0" data-close-install-ff-os>Cancelar</li>
+  </ul>
+  [[ }*/ ]]
+  <form action="" id="quick-search">
+    <div data-role="fieldcontain">
+      <input name="search-terms" id="search-terms" placeholder="Nombre de municipio" value="" type="search" autocomplete="off" />
+      <input type="button" value="Buscar" id="search-button" data-icon="search" data-inline="true" data-mini="true" />
+    </div>
+  </form>
+  <div id="quick-results">
+    [[ if (!_.isEmpty(locations)) { ]]
+      _.tmpl('#tmpl-quick-results', locations);
+    [[ } ]]
+  </div>
+</script>
+
+<script type="text/template" id="tmpl-quick-results">
+  <ul data-role="listview" data-divider-theme="a" data-inset="true">
+    <li data-role="list-divider" role="heading">Resultados</li>
+    [[ if (_.isArray(locations) && locations.length > 0) { ]]
+    [[ _.each(locations, function (item) { ]]
+    <li><a data-result href="#" data-href="#localidad/{{item.link}}">{{item.name}}</a></li>
+    [[ });]]
+    [[ } else { ]]
+    <li>No se han encontrado resultados</li>
+   [[ } ]]
+  </ul>
+</script>
+
+
+<script type="text/template" id="tmpl-bookmarks">
+  [[ if (!isBookmarked) { ]]
+    <p data-add-bookmark data-role="button" data-icon="plus" data-mini="true" data-inline="true" role="button" tabindex="0">Añadir</p>
+  [[ } else { ]]
+    <p data-remove-bookmark data-role="button" data-icon="minus" data-mini="true" data-inline="true" role="button" tabindex="0">Quitar</p>
+  [[ } ]]
+</script>
+
+<script type="text/template" id="tmpl-link-to-detail">
+<span role="link" tabindex="0" data-navigate-anchor="{{element}}"></span>
+</script>
+
+<script type="text/template" id="tmpl-detail">
+  <section class="location-detail">
+    <header>
+      <h2 class="location-name">{{locationName}}</h2>
+      <p class="region-name">en {{regionName}}</p>
+      [[ if ($Q.supported.html5.storage) { ]]
+      <div class="bookmark" data-bookmark>{{_.tmpl('#tmpl-bookmarks', {isBookmarked: isBookmarked})}}</div>
+      [[ } ]]
+    </header>
+    <div class="days-forecast" data-role="collapsible-set" data-content-theme="d">
+    [[ _.each(days, function (day, index) { ]]
+    <section class="day-forecast" data-role="collapsible" data-collapsed="[[ if (index === 0) { ]]false[[ } else { ]]true[[ } ]]">
+      <h3 class="day-forecast-title">{{day.formattedDate}}</h3>
+      <div class="day-forecast-content">
+        <ul class="temperatures">
+          <li class="temperature temperature-min">Min: <em class="temperature-quantity">{{day.forecast.temperatureMinMax.min}}º C</em></li>
+          <li class="temperature temperature-max">Max: <em class="temperature-quantity">{{day.forecast.temperatureMinMax.max}}º C</em></li>
+        </ul>
+        <!--table class="ui-responsive table-stroke table-stripe ui-table" data-role="table" id="detail" data-mode="reflow"-->
+        <table class="table-stroke ui-table">
+          <thead>
+            <tr>
+              <th>Hora</th>
+              <th>Cielo</th>
+              <th>Lluvia</th>
+              <th abbr="Temperatura">Temp. <span class="unit">(°C)</span></th>
+              <th>Viento <span class="unit">(km/h)</span></th>
+            </tr>
+          </thead>
+          <tbody>
+          [[ _.each(day.forecast.hours, function (hour) { ]]
+            <tr>
+              <th>{{hour.hour}}</th>
+              <td><img src="assets/icons/BOR_IMG_icon_sky_{{hour.skyStatus.img}}.gif" alt="{{hour.skyStatus.text}}" title="{{hour.skyStatus.text}}" /></td>
+              <td>{{hour.rainfallProbability}}%</td>
+              <td>{{hour.temperature}}º</td>
+              <td><img src="assets/icons/BOR_IMG_icon_wind_{{hour.wind.direction}}.gif" alt="{{hour.wind.direction}}" title="{{hour.wind.direction}}" /> {{hour.wind.speed}}</td>
+            </tr>
+          [[ }); ]]
+          </tbody>
+        </table>
+      </div>
+    </section>
+    [[ }); ]]
+    </div>
+    <footer>
+      <h3>Información del contenido</h3>
+      <p class="created">Predicción elaborada: {{created}}</p>
+      <p><a href="{{about.link}}" target="_blank">{{about.author}}</a></p>
+    </footer>
+  </section>
+</script>
+
+
+</head>
+
+<body>
+
+<div data-role="page" id="page1" data-theme="a">
+  <header data-role="header">
+    <h3>Borrasca</h3>
+  </header>
+
+  <div data-role="content">
+    <section id="bookmark-list"></section>
+    <section id="search-quick"></section>
+
+    <div id="page-content"></div>
+  </div>
+  
+</div>
+
+
+<script src="assets/main.js?20130926"></script>
+
+</body>
+</html>
