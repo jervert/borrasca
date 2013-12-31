@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW X6 -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="512px" height="512px" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 512 512"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .fil5 {fill:url(#id0)}
+    .fil10 {fill:url(#id1)}
+    .fil2 {fill:url(#id2)}
+    .fil12 {fill:url(#id3)}
+    .fil0 {fill:url(#id4)}
+    .fil9 {fill:url(#id5)}
+    .fil7 {fill:url(#id6)}
+    .fil17 {fill:url(#id7)}
+    .fil16 {fill:url(#id8)}
+    .fil15 {fill:url(#id9)}
+    .fil4 {fill:url(#id10)}
+    .fil11 {fill:url(#id11)}
+    .fil3 {fill:url(#id12)}
+    .fil13 {fill:url(#id13)}
+    .fil1 {fill:url(#id14)}
+    .fil8 {fill:url(#id15)}
+    .fil6 {fill:url(#id16)}
+    .fil14 {fill:url(#id17)}
+   ]]>
+  </style>
+  <radialGradient id="id0" gradientUnits="objectBoundingBox" cx="55.9999%" cy="50%" r="50%" fx="55.9999%" fy="50%">
+   <stop offset="0" style="stop-color:#FCEF70"/>
+   <stop offset="1" style="stop-color:#FFC847"/>
+  </radialGradient>
+  <radialGradient id="id1" gradientUnits="objectBoundingBox" xlink:href="#id0" cx="52%" cy="51%" r="50%" fx="52%" fy="51%">
+  </radialGradient>
+  <radialGradient id="id2" gradientUnits="objectBoundingBox" xlink:href="#id0" cx="50%" cy="54.9999%" r="50%" fx="50%" fy="54.9999%">
+  </radialGradient>
+  <radialGradient id="id3" gradientUnits="objectBoundingBox" xlink:href="#id0" cx="49.9999%" cy="50%" r="50.0001%" fx="49.9999%" fy="50%">
+  </radialGradient>
+  <radialGradient id="id4" gradientUnits="objectBoundingBox" xlink:href="#id0" cx="50%" cy="44.0003%" r="50%" fx="50%" fy="44.0003%">
+  </radialGradient>
+  <radialGradient id="id5" gradientUnits="objectBoundingBox" xlink:href="#id0" cx="51%" cy="48%" r="50%" fx="51%" fy="48%">
+  </radialGradient>
+  <radialGradient id="id6" gradientUnits="objectBoundingBox" xlink:href="#id0" cx="54.9997%" cy="50.0001%" r="50.0001%" fx="54.9997%" fy="50.0001%">
+  </radialGradient>
+  <radialGradient id="id7" gradientUnits="objectBoundingBox" cx="37%" cy="52%" r="50%" fx="37%" fy="52%">
+   <stop offset="0" style="stop-color:#FEFEFE"/>
+   <stop offset="1" style="stop-color:#CCCCCC"/>
+  </radialGradient>
+  <radialGradient id="id8" gradientUnits="objectBoundingBox" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+   <stop offset="0" style="stop-color:yellow"/>
+   <stop offset="1" style="stop-color:#FF6600"/>
+  </radialGradient>
+  <radialGradient id="id9" gradientUnits="objectBoundingBox" xlink:href="#id0" cx="50%" cy="49.9999%" r="50.0001%" fx="50%" fy="49.9999%">
+  </radialGradient>
+  <radialGradient id="id10" gradientUnits="objectBoundingBox" xlink:href="#id0" cx="44.0001%" cy="50%" r="50%" fx="44.0001%" fy="50%">
+  </radialGradient>
+  <radialGradient id="id11" gradientUnits="objectBoundingBox" xlink:href="#id0" cx="48%" cy="49%" r="50%" fx="48%" fy="49%">
+  </radialGradient>
+  <radialGradient id="id12" gradientUnits="objectBoundingBox" xlink:href="#id0" cx="50%" cy="45.0001%" r="50%" fx="50%" fy="45.0001%">
+  </radialGradient>
+  <radialGradient id="id13" gradientUnits="objectBoundingBox" xlink:href="#id0" cx="50.0001%" cy="50%" r="50.0001%" fx="50.0001%" fy="50%">
+  </radialGradient>
+  <radialGradient id="id14" gradientUnits="objectBoundingBox" xlink:href="#id0" cx="50%" cy="55.9997%" r="50%" fx="50%" fy="55.9997%">
+  </radialGradient>
+  <radialGradient id="id15" gradientUnits="objectBoundingBox" xlink:href="#id0" cx="49%" cy="52%" r="50%" fx="49%" fy="52%">
+  </radialGradient>
+  <radialGradient id="id16" gradientUnits="objectBoundingBox" xlink:href="#id0" cx="45.0003%" cy="49.9999%" r="50.0001%" fx="45.0003%" fy="49.9999%">
+  </radialGradient>
+  <radialGradient id="id17" gradientUnits="objectBoundingBox" xlink:href="#id0" cx="50%" cy="49.9999%" r="50.0001%" fx="50%" fy="49.9999%">
+  </radialGradient>
+ </defs>
+ <g id="Layer_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <g id="_922821200">
+   <path class="fil0" d="M484 167c5,12 -79,57 -100,65 -21,9 -42,6 -47,-6 -5,-12 8,-28 29,-37 21,-9 112,-35 117,-23z"/>
+   <path class="fil1" d="M28 346c-5,-12 79,-57 100,-65 21,-9 42,-6 47,6 5,12 -8,28 -29,37 -21,9 -112,35 -117,23z"/>
+   <path class="fil2" d="M483 347c-5,12 -96,-16 -117,-24 -21,-9 -34,-25 -29,-37 5,-12 26,-14 47,-6 21,9 104,55 99,67z"/>
+   <path class="fil3" d="M29 166c5,-12 96,16 117,24 21,9 34,25 29,37 -5,12 -26,14 -47,6 -21,-9 -104,-55 -99,-67z"/>
+   <path class="fil4" d="M160 34c12,-5 57,79 65,100 9,21 6,42 -6,47 -12,5 -28,-8 -37,-29 -9,-21 -35,-112 -23,-117z"/>
+   <path class="fil5" d="M359 496c-12,5 -57,-79 -65,-100 -9,-21 -6,-42 6,-47 12,-5 28,8 37,29 9,21 35,112 23,117z"/>
+   <path class="fil6" d="M152 496c-12,-5 16,-96 24,-117 9,-21 25,-34 37,-29 12,5 14,26 6,47 -9,21 -55,104 -67,99z"/>
+   <path class="fil7" d="M353 35c12,5 -16,96 -24,117 -9,21 -25,34 -37,29 -12,-5 -14,-26 -6,-47 9,-21 55,-104 67,-99z"/>
+   <path class="fil8" d="M60 439c-9,-9 51,-83 67,-99 16,-16 36,-22 45,-13 9,9 3,29 -13,45 -16,16 -91,75 -100,66z"/>
+   <path class="fil9" d="M452 73c9,9 -51,83 -67,99 -16,16 -36,22 -45,13 -9,-9 -3,-29 13,-45 16,-16 91,-75 100,-66z"/>
+   <path class="fil10" d="M451 440c-9,9 -83,-51 -99,-67 -16,-16 -22,-36 -13,-45 9,-9 29,-3 45,13 16,16 75,91 66,100z"/>
+   <path class="fil11" d="M61 72c9,-9 83,51 99,67 16,16 22,36 13,45 -9,9 -29,3 -45,-13 -16,-16 -75,-91 -66,-100z"/>
+   <path class="fil12" d="M505 257c0,13 -95,22 -117,22 -23,0 -41,-10 -41,-23 0,-13 18,-23 41,-23 23,0 117,11 117,24z"/>
+   <path class="fil13" d="M7 255c0,-13 95,-22 117,-22 23,0 41,10 41,23 0,13 -18,23 -41,23 -23,0 -117,-11 -117,-24z"/>
+   <path class="fil14" d="M255 505c-13,0 -22,-95 -22,-117 0,-23 10,-41 23,-41 13,0 23,18 23,41 0,23 -11,117 -24,117z"/>
+   <path class="fil15" d="M256 7c13,0 22,95 22,117 0,23 -10,41 -23,41 -13,0 -23,-18 -23,-41 0,-23 11,-117 24,-117z"/>
+   <circle id="SunCore" class="fil16" cx="256" cy="256" r="150"/>
+  </g>
+  <path class="fil17" d="M346 151c36,-1 35,16 56,26 18,9 47,22 56,34 16,20 36,30 36,41 0,25 -103,22 -148,25 -45,2 -106,8 -139,-20 -18,-15 -10,-33 17,-57 10,-8 36,-11 51,-20 22,-12 37,-29 70,-30z"/>
+  <path class="fil17" d="M202 194c46,-1 45,16 73,26 24,9 61,22 73,34 21,20 47,30 47,41 0,25 -133,22 -192,25 -59,2 -137,8 -181,-20 -23,-15 -14,-33 23,-57 13,-8 46,-11 66,-20 29,-12 48,-29 91,-30z"/>
+ </g>
+</svg>
