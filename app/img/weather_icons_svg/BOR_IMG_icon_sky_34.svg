@@ -8,7 +8,7 @@ viewBox="0 0 512 512"
   <style type="text/css">
    <![CDATA[
     .str0 {stroke:#CCCCCC;stroke-width:0.216}
-    .str1 {stroke:#0C4278;stroke-width:1.00006}
+    .str1 {stroke:#0C4278;stroke-width:1.99984}
     .fil19 {fill:#DEF1FF}
     .fil17 {fill:url(#id0)}
     .fil5 {fill:url(#id1)}
@@ -80,7 +80,7 @@ viewBox="0 0 512 512"
  </defs>
  <g id="Layer_x0020_1">
   <metadata id="CorelCorpID_0Corel-Layer"/>
-  <g id="_931905248">
+  <g id="_927070432">
    <path class="fil0" d="M484 167c5,12 -79,57 -100,65 -21,9 -42,6 -47,-6 -5,-12 8,-28 29,-37 21,-9 112,-35 117,-23z"/>
    <path class="fil1" d="M28 346c-5,-12 79,-57 100,-65 21,-9 42,-6 47,6 5,12 -8,28 -29,37 -21,9 -112,35 -117,23z"/>
    <path class="fil2" d="M483 347c-5,12 -96,-16 -117,-24 -21,-9 -34,-25 -29,-37 5,-12 26,-14 47,-6 21,9 104,55 99,67z"/>
