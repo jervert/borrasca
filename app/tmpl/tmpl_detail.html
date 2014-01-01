@@ -40,7 +40,7 @@
             [[ _.each(day.forecast.hours, function (hour) { ]]
               <tr>
                 <th>{{hour.hour}}</th>
-                <td><img src="img/weather_icons/BOR_IMG_icon_sky_{{hour.skyStatus.img}}.gif?{{$Q.version}}" alt="{{hour.skyStatus.text}}" title="{{hour.skyStatus.text}}" /></td>
+                <td class="sky-status"><img src="img/weather_icons_svg/BOR_IMG_icon_sky_{{hour.skyStatus.img}}.svg?{{$Q.version}}" alt="{{hour.skyStatus.text}}" title="{{hour.skyStatus.text}}" /></td>
                 <td>{{hour.rainfallProbability}}%</td>
                 <td>{{hour.temperature}}º</td>
                 <td><i class="{{$Q.ui.weatherFontIcon(hour.wind.direction)}}" title="{{hour.wind.direction}}"></i> {{hour.wind.speed}}</td>
