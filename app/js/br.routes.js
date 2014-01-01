@@ -4,6 +4,7 @@
       "localidad/:id/:locationUrl": "locationDetail",
       "aqui-y-ahora": "defaultRoute",
       "instalar/:platform": "install",
+      "iconos": "icons",
       "*actions": "defaultRoute"
     },
 
@@ -15,6 +16,9 @@
         id: id,
         locationUrl: locationUrl
       });
+    },
+    icons: function () {
+      $Q.views.icons = new $Q.IconsView();
     },
     install: function (platform) {
       $Q.views.install = new $Q.InstallView({

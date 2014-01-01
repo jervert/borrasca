@@ -1,0 +1,24 @@
+<script type="text/template" id="tmpl-icons">
+
+<table class="table table-striped table-responsive icons-table">
+  <thead>
+    <tr>
+      <th scope="col">{{$Q.literals.icons.icon}}</th>
+      <th scope="col">{{$Q.literals.icons.value}}</th>
+      <th scope="col">GIF</th>
+      <th scope="col">SVG</th>
+    </tr>
+  </thead>
+  <tbody>
+  [[ _.each(icons, function (icon) { ]]
+    <tr>
+      <td>{{icon.id}}</td>
+      <td>{{icon.value}}</td>
+      <td><img src="img/weather_icons/BOR_IMG_icon_sky_{{icon.id}}.gif" alt="{{icon.value}}" /></td>
+      <td><img src="img/weather_icons_svg/BOR_IMG_icon_sky_{{icon.id}}.svg" alt="{{icon.value}}" width="36" height="36" /></td>
+    </tr>
+  [[ }); ]]
+  </tbody>
+</table>
+
+</script>

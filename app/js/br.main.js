@@ -1,6 +1,6 @@
 var $Q, $, Globalize, _, Backbone, Highcharts, L, Piwik, Q;
 (function() {
-  var environment = 'pr', // 'dev' (development) or 'pr' (production)
+  var environment = 'dev', // 'dev' (development) or 'pr' (production)
     defaultLanguage = 'en',
     guessIfIsPhonegapApp = function () {
       return (document.URL.indexOf( 'http://' ) === -1 && document.URL.indexOf( 'https://' ) === -1)
@@ -143,7 +143,8 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L, Piwik, Q;
       'mvc_bookmarks': 'mvc/bookmarks.mvc',
       'mvc_nowAndHere': 'mvc/nowAndHere.mvc',
       'mvc_detail': 'mvc/detail.mvc',
-      'mvc_install': 'mvc/install.mvc'
+      'mvc_install': 'mvc/install.mvc',
+      'mvc_icons': 'mvc/icons.mvc'
     },
     shim: {
       'underscore': {
@@ -209,6 +210,9 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L, Piwik, Q;
       },
       'mvc_install': {
         deps: ['mvc_main']
+      },
+      'mvc_icons': {
+        deps: ['mvc_main']
       }
     },
     waitSeconds: 40,
@@ -236,6 +240,7 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L, Piwik, Q;
     'mvc_nowAndHere',
     'mvc_detail',
     'mvc_install',
+    'mvc_icons',
     'br.app.aemet'
   ];
   if ($Q.adsense.enabled) {
@@ -258,7 +263,8 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L, Piwik, Q;
     'text!' + $Q.templates.route + 'tmpl_bookmarks.html',
     'text!' + $Q.templates.route + 'tmpl_now_and_here.html',
     'text!' + $Q.templates.route + 'tmpl_detail.html',
-    'text!' + $Q.templates.route + 'tmpl_install.html'
+    'text!' + $Q.templates.route + 'tmpl_install.html',
+    'text!' + $Q.templates.route + 'tmpl_icons.html'
   ];
 
 
