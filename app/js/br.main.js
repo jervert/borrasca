@@ -71,7 +71,7 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L, Piwik, Q;
         highcharts: '3.0.7',
         bootstrap: '3.0.0',
         jquery_sliceSlide: '4.0',
-        leaflet: '0.6.4',
+        leaflet: '0.7.1',
         q: '0.9',
         jqueryMobileEvents: 'noversion'
       },
