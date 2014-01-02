@@ -1,18 +1,24 @@
-<?xml version="1.0" encoding="ISO-8859-15" ?>
+<?php
+header("Content-type: text/xml");
+
+  function isoDate ($days) {
+    return date('Y-m-d', (time() + (86400 * $days)));
+  }
+?><?xml version="1.0" encoding="ISO-8859-15" ?>
 <root id="28079" version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.aemet.es/xsd/localidades.xsd">
 	<origen>
-		<productor>Agencia Estatal de MeteorologÃ­a - AEMET. Gobierno de EspaÃ±a</productor>
+		<productor>Agencia Estatal de Meteorología - AEMET. Gobierno de España</productor>
 		<web>http://www.aemet.es</web>
 		<enlace>http://www.aemet.es/es/eltiempo/prediccion/municipios/madrid-id28079</enlace>
 		<language>es</language>
-		<copyright>&#169; AEMET. Autorizado el uso de la informaciÃ³n y su reproducciÃ³n citando a AEMET como autora de la misma.</copyright>
+		<copyright>&#169; AEMET. Autorizado el uso de la información y su reproducción citando a AEMET como autora de la misma.</copyright>
 		<nota_legal>http://www.aemet.es/es/nota_legal</nota_legal>
 	</origen>
-	<elaborado>2013-11-18T12:00:02</elaborado>
+	<elaborado><?php echo isoDate(0); ?>T12:00:02</elaborado>
 	<nombre>Madrid</nombre>
 	<provincia>Madrid</provincia>
 	<prediccion>
-		<dia fecha="2013-11-18">
+		<dia fecha="<?php echo isoDate(0); ?>">
 			<prob_precipitacion periodo="00-24"></prob_precipitacion>
 			<prob_precipitacion periodo="00-12"></prob_precipitacion>
 			<prob_precipitacion periodo="12-24">100</prob_precipitacion>
@@ -95,7 +101,7 @@
 			</humedad_relativa>
 			<uv_max>2</uv_max>
 		</dia>
-		<dia fecha="2013-11-19">
+		<dia fecha="<?php echo isoDate(1); ?>">
 			<prob_precipitacion periodo="00-24">55</prob_precipitacion>
 			<prob_precipitacion periodo="00-12">5</prob_precipitacion>
 			<prob_precipitacion periodo="12-24">35</prob_precipitacion>
@@ -178,7 +184,7 @@
 			</humedad_relativa>
 			<uv_max>2</uv_max>
 		</dia>
-		<dia fecha="2013-11-20">
+		<dia fecha="<?php echo isoDate(2); ?>">
 			<prob_precipitacion periodo="00-24">35</prob_precipitacion>
 			<prob_precipitacion periodo="00-12">5</prob_precipitacion>
 			<prob_precipitacion periodo="12-24">20</prob_precipitacion>
@@ -217,7 +223,7 @@
 			</humedad_relativa>
 			<uv_max>2</uv_max>
 		</dia>
-		<dia fecha="2013-11-21">
+		<dia fecha="<?php echo isoDate(3); ?>">
 			<prob_precipitacion periodo="00-24">45</prob_precipitacion>
 			<prob_precipitacion periodo="00-12">5</prob_precipitacion>
 			<prob_precipitacion periodo="12-24">40</prob_precipitacion>
@@ -256,7 +262,7 @@
 			</humedad_relativa>
 			<uv_max>2</uv_max>
 		</dia>
-		<dia fecha="2013-11-22">
+		<dia fecha="<?php echo isoDate(4); ?>">
 			<prob_precipitacion>70</prob_precipitacion>
 			<cota_nieve_prov>900</cota_nieve_prov>
 			<estado_cielo descripcion="Intervalos nubosos con lluvia escasa">43</estado_cielo>
@@ -279,7 +285,7 @@
 			</humedad_relativa>
 			<uv_max>2</uv_max>
 		</dia>
-		<dia fecha="2013-11-23">
+		<dia fecha="<?php echo isoDate(5); ?>">
 			<prob_precipitacion>35</prob_precipitacion>
 			<cota_nieve_prov>900</cota_nieve_prov>
 			<estado_cielo descripcion="Intervalos nubosos">13</estado_cielo>
@@ -301,7 +307,7 @@
 				<minima>50</minima>
 			</humedad_relativa>
 		</dia>
-		<dia fecha="2013-11-24">
+		<dia fecha="<?php echo isoDate(6); ?>">
 			<prob_precipitacion>25</prob_precipitacion>
 			<cota_nieve_prov>1000</cota_nieve_prov>
 			<estado_cielo descripcion="Intervalos nubosos">13</estado_cielo>
