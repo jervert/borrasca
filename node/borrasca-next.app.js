@@ -60,6 +60,7 @@ var appServer = (function() {
           jpg: 'image/jpeg',
           png: 'image/png',
           gif: 'image/gif',
+          svg: 'image/svg+xml',
           ico: 'image/x-icon',
           json: 'text/json',
           txt: 'text/plain',
