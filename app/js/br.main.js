@@ -49,7 +49,7 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L, Piwik, Q;
     appName: 'Borrasca-Next',
     appTitle: 'Borrasca-Next - ',
     isPhonegapApp: isPhonegapApp,
-    version: (environment === 'pr' || isPhonegapApp) ? '2.3.1.3' : Date.now(),
+    version: (environment === 'pr' || isPhonegapApp) ? '2.4.0.0' : Date.now(),
     servicePath: (isPhonegapApp) ? 'http://borrasca-next.digitalpapyrus.es/' : '',
     server: (window.location.port === '9000') ? 'node' : 'php', // 'node' or 'php'
     waitOnInitialize: 60,
