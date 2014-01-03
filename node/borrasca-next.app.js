@@ -140,8 +140,11 @@ var appServer = (function() {
       pathname = path.join(path.dirname(require.main.filename).replace('node', 'app'), pathname.substr(1));
       console.log(pathname)
       fs.readFile(pathname, function (err, data) {
-        if (err) throw err;
-        res.writeHead(200, {'Content-Type': server.getFileType(pathname)});
+        if (err) {
+          res.writeHead(404);
+        } else {
+          res.writeHead(200, {'Content-Type': server.getFileType(pathname)});
+        }
         res.end(data);
       });
     },
