@@ -12,7 +12,7 @@ $data = array();
 try  {
   $db = new PDO("sqlite:locations.sqlite");
 
-  $result = $db->query("SELECT id_region, id_location, name_location FROM locations WHERE name_location LIKE '%".$searched."%' LIMIT ".$limit);
+  $result = $db->query("SELECT id_region, id_location, name_location FROM locations WHERE name_searchable LIKE '%".$searched."%' LIMIT ".$limit);
 
   $data['result'] = 'OK';
   $data['searched'] = $searched;
