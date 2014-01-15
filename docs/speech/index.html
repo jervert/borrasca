@@ -96,7 +96,6 @@
 					<aside class="notes">Los datos de Aemet y Openweathermap son tratados en servidor previamente a su uso, con la intención a futuro de cachear esos datos y reducir las peticiones</aside>
 				</section>
 
-
 				<section data-background="#441000">
 					<section>
 						<h2>Estructuración del área de trabajo</h2>
@@ -182,7 +181,29 @@
 						</ul>
 					</section>
 					<section>
-						<h2>¿Construcción local o remota?</h2>
+						<h2>Rendimiento de WebView</h2>
+						<ul>
+							<li>En iOS las aplicaciones UIWebView tienen un rendimiento inferior a las aplicaciones web, ya que ciertas características sólo son soportadas por Safari.
+								<ul>
+									<li><a href="http://iao.fi/myposts/uiwebview" target="_blank">iOS 7 UIWebView, still not great</a></li>
+								</ul>
+							</li>
+							<li>En el caso de Android ocurre algo similar con su WebView:
+								<ul>
+									<li>Hasta la versión 4.4 utiliza el navegador de Android (sin V8, sin WebGL, sin tipografías CSS, etc.)</li>
+									<li><a href="https://developer.android.com/guide/webapps/migrating.html" target="_blank">A partir de la 4.4 pasan a utilizar Chrome</a>, lo que supone un gran mejora de cara al futuro para estas aplicaciones.</li>
+								</ul>
+							</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Rendimiento de WebView</h2>
+						<ul>
+							<li>Phonegap quizá no es lo más adecuado para aplicaciones que sean muy exigentes en recursos, ya que hay plataformas (iOS) que no les dan un soporte adecuado.</li>
+						</ul>
+					</section>
+					<section>
+						<h2>¿Construcción local?</h2>
 						<p>Preparar un entorno para generar aplicaciones con Phonegap puede resultar un poco tortuoso:</p>
 						<ul>
 							<li><strong>Android</strong><br>Requiere el <a href="http://developer.android.com/sdk/index.html">SDK de Android</a> y algunas dependencias (Ant, Java JDK...). <strong>Soporta las tres plataformas más extendidas:</strong> Windows, Linux y MacOs.</li>
@@ -191,7 +212,7 @@
 						</ul>
 					</section>
 					<section>
-						<h2>¿Construcción remota o local?</h2>
+						<h2>¿Construcción remota?</h2>
 						<p>Existen algunos servicios en la 'Nube' que permiten construir aplicaciones con Phonegap, siendo quizá el más destacado el ofrecido por Adobe: <a href="https://build.phonegap.com/" target="_blank">Adobe PhoneGap Build</a></p>
 						<ul>
 							<li>Gratuito, limitado a una aplicación simultanea</li>
@@ -215,8 +236,8 @@
 				
 				
 				<section>
-					<h2>Versión previa</h2>
-					<p>Existe una versión previa, con Jquery Mobile y Backbone, orientada a dispositivos de menor capacidad:</p>
+					<h2>Versión clásica</h2>
+					<p>Existe una versión antigua, con Jquery Mobile y Backbone, orientada a dispositivos de menor capacidad:</p>
 					<ul>
 						<li>Versión estable: <a href="http://borrasca.digitalpapyrus.es/">http://borrasca.digitalpapyrus.es/</a></li>
 						<li><a href="https://play.google.com/store/apps/details?id=com.phonegap.borrasca" target="_blank">Disponible para Android</a></li>
