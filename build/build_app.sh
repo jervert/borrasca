@@ -2,9 +2,9 @@
 datetimef=$(date +"%Y_%m_%d__%H_%M_%S")
 location=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 workspace=~/adt_workspace/borrasca-next/www
-zipFile=$location/borrasca_next_$datetimef.zip
+zipFile=$location/../borrasca_next_$datetimef.zip
 
-7za a -tzip $zipFile $location/app/* $location/phonegap/* -x!*node_modules -x!*services -x!app.js -x!*.bat -x!*.7z -x!*.log -x!favicon.ico -x!favicon.png -x!package.json
+7za a -tzip $zipFile $location/../app/* $location/../phonegap/* -x!*node_modules -x!*services -x!app.js -x!*.bat -x!*.7z -x!*.log -x!favicon.ico -x!favicon.png -x!package.json
 echo 'Compression finished'
 rm -rf  $workspace/*
 echo 'www cleaned'
