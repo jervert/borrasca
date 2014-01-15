@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="es">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>SPI: simple, rápida, económica - Cómo se hizo borrasca</title>
+
+		<meta name="description" content="Cómo se hizo Borrasca, abarcando la aplicación web y nativa">
+		<meta name="author" content="Antonio Rodríguez Ruiz">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section data-background="img/icon.png" data-background-size="256px">
+					<h1>Borrasca</h1>
+				</section>
+
+				<section>
+					<h2>Borrasca</h2>
+					<p><img src="img/borrasca_02_large.png" alt="Borrasca en pantalla ancha" /></p>
+				</section>
+				<section>
+					<h2>¿Cómo lo pongo a funcionar?</h2>
+					<ul>
+						<li>Copia el repositorio: <a href="https://github.com/jervert/borrasca-next" target="_blank">https://github.com/jervert/borrasca-next</a></li>
+						<li>Consigue un servidor Node.js o PHP</li>
+					</ul>
+					<img src="img/borrasca_01_mobile.png" width="40%" alt="" />
+				</section>
+
+				<section>
+					<h2>¿Dónde lo puedo ver funcionando?</h2>
+					<ul>
+						<li>Versión estable:
+							<ul>
+								<li>Web: <a href="http://borrasca-next.digitalpapyrus.es/" target="_blank">http://borrasca-next.digitalpapyrus.es/</a></li>
+								<li><a href="https://play.google.com/store/apps/details?id=com.phonegap.borrasca_v2" target="_blank">Android</a></li>
+							</ul>
+						</li>
+						<li>Versión en desarrollo:
+							<ul>
+								<li>PHP: <a href="http://digitalpapyrus.no-ip.biz/borrasca-next/" target="_blank">http://digitalpapyrus.no-ip.biz/borrasca-next/</a></li>
+								<li>Node.js: <a href="http://digitalpapyrus.no-ip.biz:9000" target="_blank">http://digitalpapyrus.no-ip.biz:9000</a></li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Objetivos</h2>
+					<ol>
+						<li>Proporcionar información de previsión meteorológica de localidades de España</li>
+						<li>Contención del coste en tiempo y dinero:
+							<ul>
+								<li>Disponibilidad como aplicación web responsiva para <strong>llegar a cualquier dispositivo</strong></li>
+								<li>Distribución como aplicación 'nativa' utilizando Phonegap, llegando a las principales plataformas de dispositivos móviles</li>
+								<li>Utilización de fuentes de datos gratuitas</li>
+							</ul>
+						</li>
+						<li>Single Page Interface: restamos trabajo al servidor, lo cargamos al dispositivo cliente</li>
+					</ol>
+				</section>
+
+				<section>
+					<h2>Fuentes de datos</h2>
+					<ul>
+						<li>Aemet, para la predicción a 7 días</li>
+						<li>Openweathermap, para las condiciones actuales</li>
+						<li>Openstreetmaps para los mapas</li>
+					</ul>
+					<aside class="notes">Los datos de Aemet y Openweathermap son tratados en servidor previamente a su uso, con la intención a futuro de cachear esos datos y reducir las peticiones</aside>
+				</section>
+
+
+				<section data-background="#441000">
+					<section>
+						<h2>Estructuración del área de trabajo</h2>
+						<p>Se separa el código fuente en tres áreas (directorios):</p>
+						<ul>
+							<li>'app':<br>Contiene la base de la aplicación.</li>
+							<li>'php', 'node' y 'data':<br>Contienen la parte de servidor.</li>
+							<li>'phonegap':<br>Contiene los ficheros necesarios para combinar con la base de la aplicación y construir las versiones nativas con Phonegap.</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Otros elementos del área de trabajo</h2>
+						<ul>
+							<li>'scss':<br>estilos de la aplicación con Compass</li>
+							<li>'build', 'bin':<br>scripts para construcción de la aplicación mediante Phonegap y dependencias de binarios</li>
+							<li>'resources':<br>recursos de diseño</li>
+						</ul>
+					</section>
+				</section>
+
+				<section data-background="#00441b">
+					<h2>Servidor</h2>
+					<ul>
+						<li>La idea inicial era un servidor Node.js, aunque por razones prácticas se opta por PHP para la versión estable.</li>
+						<li>Base de datos en formato SQLite: Evita la necesidad de utilizar un servidor de base de datos, tanto PHP como Node.js la pueden consultar sin dificultades.<br>En el caso de PHP cualquier alojamiento permite utilizarlas</li>
+					</ul>
+				</section>
+
+				<section data-background="#47002f">
+					<section>
+						<h2>Cliente</h2>
+						<p>SPI utilizando Backbone.js y Underscore</lp>
+					</section>
+					
+					<section>
+						<h2>Require.js</h2>
+						<p>Se utiliza Require.js para la gestión de dependencias, cargando un primer fichero que contiene:</p>
+						<ul>
+							<li>Configuración y variables de la aplicación (pendiente de refactorización)</li>
+							<li>Listado de dependencias (se utiliza ‘shim’ para las de JS)</li>
+							<li>Inicialización de la aplicación una vez cargadas las dependencias</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Backbone / Lodash</h2>
+						<ul>
+							<li>Backbone, para las vistas, navegación, carga del modelo de datos, etc.</li>
+							<li>Lodash (similar a Underscore.js), para mixins y plantillas HTML</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Bootstrap</h2>
+						<p>Se opta por Bootstrap para evitar costes en UX</p>
+						<ul>
+							<li>Componentes HTML / CSS</li>
+							<li>Comportamientos de los componentes de la cabecera</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Otros elementos</h2>
+						<ul>
+							<li><strong>Highcharts</strong>, para los gráficos. Se pretende sustituir por D3 para evitar el pago por uso comercial en caso de añadir publicidad</li>
+							<li><strong>Leaflet</strong>, para los mapas. Permite cargar mapas, y capas, desde fuentes diversas, incluso Google Maps.</li>
+							<li><strong>SliceSlide</strong> para los slides en la predicción de localidades. Permite eventos de toque en pantalla<br><a href="https://github.com/jervert/SliceSlide" target="_blank">https://github.com/jervert/SliceSlide</a></li>
+						</ul>
+					</section>
+					<section>
+						<h2>Y obviamente...</h2>
+						<h1 class="fragment">Jquery</h1>
+					</section>
+				</section>
+
+				<section data-background="#345900">
+					<section>
+						<h2>Phonegap</h2>
+						<ul>
+							<li>Phonegap permite de un modo sencillo la conversión de una aplicación web en aplicación nativa</li>
+							<li><a href="http://en.wikipedia.org/wiki/PhoneGap#Supported_platforms" target="_blank">Soporta diversas plataformas</a>: iOS, Android, Windows Phone, Blackberry, etc.</li>
+						</ul>
+					</section>
+					<section>
+						<h2>¿Construcción local o remota?</h2>
+						<p>Preparar un entorno para generar aplicaciones con Phonegap puede resultar un poco tortuoso:</p>
+						<ul>
+							<li><strong>Android</strong><br>Requiere el <a href="http://developer.android.com/sdk/index.html">SDK de Android</a> y algunas dependencias (Ant, Java JDK...). <strong>Soporta las tres plataformas más extendidas:</strong> Windows, Linux y MacOs.</li>
+							<li><strong>Windows Phone</strong><br>Requiere Visual Studio. Fácil de instalar, pero requiere Windows 8 y destroza cualquier aplicación de virtualización que encuentre a su paso, ya que para el emulador instala Hyper-V.</li>
+							<li><strong>iOS</strong><br>Requiere xCode, sólo disponible en MacOS (y obviamente una máquina de Apple...).</li>
+						</ul>
+					</section>
+					<section>
+						<h2>¿Construcción remota o local?</h2>
+						<p>Existen algunos servicios en la 'Nube' que permiten construir aplicaciones con Phonegap, siendo quizá el más destacado el ofrecido por Adobe: <a href="https://build.phonegap.com/" target="_blank">Adobe PhoneGap Build</a></p>
+						<ul>
+							<li>Gratuito, limitado a una aplicación simultanea</li>
+							<li>Limitación en plugins</li>
+						</ul>
+						<img src="img/phonegap_build.png" alt="Adobe PhoneGap Build" width="70%">
+					</section>
+					<section>
+						<h2>Firma digital</h2>
+						<p>En ambos casos se requiere una firma digital para poder distribuir las aplicaciones (Android e iOS), que se pueden conseguir pagando las siguientes cantidades de dinero anualmente (que nos darán derecho a utilizar sus plataformas de distribución):</p>
+						<ul>
+							<li>iOS: 99$</li>
+							<li><a href="http://developer.android.com/distribute/googleplay/publish/register.html" target="_blank">Android: 25$</a> (una cuarta parte...)</li>
+							<li><a href="http://msdn.microsoft.com/en-us/library/windows/apps/jj863494.aspx" target="_blank">Windows Phone: 19$</a></li>
+						</ul>
+					</section>
+				</section>
+
+		
+
+				
+				
+				<section>
+					<h2>Versión previa</h2>
+					<p>Existe una versión previa, con Jquery Mobile y Backbone, orientada a dispositivos de menor capacidad:</p>
+					<ul>
+						<li>Versión estable: <a href="http://borrasca.digitalpapyrus.es/">http://borrasca.digitalpapyrus.es/</a></li>
+						<li><a href="https://play.google.com/store/apps/details?id=com.phonegap.borrasca" target="_blank">Disponible para Android</a></li>
+					</ul>
+					<img src="img/borrasca_legacy.png" width="30%" alt="">
+				</section>
+
+				<!--
+				<section>
+					<h2></h2>
+					<ul>
+						<li></li>
+						<li></li>
+						<li></li>
+					</ul>
+				</section>
+				<section>
+					<h2></h2>
+					<ul>
+						<li></li>
+						<li></li>
+						<li></li>
+					</ul>
+				</section>
+				<section>
+					<h2></h2>
+					<ul>
+						<li></li>
+						<li></li>
+						<li></li>
+					</ul>
+				</section>
+				-->
+
+				<section>
+					<h1>FIN</h1>
+					<p>
+						<small>Creado por <a href="http://outbook.es">Antonio Rodríguez Ruiz</a></small>
+					</p>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				//theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				theme: 'moon', // available themes are in /css/theme
+				//transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+				transition: 'cube', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
