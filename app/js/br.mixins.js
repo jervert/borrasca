@@ -17,6 +17,9 @@
         return false;
       }
     },
+    support_svg: function () {
+      return !_.isEmpty(window.SVGSVGElement);
+    },
     support_geolocation: function () {
       return ("geolocation" in navigator) ? true : false;
     },
