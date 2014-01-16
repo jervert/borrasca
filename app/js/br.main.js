@@ -46,8 +46,8 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L, Piwik, Q;
     };
 
   $Q = {
-    appName: 'Borrasca-Next',
-    appTitle: 'Borrasca-Next - ',
+    appName: 'Borrasca',
+    appTitle: 'Borrasca - ',
     isPhonegapApp: isPhonegapApp,
     version: (environment === 'pr' || isPhonegapApp) ? '2.4.0.0' : Date.now(),
     servicePath: (isPhonegapApp) ? 'http://borrasca-next.digitalpapyrus.es/' : '',
