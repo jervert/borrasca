@@ -1,6 +1,6 @@
 var $Q, $, Globalize, _, Backbone, Highcharts, L, Piwik, Q;
 (function() {
-  var environment = 'dev', // 'dev' (development) or 'pr' (production)
+  var environment = 'pr', // 'dev' (development) or 'pr' (production)
     defaultLanguage = 'en',
     guessIfIsPhonegapApp = function () {
       return (document.URL.indexOf( 'http://' ) === -1 && document.URL.indexOf( 'https://' ) === -1)
