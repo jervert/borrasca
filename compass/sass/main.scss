@@ -26,23 +26,10 @@ h1, h2, h3, h4, h5, h6 {font-family: 'Ubuntu', arial, sans-serif;}
 
 [role="link"], [role="button"] {cursor:pointer;}
 
-body {min-height:100%; padding-top: 70px;}
-html{
-    /* This image will be displayed fullscreen */
-    background:url('../img/backgroundIMG_20130825_194744.jpg') no-repeat center center;
+body {padding-top: 70px;}
 
-    /* Ensure the html element always takes up the full height of the browser window */
-    min-height:100%;
-
-    /* The Magic */
-    background-size:cover;
-}
-
-body{
-    /* Workaround for some mobile browsers */
-    
-}
-
+/*html{background:url('../img/backgrounds/IMG_20130825_194744.jpg') no-repeat center center fixed; height: 100%; background-size:cover;}
+body{height:100%;background:rgba(255, 255, 255, 0.85);}*/
 
 #initial-loading {margin:100px auto 0 auto;}
 
