@@ -3,7 +3,6 @@
   img {display:inline;}
  }
 
-
 .loading{
 	background-color:#9CC3E5; border:1px solid #5496CF; border-radius:2px; height:24px; margin:20px auto; overflow:hidden; width:192px;
 	.loading-animation-content{
@@ -60,4 +59,115 @@
 @keyframes loadingAnimation {
 	0%{margin-left:-46px;}
 	100%{margin-left:0px;}
+}
+
+
+/**
+ * (C)Leanest CSS spinner ever
+ */
+ 
+@-webkit-keyframes spin {
+	to {
+		-webkit-transform: rotate(1turn);
+	}
+}
+
+@-moz-keyframes spin {
+	to {
+		-moz-transform: rotate(1turn);
+	}
+}
+
+@-o-keyframes spin {
+	to {
+		-o-transform: rotate(1turn);
+	}
+}
+
+@-ms-keyframes spin {
+	to {
+		-ms-transform: rotate(1turn);
+	}
+}
+ 
+@keyframes spin {
+	to {
+		transform: rotate(1turn);
+	}
+}
+
+.leanest-loading-box {
+	.leanest-loading {
+		position: relative;
+		margin:20px auto;
+		width: 5em;
+		height: 5em;
+		font-size: 12px;
+		text-indent: 999em;
+		overflow: hidden;
+		-webkit-animation: spin 1s infinite steps(8);
+		-moz-animation: spin 1s infinite steps(8);
+		-o-animation: spin 1s infinite steps(8);
+		-ms-animation: spin 1s infinite steps(8);
+		animation: spin 1s infinite steps(8);
+	}
+	 
+	.small.leanest-loading {
+		font-size: 6px;
+	}
+	 
+	.large.leanest-loading {
+		font-size: 24px;
+	}
+	 
+	.leanest-loading:before,
+	.leanest-loading:after,
+	.leanest-loading > div:before,
+	.leanest-loading > div:after {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 2.25em; /* (container width - part width)/2  */
+		width: .5em;
+		height: 1.5em;
+		border-radius: .2em;
+		background: #A3D4FF;
+		box-shadow: 0 3.5em #A3D4FF; /* container height - part height */
+		-webkit-transform-origin: 50% 2.5em; /* container height / 2 */
+		-moz-transform-origin: 50% 2.5em; /* container height / 2 */
+		-o-transform-origin: 50% 2.5em; /* container height / 2 */
+		-ms-transform-origin: 50% 2.5em; /* container height / 2 */
+		transform-origin: 50% 2.5em; /* container height / 2 */
+	}
+	 
+	.leanest-loading:before {
+		background: #329CFF;
+	}
+	 
+	.leanest-loading:after {
+		-webkit-transform: rotate(-45deg);
+		-moz-transform: rotate(-45deg);
+		-o-transform: rotate(-45deg);
+		-ms-transform: rotate(-45deg);
+		transform: rotate(-45deg);
+		background: #59B1FF;
+	}
+	 
+	.leanest-loading > div:before {
+		-webkit-transform: rotate(-90deg);
+		-moz-transform: rotate(-90deg);
+		-o-transform: rotate(-90deg);
+		-ms-transform: rotate(-90deg);
+		transform: rotate(-90deg);
+
+	}
+	 
+	.leanest-loading > div:after {
+		-webkit-transform: rotate(-135deg);
+		-moz-transform: rotate(-135deg);
+		-o-transform: rotate(-135deg);
+		-ms-transform: rotate(-135deg);
+		transform: rotate(-135deg);
+
+	}
 }

@@ -4,7 +4,8 @@ _.mixin({
     var defaults = {
       text: $Q.literals.messages.loading,
       image: 'BR_IMG_HTML_loading.gif',
-      suffix: 'css3'
+      //suffix: 'css3-horizontal',
+      suffix: 'css3-circle-bars-large',
     },
     options = $.extend(true, {}, defaults, data);
     return _.tmpl('#mixin-tmpl-loading-' + options.suffix, options);
@@ -17,7 +18,26 @@ _.mixin({
     <p><img src="{{$Q.images.route}}/{{image}}" alt="{{text}}" /></p>
   </div>
 </script>
-<script type="text/template" id="mixin-tmpl-loading-css3">
+
+<script type="text/template" id="mixin-tmpl-loading-css3-circle-bars-small">
+<div class="leanest-loading-box">
+  <div class="small leanest-loading"><div>{{text}}</div></div>
+</div>
+</script>
+
+<script type="text/template" id="mixin-tmpl-loading-css3-circle-bars-medium">
+<div class="leanest-loading-box">
+  <div class="leanest-loading"><div>{{text}}</div></div>
+</div>
+</script>
+
+<script type="text/template" id="mixin-tmpl-loading-css3-circle-bars-large">
+<div class="leanest-loading-box">
+  <div class="large leanest-loading"><div>{{text}}</div></div>
+</div>
+</script>
+
+<script type="text/template" id="mixin-tmpl-loading-css3-horizontal">
   <div class="loading">
     <div class="loading-animation-content">
       <div class="bar-line"></div>
