@@ -115,8 +115,8 @@
         repairPagination,
         repairPaginationIntervalNum;
       $.fn.sliceSlide({
-        templatesUrl: 'js/libs/slice-slide/templates.html?' + $Q.version,
-        templatesCultureUrl: 'js/libs/slice-slide/cultures/templates_cultures_##CULTURE##.json?' + $Q.version,
+        templatesUrl: $Q.jsLibs.fullRoute + '/slice-slide/templates.html?' + $Q.version,
+        templatesCultureUrl: $Q.jsLibs.fullRoute + '/slice-slide/cultures/templates_cultures_##CULTURE##.json?' + $Q.version,
         slidesBoxSlideActive: '.active',
         classesActive: 'active',
         autoStart: false,

@@ -26,7 +26,22 @@ h1, h2, h3, h4, h5, h6 {font-family: 'Ubuntu', arial, sans-serif;}
 
 [role="link"], [role="button"] {cursor:pointer;}
 
-body {padding-top: 70px;}
+body {min-height:100%; padding-top: 70px;}
+html{
+    /* This image will be displayed fullscreen */
+    background:url('../img/backgroundIMG_20130825_194744.jpg') no-repeat center center;
+
+    /* Ensure the html element always takes up the full height of the browser window */
+    min-height:100%;
+
+    /* The Magic */
+    background-size:cover;
+}
+
+body{
+    /* Workaround for some mobile browsers */
+    
+}
 
 
 #initial-loading {margin:100px auto 0 auto;}

@@ -1,6 +1,6 @@
 var $Q, $, Globalize, _, Backbone, Highcharts, L, Piwik, Q;
 (function() {
-  var environment = 'pr', // 'dev' (development) or 'pr' (production)
+  var environment = 'dev', // 'dev' (development) or 'pr' (production)
     defaultLanguage = 'en',
     guessIfIsPhonegapApp = function () {
       return (document.URL.indexOf( 'http://' ) === -1 && document.URL.indexOf( 'https://' ) === -1)
@@ -49,20 +49,18 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L, Piwik, Q;
     appName: 'Borrasca',
     appTitle: 'Borrasca - ',
     isPhonegapApp: isPhonegapApp,
-    version: (environment === 'pr' || isPhonegapApp) ? '2.4.0.0' : Date.now(),
+    version: (environment === 'pr' || isPhonegapApp) ? '2.4.1.0' : Date.now(),
     servicePath: (isPhonegapApp) ? 'http://borrasca-next.digitalpapyrus.es/' : '',
     server: (window.location.port === '9000') ? 'node' : 'php', // 'node' or 'php'
     waitOnInitialize: 60,
     culture: getCulture(),
-    compressed: (environment === 'pr' || isPhonegapApp) ? true : false,
-    legacy: false,
     geolocation: null,
     templatesReady: false,
     jsLibs: {
-      route: (this.compressed) ? 'libs/': 'libs/min/',
-      routeNoCompressed: 'libs/',
+      route: 'libs/',
+      fullRoute: 'assets/js/libs',
       versions: {
-        jquery: (this.legacy) ? '1.10.2' : '2.0.3',
+        jquery: '2.0.3',
         underscore: '1.5.1',
         lodash: '2.1.0',
         backbone: '1.1.0',
@@ -128,7 +126,7 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L, Piwik, Q;
       'backbone': $Q.jsLibs.route + 'backbone-' + $Q.jsLibs.versions.backbone,
       'highcharts': $Q.jsLibs.route + 'highcharts-' + $Q.jsLibs.versions.highcharts,
       'bootstrap': $Q.jsLibs.route + 'bootstrap-' + $Q.jsLibs.versions.bootstrap,
-      'jquery_sliceSlide': $Q.jsLibs.routeNoCompressed + 'slice-slide/jquery.sliceslide-' + $Q.jsLibs.versions.jquery_sliceSlide,
+      'jquery_sliceSlide': $Q.jsLibs.route + 'slice-slide/jquery.sliceslide-' + $Q.jsLibs.versions.jquery_sliceSlide,
       'leaflet': $Q.jsLibs.route + 'leaflet-' + $Q.jsLibs.versions.leaflet,
       'q': $Q.jsLibs.route + 'q-' + $Q.jsLibs.versions.q,
       'adsense': window.location.protocol + '//pagead2.googlesyndication.com/pagead/js/adsbygoogle',

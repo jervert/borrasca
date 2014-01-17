@@ -202,14 +202,14 @@
 
             map = L.map(options.mapElement.attr('id')).setView(options.coordinates, options.initialZoom);
             icon = L.icon({
-              iconUrl: 'css/images/marker-icon.png',
+              iconUrl: 'assets/css/images/marker-icon.png',
               iconSize: [25, 41],
               iconAnchor: [12.5, 41],
-              iconRetinaUrl: 'css/images/marker-icon.png',
-              shadowUrl: 'css/images/marker-shadow.png',
+              iconRetinaUrl: 'assets/css/images/marker-icon.png',
+              shadowUrl: 'assets/css/images/marker-shadow.png',
               shadowSize: [41, 41],
               shadowAnchor: [10.5, 41],
-              shadowRetinaUrl: 'css/images/marker-shadow.png',
+              shadowRetinaUrl: 'assets/css/images/marker-shadow.png',
             });
             marker = L.marker(options.coordinates, {icon: icon}).addTo(map);
             tiles = options.mapTiles[options.selectedMapTiles];
