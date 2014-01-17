@@ -271,7 +271,6 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L, Piwik, Q;
     $Q.utils.getGeolocation();
     $(document).on('geolocated', function () {
       $Q.app_router = new $Q.AppRouter();
-      $Q.views.mainView = new $Q.MainView();
       Backbone.history.start();
     });
   }
