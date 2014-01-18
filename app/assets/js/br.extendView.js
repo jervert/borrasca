@@ -11,6 +11,8 @@
       $Q.utils.mergeEvents(this);
       if (_.isFunction(this.afterInitialize)) {
         this.afterInitialize();
+      } else {
+        this.pageLoaded();
       }
     },
     refreshPage: function () {
