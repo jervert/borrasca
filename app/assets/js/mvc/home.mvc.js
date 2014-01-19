@@ -17,6 +17,7 @@
     },
     beforeRender: function () {
       $(document.body).addClass('home');
+      this.setStorageLocationsToModel();
     },
     afterRender: function () {}
   });

@@ -28,11 +28,9 @@ h1, h2, h3, h4, h5, h6 {font-family: 'Ubuntu', arial, sans-serif;}
 
 body {
   padding-top: 70px;
-  &.home {background:rgba(255, 255, 255, 0); padding-top:0;}
+  &.home {background:url('../img/backgrounds/IMG_20130615_194943.jpg') no-repeat center center fixed; background-size:cover; min-height:100%; padding-top:0;}
 }
-
-html{background:url('../img/backgrounds/IMG_20130615_194943.jpg') no-repeat center center fixed; height: 100%; background-size:cover;}
-/*body{height:100%;background:rgba(255, 255, 255, 0.85);}*/
+html{height: 100%;}
 
 #initial-loading {margin:100px auto 0 auto;}
 
@@ -164,6 +162,15 @@ html{background:url('../img/backgrounds/IMG_20130615_194943.jpg') no-repeat cent
 	
 /* 4. NOW AND HERE */
 .now-and-here {margin-bottom:40px;}
+
+/* 5. HOME */
+#home-area {
+  .search-form {
+    float:none; margin:10px auto;
+  }
+  .home-area-modules {background:rgba(255, 255, 255, 0.8); border-radius:4px; margin:10px 0;}
+  .current-weather {padding-bottom:0;}
+}
 
 /* X. FOOTER */
 

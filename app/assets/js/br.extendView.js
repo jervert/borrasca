@@ -77,6 +77,12 @@
         $('#page-area').removeClass('hidden');
       }
       this.$el.find('.loading').remove();
+    },
+    setStorageLocationsToModel: function () {
+      this.model.set({
+        locations: _.getStorageLocations(),
+        locationsName: _.getStorageLocationsName()
+      }, {silent: true});
     }
   });
 }());
