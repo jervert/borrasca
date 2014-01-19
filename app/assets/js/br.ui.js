@@ -248,221 +248,413 @@
         // Thunderstorm
         200: { // thunderstorm with light rain
           d: 'wi-storm-showers',
-          n: 'wi-storm-showers'
+          n: 'wi-storm-showers',
+          icon: {
+            d: '63',
+            n: '63n',
+          }
         },
         201: { // thunderstorm with rain
           d: 'wi-day-thunderstorm',
-          n: 'wi-night-thunderstorm'
+          n: 'wi-night-thunderstorm',
+          icon: {
+            d: '53',
+            n: '53n',
+          }
         },
         202: { // thunderstorm with heavy rain
           d: 'wi-day-thunderstorm',
-          n: 'wi-night-thunderstorm'
+          n: 'wi-night-thunderstorm',
+          icon: {
+            d: '53',
+            n: '53n',
+          }
         },
         210: { // light thunderstorm
           d: 'wi-day-lightning',
-          n: 'wi-night-lightning'
+          n: 'wi-night-lightning',
+          icon: {
+            d: '63',
+            n: '63n',
+          }
         },
         211: { // thunderstorm
           d: 'wi-day-lightning',
-          n: 'wi-night-lightning'
+          n: 'wi-night-lightning',
+          icon: {
+            d: '63',
+            n: '63n',
+          }
         },
         212: { // heavy thunderstorm
           d: 'wi-lightning',
-          n: 'wi-lightning'
+          n: 'wi-lightning',
+          icon: {
+            d: '54',
+            n: '54n',
+          }
         },
         221: { // ragged thunderstorm
           d: 'wi-day-storm-showers ',
-          n: 'wi-night-storm-showers '
+          n: 'wi-night-storm-showers ',
+          icon: {
+            d: '53',
+            n: '53n',
+          }
         },
         230: { // thunderstorm with light drizzle
           d: 'wi-storm-showers',
-          n: 'wi-storm-showers'
+          n: 'wi-storm-showers',
+          icon: {
+            d: '63',
+            n: '63n',
+          }
         },
         231: { // thunderstorm with drizzle
           d: 'wi-storm-showers',
-          n: 'wi-storm-showers'
+          n: 'wi-storm-showers',
+          icon: {
+            d: '63',
+            n: '63n',
+          }
         },
         232: { // thunderstorm with heavy drizzle
           d: 'wi-storm-showers',
-          n: 'wi-storm-showers'
+          n: 'wi-storm-showers',
+          icon: {
+            d: '63',
+            n: '63n',
+          }
         },
 
         // Drizzle
         300: { // light intensity drizzle
           d: 'wi-rain-mix',
-          n: 'wi-rain-mix'
+          n: 'wi-rain-mix',
+          icon: {
+            d: '43',
+            n: '43n',
+          }
         },
         301: { // drizzle
           d: 'wi-rain-mix',
-          n: 'wi-rain-mix'
+          n: 'wi-rain-mix',
+          icon: {
+            d: '44',
+            n: '44n',
+          }
         },
         302: { // heavy intensity drizzle
           d: 'wi-rain',
-          n: 'wi-rain'
+          n: 'wi-rain',
+          icon: {
+            d: '45',
+            n: '45n',
+          }
         },
         310: { // light intensity drizzle rain
           d: 'wi-rain',
-          n: 'wi-rain'
+          n: 'wi-rain',
+          icon: {
+            d: '43',
+            n: '43n',
+          }
         },
         311: { // drizzle rain
           d: 'wi-rain',
-          n: 'wi-rain'
+          n: 'wi-rain',
+          icon: {
+            d: '45',
+            n: '45n',
+          }
         },
         312: { // heavy intensity drizzle rain
           d: 'wi-rain',
-          n: 'wi-rain'
+          n: 'wi-rain',
+          icon: {
+            d: '46',
+            n: '46n',
+          }
         },
         321: { // shower drizzle
           d: 'wi-rain',
-          n: 'wi-rain'
+          n: 'wi-rain',
+          icon: {
+            d: '46',
+            n: '46n',
+          }
         },
 
         // Rain
         500: { // light rain
           d: 'wi-day-sprinkle',
-          n: 'wi-night-sprinkle'
+          n: 'wi-night-sprinkle',
+          icon: {
+            d: '43',
+            n: '43n',
+          }
         },
         501: { // moderate rain
           d: 'wi-day-showers',
-          n: 'wi-night-showers'
+          n: 'wi-night-showers',
+          icon: {
+            d: '44',
+            n: '44n',
+          }
         },
         502: { // heavy intensity rain
           d: 'wi-day-rain',
-          n: 'wi-night-rain'
+          n: 'wi-night-rain',
+          icon: {
+            d: '45',
+            n: '45n',
+          }
         },
         503: { // very heavy rain
           d: 'wi-rain',
-          n: 'wi-rain'
+          n: 'wi-rain',
+          icon: {
+            d: '46',
+            n: '46n',
+          }
         },
         504: { // extreme rain
           d: 'wi-rain',
-          n: 'wi-rain'
+          n: 'wi-rain',
+          icon: {
+            d: '46',
+            n: '46n',
+          }
         },
         511: { // freezing rain
           d: 'wi-hail',
-          n: 'wi-hail'
+          n: 'wi-hail',
+          icon: {
+            d: '46',
+            n: '46n',
+          }
         },
         520: { // light intensity shower rain
           d: 'wi-day-sprinkle',
-          n: 'wi-night-sprinkle'
+          n: 'wi-night-sprinkle',
+          icon: {
+            d: '23',
+            n: '23n',
+          }
         },
         521: { // shower rain
           d: 'wi-sprinkle',
-          n: 'wi-sprinkle'
+          n: 'wi-sprinkle',
+          icon: {
+            d: '24',
+            n: '24n',
+          }
         },
         522: { // heavy intensity shower rain
           d: 'wi-sprinkle',
-          n: 'wi-sprinkle'
+          n: 'wi-sprinkle',
+          icon: {
+            d: '25',
+            n: '25n',
+          }
         },
         
         // Snow
         600: { // light snow
           d: 'wi-day-snow',
-          n: 'wi-night-snow'
+          n: 'wi-night-snow',
+          icon: {
+            d: '33',
+            n: '33n',
+          }
         },
         601: { // snow
           d: 'wi-snow',
-          n: 'wi-snow'
+          n: 'wi-snow',
+          icon: {
+            d: '34',
+            n: '34n',
+          }
         },
         602: { // heavy snow
           d: 'wi-snow',
-          n: 'wi-snow'
+          n: 'wi-snow',
+          icon: {
+            d: '35',
+            n: '35n',
+          }
         },
         611: { // sleet
           d: 'wi-day-snow',
-          n: 'wi-night-snow'
+          n: 'wi-night-snow',
+          icon: {
+            d: '36',
+            n: '36n',
+          }
         },
         621: { // shower snow
           d: 'wi-snow',
-          n: 'wi-snow'
+          n: 'wi-snow',
+          icon: {
+            d: '36',
+            n: '36n',
+          }
         },
 
         // Atmosphere
         701: { // mist
           d: 'wi-day-fog',
-          n: 'wi-night-fog'
+          n: 'wi-night-fog',
+          icon: {
+            d: '7xx',
+            n: '7xx',
+          }
         },
         711: { // smoke
           d: 'wi-fog',
-          n: 'wi-fog'
+          n: 'wi-fog',
+          icon: {
+            d: '7xx',
+            n: '7xx',
+          }
         },
         721: { // haze
           d: 'wi-day-fog',
-          n: 'wi-night-fog'
+          n: 'wi-night-fog',
+          icon: {
+            d: '7xx',
+            n: '7xx',
+          }
         },
         731: { // Sand/Dust Whirls
           d: '',
-          n: ''
+          n: '',
+          icon: {
+            d: '7xx',
+            n: '7xx',
+          }
         },
         741: { // Fog
           d: 'wi-fog',
-          n: 'wi-fog'
+          n: 'wi-fog',
+          icon: {
+            d: '7xx',
+            n: '7xx',
+          }
         },
 
         // Clouds
         800: { // sky is clear
           d: 'wi-day-sunny ',
-          n: 'wi-night-clear'
+          n: 'wi-night-clear',
+          icon: {
+            d: '11',
+            n: '11n',
+          }
         },
         801: { // few clouds
           d: 'wi-day-cloudy',
-          n: 'wi-night-cloudy'
+          n: 'wi-night-cloudy',
+          icon: {
+            d: '12',
+            n: '12n',
+          }
         },
         802: { // scattered clouds
           d: 'wi-cloudy',
-          n: 'wi-cloudy'
+          n: 'wi-cloudy',
+          icon: {
+            d: '14',
+            n: '14n',
+          }
         },
         803: { // broken clouds
           d: 'wi-cloudy',
-          n: 'wi-cloudy'
+          n: 'wi-cloudy',
+          icon: {
+            d: '15',
+            n: '15n',
+          }
         },
         804: { // overcast clouds
           d: 'wi-cloudy',
-          n: 'wi-cloudy'
+          n: 'wi-cloudy',
+          icon: {
+            d: '16',
+            n: '16n',
+          }
         },
 
         // Extreme
         900: { // tornado
           d: 'wi-tornado',
-          n: 'wi-tornado'
+          n: 'wi-tornado',
+          icon: {
+            d: '',
+            n: '',
+          }
         },
         901: { // tropical storm
           d: '',
-          n: ''
+          n: '',
+          icon: {
+            d: '',
+            n: '',
+          }
         },
         902: { // hurricane
           d: 'wi-windy',
-          n: 'wi-windy'
+          n: 'wi-windy',
+          icon: {
+            d: '',
+            n: '',
+          }
         },
         903: { // cold
           d: '',
-          n: ''
+          n: '',
+          icon: {
+            d: '',
+            n: '',
+          }
         },
         904: { // hot
           d: '',
-          n: ''
+          n: '',
+          icon: {
+            d: '',
+            n: '',
+          }
         },
         905: { // windy
           d: 'wi-strong-wind',
-          n: 'wi-strong-wind'
+          n: 'wi-strong-wind',
+          icon: {
+            d: '',
+            n: '',
+          }
         },
         906: { // hail
           d: 'wi-hail',
-          n: 'wi-hail'
+          n: 'wi-hail',
+          icon: {
+            d: '',
+            n: '',
+          }
         },
-        N: {d: arrowGlyphicon + '0'},
-        NE: {d: arrowGlyphicon + '45'},
-        E: {d: arrowGlyphicon + '90'},
-        SE: {d: arrowGlyphicon + '135'},
-        S: {d: arrowGlyphicon + '180'},
-        SO: {d: arrowGlyphicon + '225'},
-        O: {d: arrowGlyphicon + '270'},
-        NO: {d: arrowGlyphicon + '315'},
-        C: {d: 'fa fa-minus'}
+        N: {icon: {d: arrowGlyphicon + '0'}},
+        NE: {icon: {d: arrowGlyphicon + '45'}},
+        E: {icon: {d: arrowGlyphicon + '90'}},
+        SE: {icon: {d: arrowGlyphicon + '135'}},
+        S: {icon: {d: arrowGlyphicon + '180'}},
+        SO: {icon: {d: arrowGlyphicon + '225'}},
+        O: {icon: {d: arrowGlyphicon + '270'}},
+        NO: {icon: {d: arrowGlyphicon + '315'}},
+        C: {icon: {d: 'fa fa-minus'}}
       },
       timeOfDay = function () {
         return (!_.isUndefined(icon) && icon.substr(-1) === 'n') ? 'n' : 'd';
       };
-    return equivalence[code][timeOfDay()];
+    return equivalence[code]['icon'][timeOfDay()];
   };
 }());
