@@ -65,7 +65,7 @@
     },
     defaultRoute: function (actions) {
       this.destroyMainView(function () {
-        //$Q.views.home = new $Q.HomeView();
+        $Q.views.home = new $Q.HomeView();
       });
     }
   });

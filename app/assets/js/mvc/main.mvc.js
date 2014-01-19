@@ -10,6 +10,9 @@
       this.model = new $Q.ExtendViewModel();
       this.pageLoaded();
     },
+    beforeRender: function () {
+      $(document.body).removeClass('home');
+    },
     afterRender: function () {
       $Q.views.searchView = new $Q.SearchView({
         el: $('#search-area')

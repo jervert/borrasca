@@ -1,3 +1,24 @@
 <script type="text/template" id="tmpl-home">
+
+  <div id="home-area">
+    <div class="col-xs-12">
+      <form>
+        <p><input class="form-control input-lg" type="text" placeholder="{{$Q.literals.home.searchLocation}}"><button type="button" class="btn btn-default btn-lg active">Button</button></p>
+      </form>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-6">
+        <h2>{{now.name}}</h2>
+        <ul>
+          <li>{{now.weather[0].description}}</li>
+          <li>{{now.main.temp}}</li>
+        </ul>
+      </div>
+      <div class="col-xs-12 col-sm-6">
+        <h2>Favorites</h2>
+      </div>
+    </div>
+  </div>
+
 </script>
 

@@ -136,6 +136,7 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L, Piwik, Q;
       'br_utils': 'br.utils',
       'br_routes': 'br.routes',
       'br_extend_view': 'br.extendView',
+      'mvc_home': 'mvc/home.mvc',
       'mvc_main': 'mvc/main.mvc',
       'mvc_search': 'mvc/search.mvc',
       'mvc_bookmarks': 'mvc/bookmarks.mvc',
@@ -194,6 +195,9 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L, Piwik, Q;
       'mvc_main': {
         deps: ['br_extend_view']
       },
+      'mvc_home': {
+        deps: ['br_extend_view']
+      },
       'mvc_search': {
         deps: ['mvc_main']
       },
@@ -233,6 +237,7 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L, Piwik, Q;
     'br_routes',
     'br_extend_view',
     'mvc_main',
+    'mvc_home',
     'mvc_search',
     'mvc_bookmarks',
     'mvc_nowAndHere',
@@ -257,6 +262,7 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L, Piwik, Q;
     'text!' + $Q.templates.route + 'mixin_tmpl_buttons_refresh.html',
     'text!' + $Q.templates.route + 'mixin_tmpl_map_container.html',
     'text!' + $Q.templates.route + 'tmpl_main.html',
+    'text!' + $Q.templates.route + 'tmpl_home.html',
     'text!' + $Q.templates.route + 'tmpl_search.html',
     'text!' + $Q.templates.route + 'tmpl_bookmarks.html',
     'text!' + $Q.templates.route + 'tmpl_now_and_here.html',

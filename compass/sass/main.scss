@@ -26,10 +26,13 @@ h1, h2, h3, h4, h5, h6 {font-family: 'Ubuntu', arial, sans-serif;}
 
 [role="link"], [role="button"] {cursor:pointer;}
 
-body {padding-top: 70px;}
+body {
+  padding-top: 70px;
+  &.home {background:rgba(255, 255, 255, 0); padding-top:0;}
+}
 
-/*html{background:url('../img/backgrounds/IMG_20130825_194744.jpg') no-repeat center center fixed; height: 100%; background-size:cover;}
-body{height:100%;background:rgba(255, 255, 255, 0.85);}*/
+html{background:url('../img/backgrounds/IMG_20130615_194943.jpg') no-repeat center center fixed; height: 100%; background-size:cover;}
+/*body{height:100%;background:rgba(255, 255, 255, 0.85);}*/
 
 #initial-loading {margin:100px auto 0 auto;}
 
