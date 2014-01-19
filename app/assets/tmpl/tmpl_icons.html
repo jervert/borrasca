@@ -14,8 +14,8 @@
     <tr>
       <td>{{icon.id}}</td>
       <td>{{icon.value}}</td>
-      <td><img src="assets/img/weather_icons/BOR_IMG_icon_sky_{{icon.id}}.gif?{{$Q.version}}" alt="{{icon.value}}" /></td>
-      <td><img src="assets/img/weather_icons_svg/BOR_IMG_icon_sky_{{icon.id}}.svg?{{$Q.version}}" alt="{{icon.value}}" width="36" height="36" /></td>
+      <td><img src="assets/img/weather_icons/BOR_IMG_icon_sky_{{icon.file || icon.id}}.gif?{{$Q.version}}" alt="{{icon.value}}" /></td>
+      <td><img src="assets/img/weather_icons_svg/BOR_IMG_icon_sky_{{icon.file || icon.id}}.svg?{{$Q.version}}" alt="{{icon.value}}" width="36" height="36" /></td>
     </tr>
   [[ }); ]]
   </tbody>

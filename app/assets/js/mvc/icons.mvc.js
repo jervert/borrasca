@@ -66,7 +66,12 @@
       {id: '73', value: 'Muy nuboso con nieve escasa'},
       {id: '73n', value: 'Muy nuboso con nieve escasa'},
       {id: '74', value: 'Cubierto con nieve escasa'},
-      {id: '74n', value: 'Cubierto con nieve escasa'}
+      {id: '74n', value: 'Cubierto con nieve escasa'},
+      {id: '701', file: '7xx', value: 'mist'},
+      {id: '711', file: '7xx', value: 'smoke'},
+      {id: '721', file: '7xx', value: 'haze'},
+      {id: '731', file: '7xx', value: 'Sand/Dust Whirls'},
+      {id: '741', file: '7xx', value: 'Fog'}
     ],
     afterInitialize: function () {
       this.model = new $Q.ExtendViewModel();
