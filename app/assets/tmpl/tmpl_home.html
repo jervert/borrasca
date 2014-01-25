@@ -1,15 +1,18 @@
 <script type="text/template" id="tmpl-home">
 
   <div id="home-area">
-    <div class="row">
-      <form class="search-form col-xs-10 col-sm-8 col-lg-6">
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="{{$Q.literals.home.searchLocation}}">
-          <span class="input-group-btn">
-            <button class="btn btn-default" type="button">{{$Q.literals.home.search}}</button>
-          </span>
-        </div>
-      </form>
+    <div class="row" id="search-area">
+      <div class="search-form col-xs-10 col-sm-8 col-lg-6">
+        <form data-search-form>
+          <div class="input-group">
+            <input type="text" class="form-control" id="c-home-search" name="home_search" placeholder="{{$Q.literals.home.searchLocation}}">
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="button" data-search-button>{{$Q.literals.home.search}}</button>
+            </span>
+          </div>
+        </form>
+        <div id="results-area"></div>
+      </div>
     </div>
     <div class="home-area-modules row">
       <div class="home-area-module col-xs-12 col-sm-6">
@@ -55,3 +58,15 @@
 
 </script>
 
+
+<script type="text/template" id="tmpl-home-search-results">
+  <div class="list-group">
+  [[ if (_.isArray(locations) && locations.length > 0) { ]]
+    [[ _.each(locations, function (item) { ]]
+      <a class="list-group-item" data-result href="#" data-link="#localidad/{{item.link}}/{{item.name}}">{{item.name}}</a>
+    [[ });]]
+  [[ } else { ]]
+    <p class="list-group-item">{{$Q.literals.search.noResults}}</p>
+  [[ } ]]
+  </div>
+</script>
