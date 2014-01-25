@@ -60,7 +60,8 @@ class DataBorrasca {
         $data['locations'] = null;
       }
     } catch(PDOException $e) {
-      echo $e->getMessage();
+      header_status(500);
+      //echo $e->getMessage();
       $data['result'] = 'ERROR';
       $data['result_message'] = 'Database not loaded successfully';
     }
@@ -137,6 +138,7 @@ class DataBorrasca {
     $contents = @call_user_func_array('file_get_contents', $args);
     if ($contents === false) {
       //throw new Exception('Failed to open ' . $file);
+      header_status(500);
       return '{"result": "error", "message": "ERROR_GET_CONTENTS"}';
     } else {
       return $contents;

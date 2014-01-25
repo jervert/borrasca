@@ -3,6 +3,7 @@ header("Content-type: text/json");
 
 $path = '../../php/';
 include($path.'config.php');
+include($path.'function.header.php');
 include($path.'class.dataBorrasca.php');
 
 

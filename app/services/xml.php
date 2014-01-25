@@ -2,6 +2,7 @@
 header("Content-type: text/xml");
 $path = '../../php/';
 include($path.'config.php');
+include($path.'function.header.php');
 include($path.'class.dataBorrasca.php');
 
 $borrasca = new DataBorrasca();
