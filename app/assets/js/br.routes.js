@@ -5,6 +5,7 @@
       "aqui-y-ahora": "nowAndHere",
       "instalar/:platform": "install",
       "iconos": "icons",
+      "inicio": "defaultRoute",
       "*actions": "defaultRoute"
     },
 
