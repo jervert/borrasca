@@ -40,7 +40,7 @@
         <p><a href="#" data-link="aqui-y-ahora" class="btn btn-default" role="button">{{$Q.literals.home.moreInfo}}</a></p>
       </div>
       <div class="home-area-module col-xs-12 col-sm-6">
-        <h2>Favorites</h2>
+        <h2>{{$Q.literals.home.favoritesTitle}}</h2>
         [[ if (_.isArray(locations) && locations.length > 0) { ]]
         <div class="list-group">
           [[ _.each(locations, function (item, index) { ]]
