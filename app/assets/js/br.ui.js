@@ -81,6 +81,8 @@
     var defaults = {
       element: $('#content-area')
     },
+      height,
+      paddingTop;
     options = $.extend({}, defaults, options);
     
     options.element.html(_.c_loading());

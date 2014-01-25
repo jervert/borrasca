@@ -29,10 +29,10 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L, Piwik, Q;
           installed: isInstalled,
           url: manifestUrl
         };
-      if (navigator.mozApps !== undefined) {
+      /*if (navigator.mozApps !== undefined) {
         installCheck = navigator.mozApps.checkInstalled(manifestUrl);
         installCheck.onsuccess = function() {
-          if(installCheck.result.installState === 'installed') {
+          if(installCheck.result && installCheck.result.installState === 'installed') {
             isInstalled = true;
           }
         };
@@ -41,7 +41,7 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L, Piwik, Q;
           installed: isInstalled,
           url: manifestUrl
         };
-      }
+      }*/
       return config;
     };
 
