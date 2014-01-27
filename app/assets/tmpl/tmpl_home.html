@@ -1,6 +1,28 @@
 <script type="text/template" id="tmpl-home">
 
   <div id="home-area">
+
+    <div class="jumbotron">
+      <h1>{{now.name}}</h1>
+      <div class="row">
+        <div class="col-xs-4">
+          <img src="assets/img/weather_icons_svg/BOR_IMG_icon_sky_{{$Q.ui.weatherFontIcon(now.weather[0].id, now.weather[0].icon)}}.svg" alt="" width="96" height="96" />
+        </div>
+        <div class="col-xs-8">
+          <ul>
+            <li>{{now.weather[0].description}}</li>
+            <li>{{_.decimalNumber(now.main.temp)}}º C</li>
+            [[ if (!_.isEmpty(now.rain)) { ]]<p class="list-group-item-text">{{now.rain['3h']}} mm</p>[[ } ]]
+            <li class="list-group-item-text">{{_.windMsToKms(now.wind.speed)}} Km/h, <span class="hidden"> {{$Q.literals.nowWeather.direction}}</span> <span class="glyphicon glyphicon-arrow-down rot-{{(360 - Math.round(now.wind.deg))}}"></span> <abbr title="{{_.windFrom(now.wind.deg).direction}}">{{_.windFrom(now.wind.deg).directionAbbr}}</abbr></li>
+          </ul>
+        </div>
+      </div>
+      <p><a href="#" data-link="aqui-y-ahora" class="btn btn-primary btn-lg" role="button">{{$Q.literals.home.moreInfo}}</a></p>
+    </div>
+
+
+
+
     <div class="row" id="search-area">
       <div class="search-form col-xs-10 col-sm-8 col-lg-6">
         <form data-search-form>
