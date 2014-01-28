@@ -34,6 +34,8 @@ body {
     &.variant-2 {background-image:url('../img/backgrounds/IMG_20130501_212153_bg.jpg');}
     &.variant-3 {background-image:url('../img/backgrounds/IMG_20130615_194943_bg.jpg');}
     &.variant-4 {background-image:url('../img/backgrounds/IMG_20130825_194744_bg.jpg');}
+    &.variant-5 {background-image:url('../img/backgrounds/IMG_20130504_195531_bg.jpg');}
+    &.variant-6 {background-image:url('../img/backgrounds/IMG_20130615_202710_bg.jpg');}
   }
 }
 html{height: 100%;}
@@ -190,8 +192,8 @@ html{height: 100%;}
   .home-area-modules {
     background:rgba(255, 255, 255, 0); border-radius:4px; margin:10px 0;
     .home-area-module {
-      .home-area-module-title {text-shadow: 1px 1px 2px #fff, 0 0 1em #fff, 0 0 0.2em #fff;}
-      .list-group-item {background:rgba(255, 255, 255, 0.9);}
+      .home-area-module-title {text-shadow: -1px 1px 4px rgba(255, 255, 255, 1), 1px 1px 4px rgba(255, 255, 255, 1), -1px -1px 4px rgba(255, 255, 255, 1), 1px -1px 4px rgba(255, 255, 255, 1);}
+      .list-group-item {background:rgba(255, 255, 255, 0.95);}
     }
   }
   .current-weather {padding-bottom:0;}

@@ -21,7 +21,7 @@
       //this.pageLoaded();
     },
     beforeRender: function () {
-      $(document.body).addClass('home').addClass('variant-' + _.randomInInterval(1, 4));
+      $(document.body).addClass('home').addClass('variant-' + _.randomInInterval(1, 6));
       this.setStorageLocationsToModel();
     },
     afterRender: function () {},
