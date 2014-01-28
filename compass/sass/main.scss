@@ -28,11 +28,30 @@ h1, h2, h3, h4, h5, h6 {font-family: 'Ubuntu', arial, sans-serif;}
 
 body {
   padding-top: 70px;
-  &.home {background:url('../img/backgrounds/IMG_20130501_212153_bg.jpg') no-repeat center center fixed; background-size:cover; min-height:100%; padding-top:0;}
+  &.home {
+    background:#fff no-repeat center center fixed; background-size:cover; min-height:100%; padding-top:0;
+    &.variant-1 {background-image:url('../img/backgrounds/IMG_20130427_144230_bg.jpg');}
+    &.variant-2 {background-image:url('../img/backgrounds/IMG_20130501_212153_bg.jpg');}
+    &.variant-3 {background-image:url('../img/backgrounds/IMG_20130615_194943_bg.jpg');}
+    &.variant-4 {background-image:url('../img/backgrounds/IMG_20130825_194744_bg.jpg');}
+  }
 }
 html{height: 100%;}
 
 #initial-loading {margin:100px auto 0 auto;}
+
+
+#page-area, .inside-header {
+  margin:0 auto; width:98%;
+  @media (min-width: 768px) {width:94%;}
+  @media (min-width: 992px) {width:90%;}
+  @media (min-width: 1200px) {max-width:1340px;}
+
+  .home & {
+    @media (min-width: 992px) {width:900px;}
+    @media (min-width: 1200px) {max-width:900px;}
+  }
+}
 
 /* 1. COMPONENTS */
   /* 1.1. SEARCH */
@@ -168,27 +187,14 @@ html{height: 100%;}
   .search-form {
     float:none; margin:10px auto;
   }
-  .home-area-modules {background:rgba(255, 255, 255, 0.8); border-radius:4px; margin:10px 0;}
+  .home-area-modules {
+    background:rgba(255, 255, 255, 0); border-radius:4px; margin:10px 0;
+    .home-area-module {
+      .home-area-module-title {text-shadow: 1px 1px 2px #fff, 0 0 1em #fff, 0 0 0.2em #fff;}
+      .list-group-item {background:rgba(255, 255, 255, 0.9);}
+    }
+  }
   .current-weather {padding-bottom:0;}
 }
 
 /* X. FOOTER */
-
-
-
-/* AAAAAAAAAAA */
-/*body {background-color:#dae7c6;}*/
-/*body {background-color:#f4f9ed;}*/
-#page-area, .inside-header {
-  margin:0 auto; width:98%;
-  @media (min-width: 768px) {width:94%;}
-  @media (min-width: 992px) {width:90%;}
-  @media (min-width: 1200px) {max-width:1340px;}
-
-  .home & {
-    @media (min-width: 992px) {width:900px;}
-    @media (min-width: 1200px) {max-width:900px;}
-  }
-}
-
-
