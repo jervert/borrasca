@@ -14,7 +14,9 @@
         <div id="results-area"></div>
       </div>
     </div>
+    
     <div class="home-area-modules row">
+      [[ if (!_.isNull(now)) { ]]
       <div class="home-area-module col-xs-12 col-sm-6">
         <h2 class="home-area-module-title">{{now.name}}</h2>
         <ul class="list-group current-weather">
@@ -39,6 +41,7 @@
         </ul>
         <p><a href="#" data-link="aqui-y-ahora" class="btn btn-default" role="button">{{$Q.literals.home.moreInfo}}</a></p>
       </div>
+      [[ } ]]
       <div class="home-area-module col-xs-12 col-sm-6">
         <h2 class="home-area-module-title">{{$Q.literals.home.favoritesTitle}}</h2>
         [[ if (_.isArray(locations) && locations.length > 0) { ]]

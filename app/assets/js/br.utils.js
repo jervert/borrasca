@@ -23,7 +23,7 @@
     if (_.support_geolocation()) {
       navigator.geolocation.getCurrentPosition(geolocationSuccess, geolocationError, geolocationOptions);
     } else {
-      $(document).trigger('geolocated');
+      fireGeolocated('not_supported');
     }
   };
 

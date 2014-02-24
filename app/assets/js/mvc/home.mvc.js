@@ -17,8 +17,10 @@
       if (!_.isNull($Q.geolocation)) {
         this.model.url = $Q.services.main + $Q.geolocation.latitude + ',' + $Q.geolocation.longitude + _.avoidCacheParam();
         this.loadPage();
+      } else {
+        this.model.set({now: null}, {silent: true});
+        this.pageLoaded();
       }
-      //this.pageLoaded();
     },
     beforeRender: function () {
       $(document.body).addClass('home').addClass('variant-' + _.randomInInterval(1, 6));

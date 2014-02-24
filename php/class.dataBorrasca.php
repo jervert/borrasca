@@ -15,7 +15,9 @@ class DataBorrasca {
   private $safeCharacters =  array('a', 'e', 'i', 'o', 'u', 'u', 'a', 'e', 'i', 'o', 'u', 'a', 'e', 'i', 'o', 'u', 'u', 'a', 'e', 'i', 'o', 'u');
   
   public function pageNowAndHere () {
-    if ($this->dataOrigin == 'real') {
+    if ($this->geolocation !== null) {
+        $text = 'null';
+    } elseif ($this->dataOrigin == 'real') {
       $text = $this->fget_contents($this->openweathermapUrl.'?lat='.$this->geolocation[0].'&lon='.$this->geolocation[1].'&units=metric&mode=json&lang='.$this->language.'&APPID='.$this->openweathermapsApiKey);
     } else {
       $text = $this->fget_contents('../../php/nowAndHere.json');
