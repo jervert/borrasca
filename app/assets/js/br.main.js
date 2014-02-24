@@ -103,6 +103,9 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L, Piwik, Q;
     adsense: {
       enabled: false
     },
+    home: {
+      backgrounds: false
+    },
     views: {},
     removableViews: ['detail', 'nowAndHere']
   };
