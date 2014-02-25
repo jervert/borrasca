@@ -1,5 +1,7 @@
 <script type="text/template" id="tmpl-now-and-here">
-  [[ if (now.result == 'error') { ]]
+  [[ if (_.isEmpty(now)) { ]]
+  {{_.c_message_error({text: ''})}}
+  [[ } else if (now && now.result == 'error') { ]]
   {{_.c_message_error({text: $Q.literals.messages.error[now.message]})}}
   [[ } else { ]]
   <section class="now-and-here">
