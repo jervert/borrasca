@@ -39,6 +39,14 @@
   .day-forecast-content {
     .unit {font-size:10px;}
   }
+  .forecast-interval {
+    .wind-direction, .sky-status {
+      img {
+        width: 36px;
+        vertical-align: middle;
+      }
+    }
+  }
 }
 
 .loading {

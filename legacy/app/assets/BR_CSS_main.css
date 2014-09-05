@@ -73,8 +73,8 @@
 .location-detail .day-forecast-content .unit {
   font-size: 10px;
 }
-
-.forecast-interval .sky-status img {width:36px;}
+.forecast-interval .wind-direction img,
+.forecast-interval .sky-status img {width:36px;vertical-align: middle;}
 
 /* line 44, compass/sass/BR_CSS_main.scss */
 .loading {
