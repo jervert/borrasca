@@ -78,16 +78,21 @@
   vertical-align: middle;
 }
 /* line 47, compass/sass/BR_CSS_main.scss */
-.location-detail .forecast-interval .wind-direction img, .location-detail .forecast-interval .sky-status img {
+.location-detail .forecast-interval .wind-direction img {
+  width: 22px;
+  vertical-align: middle;
+}
+/* line 53, compass/sass/BR_CSS_main.scss */
+.location-detail .forecast-interval .sky-status img {
   width: 36px;
   vertical-align: middle;
 }
 
-/* line 55, compass/sass/BR_CSS_main.scss */
+/* line 61, compass/sass/BR_CSS_main.scss */
 .loading {
   padding: 50px 0;
 }
-/* line 57, compass/sass/BR_CSS_main.scss */
+/* line 63, compass/sass/BR_CSS_main.scss */
 .loading p {
   margin: 0 auto;
   width: 56px;

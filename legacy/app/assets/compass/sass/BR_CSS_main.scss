@@ -43,7 +43,13 @@
     td, th {
       vertical-align: middle;
     }
-    .wind-direction, .sky-status {
+    .wind-direction {
+      img {
+        width: 22px;
+        vertical-align: middle;
+      }
+    }
+    .sky-status {
       img {
         width: 36px;
         vertical-align: middle;
