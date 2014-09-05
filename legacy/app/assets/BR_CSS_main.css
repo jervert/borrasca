@@ -73,14 +73,21 @@
 .location-detail .day-forecast-content .unit {
   font-size: 10px;
 }
-.forecast-interval .wind-direction img,
-.forecast-interval .sky-status img {width:36px;vertical-align: middle;}
+/* line 43, compass/sass/BR_CSS_main.scss */
+.location-detail .forecast-interval td, .location-detail .forecast-interval th {
+  vertical-align: middle;
+}
+/* line 47, compass/sass/BR_CSS_main.scss */
+.location-detail .forecast-interval .wind-direction img, .location-detail .forecast-interval .sky-status img {
+  width: 36px;
+  vertical-align: middle;
+}
 
-/* line 44, compass/sass/BR_CSS_main.scss */
+/* line 55, compass/sass/BR_CSS_main.scss */
 .loading {
   padding: 50px 0;
 }
-/* line 46, compass/sass/BR_CSS_main.scss */
+/* line 57, compass/sass/BR_CSS_main.scss */
 .loading p {
   margin: 0 auto;
   width: 56px;

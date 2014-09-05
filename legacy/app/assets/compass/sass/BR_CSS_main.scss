@@ -40,6 +40,9 @@
     .unit {font-size:10px;}
   }
   .forecast-interval {
+    td, th {
+      vertical-align: middle;
+    }
     .wind-direction, .sky-status {
       img {
         width: 36px;
