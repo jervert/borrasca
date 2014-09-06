@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-    <widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.phonegap.borrasca" versionCode="13" version="1.6.0">
+    <widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.phonegap.borrasca" versionCode="14" version="1.6.1">
 
     <!-- versionCode is optional and Android only -->
 
@@ -35,6 +35,7 @@
     <preference name="orientation" value="portrait" />
     <preference name="splash-screen-duration" value="5000" />
 		
-		<access origin="http://borrasca.digitalpapyrus.es" />
+	<access origin="http://borrasca.digitalpapyrus.es" />
+    <access origin="http://digitalpapyrus.eu" />
 
 </widget>

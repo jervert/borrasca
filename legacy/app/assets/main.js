@@ -11,7 +11,8 @@ _.templateSettings = {
 };
 
 // Native app or webapp
-$Q.apiPath = (document.URL.indexOf( 'http://' ) === -1 && document.URL.indexOf( 'https://' ) === -1) ? 'http://borrasca.digitalpapyrus.es/' : '';
+//$Q.apiPath = (document.URL.indexOf( 'http://' ) === -1 && document.URL.indexOf( 'https://' ) === -1) ? 'http://borrasca.digitalpapyrus.es/' : '';
+$Q.apiPath = (document.URL.indexOf( 'http://' ) === -1 && document.URL.indexOf( 'https://' ) === -1) ? 'http://digitalpapyrus.eu/borrasca-legacy/' : '';
 
 // Mixins
 _.mixin({
