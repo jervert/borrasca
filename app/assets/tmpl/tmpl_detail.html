@@ -37,7 +37,7 @@
               </tr>
             </thead>
             <tbody>
-            [[var supportSvg = _.support_svg(); _.each(day.forecast.hours, function (hour) { ]]
+            [[var supportSvg = _.support_svg() && !$Q.isLegacyAndroidWebView; _.each(day.forecast.hours, function (hour) { ]]
               <tr>
                 <th>{{hour.hour}}</th>
                 <td class="sky-status">

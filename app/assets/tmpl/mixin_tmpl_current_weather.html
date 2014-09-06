@@ -9,10 +9,11 @@ _.mixin({
 </script>
 
 <script type="text/template" id="mixin-tmpl-current-weather">
+  [[ var imageExtension = !_.support_svg() && $Q.isLegacyAndroidWebView ? 'png' : 'svg'; ]]
   <ul class="list-group current-weather">
     <li class="list-group-item" data-weather-id="{{weather[0].id}}">
       <h4 class="list-group-item-heading">{{$Q.literals.nowWeather.sky}}:</h4>
-      <p class="list-group-item-text">[[/*<i class="weather-icon {{$Q.ui.weatherFontIcon(weather[0].id, weather[0].icon)}}"></i>*/]]<img src="assets/img/weather_icons_svg/BOR_IMG_icon_sky_{{$Q.ui.weatherFontIcon(weather[0].id, weather[0].icon)}}.svg" alt="" width="36" height="36" /> {{weather[0].description}}</p>
+      <p class="list-group-item-text">[[/*<i class="weather-icon {{$Q.ui.weatherFontIcon(weather[0].id, weather[0].icon)}}"></i>*/]]<img src="assets/img/weather_icons_{{imageExtension}}/BOR_IMG_icon_sky_{{$Q.ui.weatherFontIcon(weather[0].id, weather[0].icon)}}.{{imageExtension}}" alt="" width="36" height="36" /> {{weather[0].description}}</p>
     </li>
     <li class="list-group-item">
       <h4 class="list-group-item-heading">{{$Q.literals.nowWeather.temperature}}:</h4>
