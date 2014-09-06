@@ -64,7 +64,7 @@
 </script>
 
 <script type="text/template" id="tmpl-quick-results">
-  <ul data-role="listview" data-divider-theme="b" data-inset="true">
+  <ul data-role="listview" data-divider-theme="a" data-inset="true">
     <li data-role="list-divider" role="heading">Resultados</li>
     [[ if (_.isArray(locations) && locations.length > 0) { ]]
     [[ _.each(locations, function (item) { ]]
@@ -135,9 +135,11 @@
     [[ }); ]]
     </div>
     <footer>
-      <h3>Información del contenido</h3>
-      <p class="created">Predicción elaborada: {{created}}</p>
-      <p><a href="{{about.link}}" target="_blank">{{about.author}}</a></p>
+      <h3 class="ui-bar ui-bar-a ui-corner-all">Información del contenido</h3>
+      <div class="ui-body ui-body-a ui-corner-all">
+        <p class="created">Predicción elaborada: {{created}}</p>
+        <p><a href="{{about.link}}" target="_blank">{{about.author}}</a></p>
+      </div>
     </footer>
   </section>
 </script>

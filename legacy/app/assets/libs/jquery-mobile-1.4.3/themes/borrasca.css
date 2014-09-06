@@ -250,9 +250,9 @@ html .ui-bar-a .ui-body-inherit,
 html .ui-body-a .ui-body-inherit,
 html body .ui-group-theme-a .ui-body-inherit,
 html .ui-panel-page-container-a {
-	background-color: #e6e6e6 /*{a-body-background-color}*/;
-	border-color: #8da37b /*{a-body-border}*/;
-	color: #293225 /*{a-body-color}*/;
+	background-color: #ffffff /*{a-body-background-color}*/;
+	border-color: #8c8c8c /*{a-body-border}*/;
+	color: #000000 /*{a-body-color}*/;
 	text-shadow: 0 /*{a-body-shadow-x}*/ 1px /*{a-body-shadow-y}*/ 0 /*{a-body-shadow-radius}*/ #eeeeee /*{a-body-shadow-color}*/;
 }
 .ui-body-a {
