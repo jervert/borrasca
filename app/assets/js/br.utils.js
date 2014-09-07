@@ -18,7 +18,7 @@
       geolocationOptions = {
         enableHighAccuracy: true,
         maximumAge: 600000,
-        timeout: 45000
+        timeout: 10000
       };
     if (_.support_geolocation()) {
       navigator.geolocation.getCurrentPosition(geolocationSuccess, geolocationError, geolocationOptions);
