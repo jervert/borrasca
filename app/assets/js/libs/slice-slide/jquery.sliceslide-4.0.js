@@ -9,7 +9,7 @@
  * Project home:
  *   http://outbook.es
  *
- * Version:  4.1.0
+ * Version:  4.1.1
  *
  */
 
@@ -398,6 +398,14 @@
                 }
               });
             });
+          }
+
+          if (!op.loop) {
+            if (newSelectedInFixed.is(':last-child')) {
+                self.el.slideControls.next.hide();
+            } else if (newSelectedInFixed.is(':first-child')) {
+                self.el.slideControls.previous.hide();
+            }
           }
         }
       };
