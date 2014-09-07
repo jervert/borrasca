@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-    <widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.phonegap.borrasca_v2" versionCode="31" version="2.6.0.1">
+    <widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.phonegap.borrasca_v2" versionCode="32" version="2.6.0.2">
 
     <!-- versionCode is optional and Android only -->
 
