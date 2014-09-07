@@ -9,7 +9,7 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L, Piwik, Q;
       return /Chrome/.test(window.navigator.userAgent);
     },
     isPhonegapApp = guessIfIsPhonegapApp(),
-    isLegacyAndroidWebView = isPhonegapApp && gessIfIsLegacyAndroidWebView(),
+    isLegacyAndroidWebView = isPhonegapApp && !gessIfIsLegacyAndroidWebView(),
     getNavigatorLanguage = function () {
       var language = defaultLanguage;
       if (window.navigator) {
@@ -55,7 +55,8 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L, Piwik, Q;
     isPhonegapApp: isPhonegapApp,
     isLegacyAndroidWebView: isLegacyAndroidWebView,
     version: (environment === 'pr' || isPhonegapApp) ? '2.6.0.0' : Date.now(),
-    servicePath: (isPhonegapApp) ? 'http://borrasca-next.digitalpapyrus.es/' : '',
+    //servicePath: (isPhonegapApp) ? 'http://borrasca-next.digitalpapyrus.es/' : '',
+    servicePath: (isPhonegapApp) ? 'http://digitalpapyrus.eu/borrasca-next/' : '',
     server: (window.location.port === '9000') ? 'node' : 'php', // 'node' or 'php'
     waitOnInitialize: 60,
     culture: getCulture(),
