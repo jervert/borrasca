@@ -101,147 +101,145 @@
 
 
   // Location map
-  $Q.ui.locationMap = function (options, $viewEl) {
-    if (!_.isNull($Q.geolocation)) {
-      var tilesOpacity = 0.7,
-        defaults = {
-          autoStart: true,
-          mapLink: '[data-map-view-button]',
-          mapLinkAttr: 'data-map-view-button',
-          mapLinkContainer: '[data-map-view-button-container]',
-          coordinates: [$Q.geolocation.latitude, $Q.geolocation.longitude],
-          mapElement: null,
-          mapContainerSelector: '[data-map-container]',
-          mapControlsSelector: '[data-map-controls]',
-          mapLayerControlSelector: '[data-map-layer]',
-          selectedControlClass: 'btn-primary',
-          mapLayerControlAttr: 'data-map-layer',
-          selectedLayerAttr: 'data-map-selected-layer',
-          heightElement: null,
-          selectedMapTiles: 'OpenStreetMap_Mapnik',
-          initialZoom: 7,
-          mapTiles: {
-            Stamen_Toner: ['http://{s}.tile.stamen.com/toner/{z}/{x}/{y}.png', {
-              attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
-              subdomains: 'abcd',
-              minZoom: 0,
-              maxZoom: 20
-            }],
-            Stamen_Watercolor: ['http://{s}.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg', {
-              attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
-              subdomains: 'abcd',
-              minZoom: 3,
-              maxZoom: 16
-            }],
-            OpenStreetMap_Mapnik: ['http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-              attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
-              maxZoom: 18
-            }],
-            
-            // openweathermap layers
-            // http://openweathermap.org/hugemaps
-            OpenWeatherMap_clouds: ['http://{s}.tile.openweathermap.org/map/clouds/{z}/{x}/{y}.png', {
-              attribution: 'Map data © OpenWeatherMap',
-              maxZoom: 18,
-              opacity: tilesOpacity
-            }],
-            OpenWeatherMap_precipitation: ['http://{s}.tile.openweathermap.org/map/precipitation/{z}/{x}/{y}.png', {
-              attribution: 'Map data © OpenWeatherMap',
-              maxZoom: 18,
-              opacity: tilesOpacity
-            }],
-            OpenWeatherMap_wind: ['http://{s}.tile.openweathermap.org/map/wind/{z}/{x}/{y}.png', {
-              attribution: 'Map data © OpenWeatherMap',
-              maxZoom: 18,
-              opacity: tilesOpacity
-            }],
-            OpenWeatherMap_temperature: ['http://{s}.tile.openweathermap.org/map/temp/{z}/{x}/{y}.png', {
-              attribution: 'Map data © OpenWeatherMap',
-              maxZoom: 18,
-              opacity: tilesOpacity
-            }]
-          }
-        },
-        options = $.extend(true, {}, defaults, options),
-        $mapContainer = options.mapElement.closest(options.mapContainerSelector),
-        $mapControls = $mapContainer.find(options.mapControlsSelector),
-        $mapControlsLayers = $mapControls.find(options.mapLayerControlSelector),
-        activeLayer = null,
-        addLayer = function (ev) {
-          ev.preventDefault();
-          var $target = $(ev.currentTarget),
-            newLayer = $target.attr(options.mapLayerControlAttr),
-            oldLayer = $mapContainer.attr(options.selectedLayerAttr);
+  $Q.ui.locationMap = function (options, $viewEl) {debugger
+    var tilesOpacity = 0.7,
+      defaults = {
+        autoStart: true,
+        mapLink: '[data-map-view-button]',
+        mapLinkAttr: 'data-map-view-button',
+        mapLinkContainer: '[data-map-view-button-container]',
+        coordinates: (!_.isNull($Q.geolocation)) ? [$Q.geolocation.latitude, $Q.geolocation.longitude] : [0, 0],
+        mapElement: null,
+        mapContainerSelector: '[data-map-container]',
+        mapControlsSelector: '[data-map-controls]',
+        mapLayerControlSelector: '[data-map-layer]',
+        selectedControlClass: 'btn-primary',
+        mapLayerControlAttr: 'data-map-layer',
+        selectedLayerAttr: 'data-map-selected-layer',
+        heightElement: null,
+        selectedMapTiles: 'OpenStreetMap_Mapnik',
+        initialZoom: 7,
+        mapTiles: {
+          Stamen_Toner: ['http://{s}.tile.stamen.com/toner/{z}/{x}/{y}.png', {
+            attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+            subdomains: 'abcd',
+            minZoom: 0,
+            maxZoom: 20
+          }],
+          Stamen_Watercolor: ['http://{s}.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg', {
+            attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+            subdomains: 'abcd',
+            minZoom: 3,
+            maxZoom: 16
+          }],
+          OpenStreetMap_Mapnik: ['http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+            maxZoom: 18
+          }],
           
-          if (!_.isNull(activeLayer)) {
-            map.removeLayer(activeLayer);
-            $mapControlsLayers.removeClass(options.selectedControlClass);
-            $mapContainer.removeAttr(options.selectedLayerAttr);
+          // openweathermap layers
+          // http://openweathermap.org/hugemaps
+          OpenWeatherMap_clouds: ['http://{s}.tile.openweathermap.org/map/clouds/{z}/{x}/{y}.png', {
+            attribution: 'Map data © OpenWeatherMap',
+            maxZoom: 18,
+            opacity: tilesOpacity
+          }],
+          OpenWeatherMap_precipitation: ['http://{s}.tile.openweathermap.org/map/precipitation/{z}/{x}/{y}.png', {
+            attribution: 'Map data © OpenWeatherMap',
+            maxZoom: 18,
+            opacity: tilesOpacity
+          }],
+          OpenWeatherMap_wind: ['http://{s}.tile.openweathermap.org/map/wind/{z}/{x}/{y}.png', {
+            attribution: 'Map data © OpenWeatherMap',
+            maxZoom: 18,
+            opacity: tilesOpacity
+          }],
+          OpenWeatherMap_temperature: ['http://{s}.tile.openweathermap.org/map/temp/{z}/{x}/{y}.png', {
+            attribution: 'Map data © OpenWeatherMap',
+            maxZoom: 18,
+            opacity: tilesOpacity
+          }]
+        }
+      },
+      options = $.extend(true, {}, defaults, options),
+      $mapContainer = options.mapElement.closest(options.mapContainerSelector),
+      $mapControls = $mapContainer.find(options.mapControlsSelector),
+      $mapControlsLayers = $mapControls.find(options.mapLayerControlSelector),
+      activeLayer = null,
+      addLayer = function (ev) {
+        ev.preventDefault();
+        var $target = $(ev.currentTarget),
+          newLayer = $target.attr(options.mapLayerControlAttr),
+          oldLayer = $mapContainer.attr(options.selectedLayerAttr);
+        
+        if (!_.isNull(activeLayer)) {
+          map.removeLayer(activeLayer);
+          $mapControlsLayers.removeClass(options.selectedControlClass);
+          $mapContainer.removeAttr(options.selectedLayerAttr);
+        }
+        if (newLayer !== oldLayer) {
+          $target.addClass(options.selectedControlClass);
+          $mapContainer.attr(options.selectedLayerAttr, newLayer);
+          activeLayer = L.tileLayer(options.mapTiles[newLayer][0], options.mapTiles[newLayer][1]).addTo(map);
+        }
+      },
+      map,
+      icon,
+      marker,
+      tiles,
+      isMapRendered = false;
+      renderMap = function (ev) {
+        ev.preventDefault();
+        if (!isMapRendered) {
+          isMapRendered = true;
+          var $target = $(ev.currentTarget),
+            mapLayer = false;
+          $target.off('click.map').removeAttr('mapLinkAttr');
+          if (!$target.is(options.mapLayerControlSelector)) {
+            $target.hide();
+          } else if ($target.is(options.mapLayerControlSelector)) {
+            mapLayer = true;
           }
-          if (newLayer !== oldLayer) {
-            $target.addClass(options.selectedControlClass);
-            $mapContainer.attr(options.selectedLayerAttr, newLayer);
-            activeLayer = L.tileLayer(options.mapTiles[newLayer][0], options.mapTiles[newLayer][1]).addTo(map);
+
+          map = L.map(options.mapElement.attr('id')).setView(options.coordinates, options.initialZoom);
+          icon = L.icon({
+            iconUrl: 'assets/css/images/marker-icon.png',
+            iconSize: [25, 41],
+            iconAnchor: [12.5, 41],
+            iconRetinaUrl: 'assets/css/images/marker-icon.png',
+            shadowUrl: 'assets/css/images/marker-shadow.png',
+            shadowSize: [41, 41],
+            shadowAnchor: [10.5, 41],
+            shadowRetinaUrl: 'assets/css/images/marker-shadow.png',
+          });
+          marker = L.marker(options.coordinates, {icon: icon}).addTo(map);
+          tiles = options.mapTiles[options.selectedMapTiles];
+          
+          $mapControlsLayers.off('click.mapLayers').on('click.mapLayers', addLayer);
+          L.tileLayer(tiles[0], tiles[1]).addTo(map);
+          if (mapLayer) {
+            addLayer(ev);
           }
-        },
-        map,
-        icon,
-        marker,
-        tiles,
-        isMapRendered = false;
-        renderMap = function (ev) {
-          ev.preventDefault();
-          if (!isMapRendered) {
-            isMapRendered = true;
-            var $target = $(ev.currentTarget),
-              mapLayer = false;
-            $target.off('click.map').removeAttr('mapLinkAttr');
-            if (!$target.is(options.mapLayerControlSelector)) {
-              $target.hide();
-            } else if ($target.is(options.mapLayerControlSelector)) {
-              mapLayer = true;
-            }
+        }
+      };
 
-            map = L.map(options.mapElement.attr('id')).setView(options.coordinates, options.initialZoom);
-            icon = L.icon({
-              iconUrl: 'assets/css/images/marker-icon.png',
-              iconSize: [25, 41],
-              iconAnchor: [12.5, 41],
-              iconRetinaUrl: 'assets/css/images/marker-icon.png',
-              shadowUrl: 'assets/css/images/marker-shadow.png',
-              shadowSize: [41, 41],
-              shadowAnchor: [10.5, 41],
-              shadowRetinaUrl: 'assets/css/images/marker-shadow.png',
-            });
-            marker = L.marker(options.coordinates, {icon: icon}).addTo(map);
-            tiles = options.mapTiles[options.selectedMapTiles];
-            
-            $mapControlsLayers.off('click.mapLayers').on('click.mapLayers', addLayer);
-            L.tileLayer(tiles[0], tiles[1]).addTo(map);
-            if (mapLayer) {
-              addLayer(ev);
-            }
-          }
-        };
+    if (!_.isNull(options.heightElement)) {
+      var sumHeight = (options.heightElement.height() - $mapContainer.outerHeight()),
+        mapLinkHeight = $viewEl.find(options.mapLinkContainer).outerHeight(),
+        topSpacing = Math.floor((sumHeight - mapLinkHeight) / 2);
 
-      if (!_.isNull(options.heightElement)) {
-        var sumHeight = (options.heightElement.height() - $mapContainer.outerHeight()),
-          mapLinkHeight = $viewEl.find(options.mapLinkContainer).outerHeight(),
-          topSpacing = Math.floor((sumHeight - mapLinkHeight) / 2);
+      options.mapElement.css({
+        height: sumHeight
+      });
+      $(options.mapLinkContainer).css({
+        paddingTop: topSpacing
+      });
+    }
 
-        options.mapElement.css({
-          height: sumHeight
-        });
-        $(options.mapLinkContainer).css({
-          paddingTop: topSpacing
-        });
-      }
-
-      if (options.autoStart) {
-        renderMap();
-      } else {
-        $viewEl.find(options.mapLink).off('click.map').on('click.map', renderMap);
-      } 
+    if (options.autoStart) {
+      renderMap();
+    } else {
+      $viewEl.find(options.mapLink).off('click.map').on('click.map', renderMap);
     }
   };
   $Q.ui.weatherFontIcon = function (code, icon) {
