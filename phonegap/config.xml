@@ -42,7 +42,7 @@
     <preference name="splash-screen-duration" value="2000" />
     <preference name="KeepRunning" value="true"/>
 	<preference name="DisallowOverscroll" value="true"/>
-    <preference name="phonegap-version" value="3.5.0" />
+    <preference name="phonegap-version" value="3.6.3" />
     
     
     <feature name="http://api.phonegap.com/1.0/file"/>
