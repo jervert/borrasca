@@ -101,7 +101,7 @@
 
 
   // Location map
-  $Q.ui.locationMap = function (options, $viewEl) {debugger
+  $Q.ui.locationMap = function (options, $viewEl) {
     var tilesOpacity = 0.7,
       defaults = {
         autoStart: true,
