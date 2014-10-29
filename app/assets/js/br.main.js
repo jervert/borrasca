@@ -54,7 +54,7 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L, Piwik, Q;
     appTitle: 'Borrasca - ',
     isPhonegapApp: isPhonegapApp,
     isLegacyAndroidWebView: isLegacyAndroidWebView,
-    version: (environment === 'pr' || isPhonegapApp) ? '2.6.0.2' : Date.now(),
+    version: (environment === 'pr' || isPhonegapApp) ? '2.6.0.3' : Date.now(),
     //servicePath: (isPhonegapApp) ? 'http://borrasca-next.digitalpapyrus.es/' : '',
     servicePath: (isPhonegapApp) ? 'http://digitalpapyrus.eu/borrasca-next/' : '',
     server: (window.location.port === '9000') ? 'node' : 'php', // 'node' or 'php'
