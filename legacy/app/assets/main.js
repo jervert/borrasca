@@ -139,8 +139,8 @@ $Q.xml = (function () {
       dayForecastMaxUv: function ($dia) {
         return $dia.find('uv_max').text();
       },
-      dayForecastMinAndMax: function ($dia) {
-        var $temperatura = $dia.find('temperatura');
+      dayForecastMinAndMax: function ($dia, tag) {
+        var $temperatura = $dia.find(tag);
         return {
           min: $temperatura.find('minima').text(),
           max: $temperatura.find('maxima').text()
@@ -148,10 +148,11 @@ $Q.xml = (function () {
       },
       dayForecast: function ($dia, currentHour, dayIndex) {
         return {
-          temperatureMinMax: fn.dayForecastMinAndMax($dia),
+          temperatureMinMax: fn.dayForecastMinAndMax($dia, 'temperatura'),
           maxUv: fn.dayForecastMaxUv($dia),
           hours: fn.dayForecastByHours($dia, currentHour, dayIndex),
-          snowLevel: fn.dayForecastSnowLevel($dia)
+          snowLevel: fn.dayForecastSnowLevel($dia),
+          humidityMinMax: fn.dayForecastMinAndMax($dia, 'humedad_relativa')
         };
       },
       days: function (currentDate) {
