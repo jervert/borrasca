@@ -22,6 +22,15 @@
     <script src="assets/libs/underscore-min.js"></script>
     <script src="assets/libs/backbone-min.js"></script>
 
+<script type="text/javascript">
+var indiceUvText = {
+  LOW: 'bajo',
+  MODERATED: 'moderado',
+  HIGH: 'alto',
+  VERY_HIGH: 'muy alto',
+  EXTREME: 'extremadamente alto'
+};
+</script>
 <script type="text/template" id="tmpl-loading">
   <div class="loading">
     <p><img src="assets/BR_IMG_HTML_loading.gif" alt="Cargando" /></p>
@@ -107,7 +116,7 @@
           <li class="temperature temperature-min">Min: <em class="temperature-quantity">{{day.forecast.temperatureMinMax.min}}º C</em></li>
           <li class="temperature temperature-max">Max: <em class="temperature-quantity">{{day.forecast.temperatureMinMax.max}}º C</em></li>
         </ul>
-        [[ if (!_.isEmpty(day.forecast.snowLevel)) { ]]<p class="forecast-param snow-level">Cota de nieve: {{day.forecast.snowLevel}} m.</p>[[ } ]]
+        [[ if (!_.isEmpty(day.forecast.snowLevel)) { ]]<p class="forecast-param snow-level">Cota de nieve: <em class="forecast-param-quantity">{{day.forecast.snowLevel}} m.</em></p>[[ } ]]
         <!--table class="ui-responsive table-stroke table-stripe ui-table" data-role="table" id="detail" data-mode="reflow"-->
         <table class="table-stroke ui-table">
           <thead>
@@ -131,7 +140,7 @@
           [[ }); ]]
           </tbody>
         </table>
-        
+        [[ if (!_.isEmpty(day.forecast.maxUv.max)) { ]]<p class="forecast-param uv">Índice ultravioleta: <em class="forecast-param-quantity uv-{{day.forecast.maxUv.level}}">{{day.forecast.maxUv.max}} <small>({{indiceUvText[day.forecast.maxUv.level]}})</small></em></p>[[ } ]]
         <p class="forecast-param humidity">Humedad relativa: <em class="forecast-param-quantity">{{day.forecast.humidityMinMax.min}}%</em> - <em class="forecast-param-quantity">{{day.forecast.humidityMinMax.max}}%</em></p>
       </div>
     </section>

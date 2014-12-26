@@ -137,7 +137,25 @@ $Q.xml = (function () {
         return (!_.isEmpty(snowLevelProv)) ? snowLevelProv : null;
       },
       dayForecastMaxUv: function ($dia) {
-        return $dia.find('uv_max').text();
+        var levelNumber = $dia.find('uv_max').text(),
+          level;
+          
+        if (levelNumber <= 2) {
+          level = 'LOW';
+        } else if (levelNumber > 2 && levelNumber < 6) {
+          level = 'MODERATED';
+        } else if (levelNumber > 5 && levelNumber < 8) {
+          level = 'HIGH';
+        } else if (levelNumber > 7 && levelNumber < 11) {
+          level = 'VERY_HIGH';
+        } else if (levelNumber >= 11) {
+          level = 'EXTREME';
+        }
+
+        return {
+          max: levelNumber,
+          level: level
+        };
       },
       dayForecastMinAndMax: function ($dia, tag) {
         var $temperatura = $dia.find(tag);
