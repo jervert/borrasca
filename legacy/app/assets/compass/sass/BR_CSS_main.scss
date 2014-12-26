@@ -56,20 +56,25 @@
       }
     }
   }
+  .forecast-param {
+    .forecast-param-quantity {
+      font-style: normal;
+      font-weight: bold;
+    }
+  }
+  .uv {
+    .forecast-param-quantity {
+      color:#fff; display:inline-block; padding:1px; border-radius:4px;text-shadow: none;
+      &.uv-LOW {background-color:#21674F;}
+      &.uv-MODERATED {background-color:#21674F; color:#000;}
+      &.uv-HIGH {background-color:#CE761F;}
+      &.uv-VERY_HIGH {background-color:#D41A1F;}
+      &.uv-EXTREME {background-color:#571E7D;}
+    }
+  }
 }
 
 .loading {
   padding:50px 0;
   p {margin:0 auto; width:56px;}
 }
-
-
-.location-detail .forecast-param .forecast-param-quantity {font-style: normal;
-  font-weight: bold;}
- .location-detail .uv  .forecast-param-quantity {color:#fff; display:inline-block; padding:1px; border-radius:4px;text-shadow: none;
-}
- .location-detail .uv  .forecast-param-quantity.uv-LOW {background-color:#21674F;}
- .location-detail .uv  .forecast-param-quantity.uv-MODERATED {background-color:#21674F; color:#000;}
- .location-detail .uv  .forecast-param-quantity.uv-HIGH {background-color:#CE761F;}
- .location-detail .uv  .forecast-param-quantity.uv-VERY_HIGH {background-color:#D41A1F;}
- .location-detail .uv  .forecast-param-quantity.uv-EXTREME {background-color:#571E7D;}
