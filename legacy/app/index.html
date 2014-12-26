@@ -107,6 +107,7 @@
           <li class="temperature temperature-min">Min: <em class="temperature-quantity">{{day.forecast.temperatureMinMax.min}}º C</em></li>
           <li class="temperature temperature-max">Max: <em class="temperature-quantity">{{day.forecast.temperatureMinMax.max}}º C</em></li>
         </ul>
+        [[ if (!_.isEmpty(day.forecast.snowLevel)) { ]]<p>Cota de nieve: {{day.forecast.snowLevel}} m.</p>[[ } ]]
         <!--table class="ui-responsive table-stroke table-stripe ui-table" data-role="table" id="detail" data-mode="reflow"-->
         <table class="table-stroke ui-table">
           <thead>
