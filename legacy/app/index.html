@@ -14,6 +14,11 @@
     <link rel="stylesheet" href="assets/libs/jquery-mobile-1.4.3/jquery.mobile-1.4.3.min.css" />
     <link rel="stylesheet" href="assets/libs/jquery-mobile-1.4.3/themes/borrasca.min.css" />
     <link rel="stylesheet" href="assets/BR_CSS_main.css" />
+    <script type="text/javascript">
+      window.$Q = {};
+      var $Q = window.$Q;
+    </script>
+    <script src="assets/cultures/es.js"></script>
     <script src="assets/libs/jquery-2.0.2.min.js"></script>
     <!--script src="assets/libs/jquery-mobile-1.3.1/jquery.mobile-1.3.1.min.js"></script-->
     <script src="assets/libs/jquery-mobile-1.4.3/jquery.mobile-1.4.3.min.js"></script>
@@ -22,15 +27,6 @@
     <script src="assets/libs/underscore-min.js"></script>
     <script src="assets/libs/backbone-min.js"></script>
 
-<script type="text/javascript">
-var indiceUvText = {
-  LOW: 'bajo',
-  MODERATED: 'moderado',
-  HIGH: 'alto',
-  VERY_HIGH: 'muy alto',
-  EXTREME: 'extremadamente alto'
-};
-</script>
 <script type="text/template" id="tmpl-loading">
   <div class="loading">
     <p><img src="assets/BR_IMG_HTML_loading.gif" alt="Cargando" /></p>
@@ -61,8 +57,8 @@ var indiceUvText = {
   [[ }*/ ]]
   <form action="" id="quick-search">
     <div data-role="fieldcontain">
-      <input name="search-terms" id="search-terms" placeholder="Nombre de municipio" value="" type="search" autocomplete="off" />
-      <input type="button" value="Buscar" id="search-button" data-icon="search" data-inline="true" data-mini="true" />
+      <input name="search-terms" id="search-terms" placeholder="{{$Q.i18n.search.locationName}}" value="" type="search" autocomplete="off" />
+      <input type="button" value="{{$Q.i18n.search.searchAction}}" id="search-button" data-icon="search" data-inline="true" data-mini="true" />
     </div>
   </form>
   <div id="quick-results">
@@ -74,13 +70,13 @@ var indiceUvText = {
 
 <script type="text/template" id="tmpl-quick-results">
   <ul data-role="listview" data-divider-theme="a" data-inset="true">
-    <li data-role="list-divider" role="heading">Resultados</li>
+    <li data-role="list-divider" role="heading">{{$Q.i18n.search.results}}</li>
     [[ if (_.isArray(locations) && locations.length > 0) { ]]
     [[ _.each(locations, function (item) { ]]
     <li><a data-result href="#" data-href="#localidad/{{item.link}}">{{item.name}}</a></li>
     [[ });]]
     [[ } else { ]]
-    <li>No se han encontrado resultados</li>
+    <li>{{$Q.i18n.search.noResults}}</li>
    [[ } ]]
   </ul>
 </script>
@@ -88,9 +84,9 @@ var indiceUvText = {
 
 <script type="text/template" id="tmpl-bookmarks">
   [[ if (!isBookmarked) { ]]
-    <button data-add-bookmark class="ui-btn ui-icon-star ui-btn-icon-left ui-shadow ui-corner-all bookmark">Añadir</button>
+    <button data-add-bookmark class="ui-btn ui-icon-star ui-btn-icon-left ui-shadow ui-corner-all bookmark">{{$Q.i18n.bookmarks.add}}</button>
   [[ } else { ]]
-    <button data-remove-bookmark class="ui-btn ui-icon-delete ui-btn-icon-left ui-shadow ui-corner-all bookmark">Quitar</button>
+    <button data-remove-bookmark class="ui-btn ui-icon-delete ui-btn-icon-left ui-shadow ui-corner-all bookmark">{{$Q.i18n.bookmarks.remove}}</button>
   [[ } ]]
 </script>
 
@@ -113,19 +109,19 @@ var indiceUvText = {
       <h3 class="day-forecast-title">{{day.formattedDate}}</h3>
       <div class="day-forecast-content">
         <ul class="temperatures">
-          <li class="temperature temperature-min">Min: <em class="temperature-quantity">{{day.forecast.temperatureMinMax.min}}º C</em></li>
-          <li class="temperature temperature-max">Max: <em class="temperature-quantity">{{day.forecast.temperatureMinMax.max}}º C</em></li>
+          <li class="temperature temperature-min"><abbr title="{{$Q.i18n.detail.minimum}}">{{$Q.i18n.detail.minimumAbbr}}</abbr>: <em class="temperature-quantity">{{day.forecast.temperatureMinMax.min}}º C</em></li>
+          <li class="temperature temperature-max"><abbr title="{{$Q.i18n.detail.maximum}}">{{$Q.i18n.detail.maximumAbbr}}</abbr>: <em class="temperature-quantity">{{day.forecast.temperatureMinMax.max}}º C</em></li>
         </ul>
-        [[ if (!_.isEmpty(day.forecast.snowLevel)) { ]]<p class="forecast-param snow-level">Cota de nieve: <em class="forecast-param-quantity">{{day.forecast.snowLevel}} m.</em></p>[[ } ]]
+        [[ if (!_.isEmpty(day.forecast.snowLevel)) { ]]<p class="forecast-param snow-level">{{$Q.i18n.detail.snowLevel}}: <em class="forecast-param-quantity">{{day.forecast.snowLevel}} m.</em></p>[[ } ]]
         <!--table class="ui-responsive table-stroke table-stripe ui-table" data-role="table" id="detail" data-mode="reflow"-->
         <table class="table-stroke ui-table">
           <thead>
             <tr>
-              <th>Hora</th>
-              <th>Cielo</th>
-              <th>Lluvia</th>
-              <th abbr="Temperatura">Temp. <span class="unit">(°C)</span></th>
-              <th>Viento <span class="unit">(km/h)</span></th>
+              <th>{{$Q.i18n.detail.hour}}</th>
+              <th>{{$Q.i18n.detail.sky}}</th>
+              <th>{{$Q.i18n.detail.rain}}</th>
+              <th abbr="{{$Q.i18n.detail.temperature}}">{{$Q.i18n.detail.temperatureAbbr}}. <span class="unit">(°C)</span></th>
+              <th>{{$Q.i18n.detail.wind}} <span class="unit">(km/h)</span></th>
             </tr>
           </thead>
           <tbody>
@@ -140,16 +136,16 @@ var indiceUvText = {
           [[ }); ]]
           </tbody>
         </table>
-        [[ if (!_.isEmpty(day.forecast.maxUv.max)) { ]]<p class="forecast-param uv">Índice ultravioleta: <em class="forecast-param-quantity uv-{{day.forecast.maxUv.level}}">{{day.forecast.maxUv.max}} <small>({{indiceUvText[day.forecast.maxUv.level]}})</small></em></p>[[ } ]]
-        <p class="forecast-param humidity">Humedad relativa: <em class="forecast-param-quantity">{{day.forecast.humidityMinMax.min}}%</em> - <em class="forecast-param-quantity">{{day.forecast.humidityMinMax.max}}%</em></p>
+        [[ if (!_.isEmpty(day.forecast.maxUv.max)) { ]]<p class="forecast-param uv">{{$Q.i18n.detail.uvIndex}}: <em class="forecast-param-quantity uv-{{day.forecast.maxUv.level}}">{{day.forecast.maxUv.max}} <small>({{$Q.i18n.detail.uv[day.forecast.maxUv.level]}})</small></em></p>[[ } ]]
+        <p class="forecast-param humidity">{{$Q.i18n.detail.humidity}}: <em class="forecast-param-quantity">{{day.forecast.humidityMinMax.min}}%</em> - <em class="forecast-param-quantity">{{day.forecast.humidityMinMax.max}}%</em></p>
       </div>
     </section>
     [[ }); ]]
     </div>
     <footer>
-      <h3 class="ui-bar ui-bar-a ui-corner-all">Información del contenido</h3>
+      <h3 class="ui-bar ui-bar-a ui-corner-all">{{$Q.i18n.contentInfo.title}}</h3>
       <div class="ui-body ui-body-a ui-corner-all">
-        <p class="created">Predicción elaborada: {{created}}</p>
+        <p class="created">{{$Q.i18n.contentInfo.forecastDate}}: {{created}}</p>
         <p><a href="{{about.link}}" target="_blank">{{about.author}}</a></p>
       </div>
     </footer>

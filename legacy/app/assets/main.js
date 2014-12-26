@@ -1,6 +1,3 @@
-window.$Q = {};
-var $Q = window.$Q;
-
 // Globalize culture
 Globalize.culture('es-ES');
 
