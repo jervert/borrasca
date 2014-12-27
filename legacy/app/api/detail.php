@@ -1,5 +1,5 @@
 <?php
-
+date_default_timezone_set('Europe/Madrid');
 function get_timezone_offset($remote_tz, $origin_tz = null) {
   if($origin_tz === null) {
      if(!is_string($origin_tz = date_default_timezone_get())) {
