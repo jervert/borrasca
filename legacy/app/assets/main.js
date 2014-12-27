@@ -241,7 +241,7 @@ $Q.DetailView = Backbone.View.extend({
   locationName: null,
   initialize: function () {
     this.model = new $Q.Detail();
-    this.model.url = $Q.apiPath + 'api/detail.php';
+    this.model.url = $Q.apiPath + 'api/detail.php?id=' + this.id;
     this.loadPage();
   },
   loadPage: function () {
