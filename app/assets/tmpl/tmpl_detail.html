@@ -54,6 +54,10 @@
             [[ }); ]]
             </tbody>
           </table>
+          <ul class="highlights secondary">
+            [[ if (!_.isEmpty(day.forecast.maxUv)) { ]]<li class="item max-uv">{{$Q.literals.detail.uvIndex}}: <em class="forecast-param-quantity uv-{{day.forecast.maxUv.level}}">{{day.forecast.maxUv.max}} <small>({{$Q.literals.detail.uvLevel[day.forecast.maxUv.level]}})</small></em></li>[[ } ]]
+            <li class="item humidity">{{$Q.literals.detail.humidity}}: <em class="forecast-param-quantity humidity-min">{{day.forecast.humidityMinMax.min}}</em> - <em class="forecast-param-quantity humidity-max">{{day.forecast.humidityMinMax.max}}</em></li>
+          </ul>
         </div>
       </section>
       [[ }); ]]

@@ -140,10 +140,28 @@ html{height: 100%;}
 						}
 						&.temperature-max .temperature-quantity {color:#E30E35;}
             &.snow-level {
-            float:right;
+              float:right;
               .fa-exclamation-triangle {color:#FFB200;}
             }
+            .forecast-param-quantity {
+              font-style: normal;
+              font-weight: bold;
+            }
+            &.max-uv {
+              .forecast-param-quantity {
+                color:#fff; display:inline-block; padding:1px; border-radius:4px;text-shadow: none;
+                &.uv-LOW {background-color:#21674F;}
+                &.uv-MODERATED {background-color:#E3EB5A; color:#000;}
+                &.uv-HIGH {background-color:#CE761F;}
+                &.uv-VERY_HIGH {background-color:#D41A1F;}
+                &.uv-EXTREME {background-color:#571E7D;}
+              }
+            }
 					}
+          &.secondary .item {
+            display: block;
+            margin-bottom: 6px;
+          }
 				}
 			}
 			

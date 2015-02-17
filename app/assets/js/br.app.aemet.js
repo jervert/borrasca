@@ -42,10 +42,28 @@ $Q.aemet = (function () {
         return (!_.isEmpty(snowLevelProv)) ? snowLevelProv : null;
       },
       dayForecastMaxUv: function ($dia) {
-        return $dia.find('uv_max').text();
+        var levelNumber = $dia.find('uv_max').text(),
+          level;
+          
+        if (levelNumber <= 2) {
+          level = 'LOW';
+        } else if (levelNumber > 2 && levelNumber < 6) {
+          level = 'MODERATED';
+        } else if (levelNumber > 5 && levelNumber < 8) {
+          level = 'HIGH';
+        } else if (levelNumber > 7 && levelNumber < 11) {
+          level = 'VERY_HIGH';
+        } else if (levelNumber >= 11) {
+          level = 'EXTREME';
+        }
+
+        return {
+          max: levelNumber,
+          level: level
+        };
       },
-      dayForecastMinAndMax: function ($dia) {
-        var $temperatura = $dia.find('temperatura');
+      dayForecastMinAndMax: function ($dia, tag) {
+        var $temperatura = $dia.find(tag);
         return {
           min: $temperatura.find('minima').text() || null,
           max: $temperatura.find('maxima').text() || null
@@ -53,10 +71,11 @@ $Q.aemet = (function () {
       },
       dayForecast: function ($dia, currentHour, dayIndex) {
         return {
-          temperatureMinMax: fn.dayForecastMinAndMax($dia),
+          temperatureMinMax: fn.dayForecastMinAndMax($dia, 'temperatura'),
           maxUv: fn.dayForecastMaxUv($dia),
           hours: fn.dayForecastByHours($dia, currentHour, dayIndex),
-          snowLevel: fn.dayForecastSnowLevel($dia)
+          snowLevel: fn.dayForecastSnowLevel($dia),
+          humidityMinMax: fn.dayForecastMinAndMax($dia, 'humedad_relativa')
         };
       },
       days: function (currentDate) {
