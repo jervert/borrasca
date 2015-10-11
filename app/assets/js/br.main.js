@@ -69,7 +69,7 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L, Piwik, Q;
         jquery: '2.1.1',
         underscore: '1.7.0',
         lodash: '2.4.1',
-        backbone: '1.1.2',
+        backbone: '1.2.3',
         requireText: '2.0.7',
         requireAsync: '0.1.1',
         highcharts: '4.0.4',
