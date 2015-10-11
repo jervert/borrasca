@@ -67,7 +67,7 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L, Piwik, Q;
       fullRoute: 'assets/js/libs',
       versions: {
         jquery: '2.1.1',
-        underscore: '1.7.0',
+        underscore: '1.8.3',
         lodash: '2.4.1',
         backbone: '1.2.3',
         requireText: '2.0.7',
@@ -80,7 +80,7 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L, Piwik, Q;
         jqueryMobileEvents: 'noversion'
       },
       equivalent: {
-        underscore: 'lodash' // 'lodash' or 'underscore'
+        underscore: 'underscore' // 'lodash' or 'underscore'
       }
     },
     templates: {

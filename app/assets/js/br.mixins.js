@@ -6,8 +6,9 @@
 
   _.mixin({
     tmpl: function (id, context) {
-      var html = $.trim($(id).html()).replace(/(\r\n|\n|\r)/gm, '');
-      return _.template(html, context);
+      var html = $.trim($(id).html()).replace(/(\r\n|\n|\r)/gm, ''),
+       template = _.template(html);
+      return template(context);
     },
     support_html5_storage: function () {
       try {
