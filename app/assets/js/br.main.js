@@ -50,8 +50,8 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L, Piwik, Q;
     };
 
   $Q = {
-    appName: 'Borrasca',
-    appTitle: 'Borrasca - ',
+    appName: 'Galerna',
+    appTitle: 'Galerna - ',
     isPhonegapApp: isPhonegapApp,
     isLegacyAndroidWebView: isLegacyAndroidWebView,
     version: (environment === 'pr' || isPhonegapApp) ? '2.7.0.0' : Date.now(),
