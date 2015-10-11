@@ -66,7 +66,7 @@ var $Q, $, Globalize, _, Backbone, Highcharts, L, Piwik, Q;
       route: 'libs/',
       fullRoute: 'assets/js/libs',
       versions: {
-        jquery: '2.1.1',
+        jquery: '2.1.4',
         underscore: '1.8.3',
         lodash: '2.4.1',
         backbone: '1.2.3',
