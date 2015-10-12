@@ -80,7 +80,7 @@ var appServer = (function() {
       server.queryDb(params.location_name);
     },
     nowData: function (type, location, language, geolocationParam, baseObject, req, res, params) {
-      var openweathermapsApiKey = null,
+      var openweathermapsApiKey = '113f7769a2570b6e4151869ab5d205d7',
         geolocation = geolocationParam.split(','),
         baseUrl = 'http://api.openweathermap.org/data/2.5/weather/',
         url,
