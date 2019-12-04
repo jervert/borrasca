@@ -18,7 +18,7 @@
     var $Q = window.$Q;
   </script>
   <script src="assets/cultures/es.js"></script>
-  <script src="assets/libs/jquery-3.4.1.min.js"></script>
+  <script src="assets/libs/jquery-2.1.4.min.js"></script>
   <script src="assets/libs/jquery-mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
   <script src="assets/libs/globalize/globalize.js"></script>
   <script src="assets/libs/globalize/cultures/globalize.culture.es-ES.js"></script>
@@ -47,12 +47,6 @@
 
 
 <script type="text/template" id="tmpl-quick-search">
-  [[ /*if (window.navigator.mozApps) { ]]
-  <ul data-role="content" data-install-ff-os-area>
-    <li data-role="button" data-inline="true" data-icon="check" data-mini="true" tabindex="0" data-install-ff-os>Instalar app</li>
-    <li data-role="button" data-inline="true" data-icon="delete" data-mini="true" tabindex="0" data-close-install-ff-os>Cancelar</li>
-  </ul>
-  [[ }*/ ]]
   <form action="" id="quick-search">
     <div data-role="fieldcontain">
       <input name="search-terms" id="search-terms" placeholder="{{$Q.i18n.search.locationName}}" value="" type="search" autocomplete="off" />
@@ -61,7 +55,9 @@
   </form>
   <div id="quick-results">
     [[ if (!_.isEmpty(locations)) { ]]
-      _.tmpl('#tmpl-quick-results', locations);
+      _.tmpl('#tmpl-quick-results', {
+      locations: locations
+    });
     [[ } ]]
   </div>
 </script>

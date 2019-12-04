@@ -9,13 +9,13 @@ _.templateSettings = {
 
 // Native app or webapp
 //$Q.apiPath = (document.URL.indexOf( 'http://' ) === -1 && document.URL.indexOf( 'https://' ) === -1) ? 'http://borrasca.digitalpapyrus.es/' : '';
-$Q.apiPath = (document.URL.indexOf( 'http://' ) === -1 && document.URL.indexOf( 'https://' ) === -1) ? 'http://digitalpapyrus.eu/borrasca-legacy/' : '';
+$Q.apiPath = (document.URL.indexOf( 'http://' ) === -1 && document.URL.indexOf( 'https://' ) === -1) ? 'http://digitalpapyrus.eu/borrasca/' : '';
 
 // Mixins
 _.mixin({
   tmpl: function (id, context) {
     var html = $.trim($(id).html());
-    return _.template(html, context);
+    return _.template(html)(context);
   },
 
   support_html5_storage: function () {
@@ -223,7 +223,7 @@ $Q.xml = (function () {
 
 $Q.Search = Backbone.Model.extend({
   defaults: {
-    locations: null
+    locations: []
   }
 });
 
