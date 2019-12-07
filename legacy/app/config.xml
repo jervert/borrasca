@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-    <widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.phonegap.borrasca" versionCode="16" version="1.6.2">
-
-    <!-- versionCode is optional and Android only -->
+    <widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.phonegap.borrasca" versionCode="17" version="1.7.2">
 
     <name>Borrasca</name>
 
@@ -12,30 +10,12 @@
     <author href="http://digitalpapyrus.es" email="info@digitalpapyrus.es">
       DigitalPapyrus
     </author>
-    
-    <icon src="BR_IMG_app_icon.png" />
-    
-    
-    <gap:splash src="splash.png" />
-    
-    <gap:splash src="BR_IMG_app_startup_320.png" width="320" height="480" />
-    <gap:splash src="BR_IMG_app_startup.png" width="640" height="960" />
-
-    <gap:splash src="BR_IMG_app_startup_360.png" gap:platform="android" gap:density="ldpi" />
-    <gap:splash src="BR_IMG_app_startup_360.png" gap:platform="android" gap:density="mdpi" />
-    <gap:splash src="BR_IMG_app_startup.png" gap:platform="android" gap:density="hdpi" />
-    <gap:splash src="BR_IMG_app_startup.png" gap:platform="android" gap:density="xhdpi" />
-
-
-    <gap:splash src="BR_IMG_app_startup.png" gap:platform="winphone" />
-
-    
-    
-    <preference name="permissions" value="none"/>
+    <icon src="img/logo.png" />
     <preference name="orientation" value="portrait" />
-    <preference name="splash-screen-duration" value="5000" />
     <preference name="android-targetSdkVersion" value="28" />
 
+    <plugin name="cordova-plugin-whitelist" spec="1" />
+    <access origin="*" />
     <allow-intent href="http://digitalpapyrus.eu/*" />
     <allow-intent href="https://digitalpapyrus.eu/*" />
 
